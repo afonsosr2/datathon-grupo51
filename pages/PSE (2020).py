@@ -39,13 +39,13 @@ with cols_intro[0]:
                    as regras de distanciamento social e de proteção, no contexto da pandemia COVID-19. Todas as informações foram cedidas pelas
                    famílias de forma voluntária e os principais resultados divulgados no relatório abaixo, que você poderá baixar em PDF.''')
 
-    with open("dados\Relatório PSE2020 v_0_1_3.pdf", "rb") as pdf_file:
+    with open("dados/Relatório PSE2020 v_0_1_3.pdf", "rb") as pdf_file:
         PDFbyte = pdf_file.read()
 
     st.download_button(label="Baixe aqui o relatório completo", data=PDFbyte, file_name="Relatório PSE2020.pdf",
                         mime='application/octet-stream', use_container_width=True)
 with cols_intro[1]:
-    st.image("images\pse-img01-passos-magicos.png")
+    st.image("images/pse-img01-passos-magicos.png")
 
 with st.container(border=True):
     st.markdown("### Sobre a edição de 2020")
