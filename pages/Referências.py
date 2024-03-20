@@ -38,8 +38,8 @@ st.markdown('''
             Disponível em: https://plotly.com/python/
             - JOEL, Grus. Data Science do Zero: Noções Fundamentais com Python [Livro físico]
             - KNAFLIC, Cole Nussbaumer. Storytelling com dados: uma guia sobre visualização de dados para profissionais de negócio [Livro físico]
-            - REF_1, Desc Ref. [acessado 2023 Mar].  
-            Disponível em: link_ref
+            - IBGE, Panorama de Embu-Guaçu. [acessado 2023 Mar].  
+            Disponível em: https://cidades.ibge.gov.br/brasil/sp/embu-guacu/panorama
             - REF_2, Desc Ref. [acessado 2023 Mar].  
             Disponível em: link_ref
             - REF_3, Desc Ref. [acessado 2023 Mar].  

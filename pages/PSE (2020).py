@@ -77,9 +77,73 @@ tabs = st.tabs(tab_titles)
  
 # Add content to each tab
 with tabs[0]:
-    st.header('Metrics')
-    st.metric('Metric 1', 123)
-    st.metric('Metric 2', 456)
+
+    st.markdown("")
+    cols_destaque_contexto = st.columns(2)
+    with cols_destaque_contexto[0]:
+        st.markdown("<p class='font-text-destaques'>Principais contextos Socioeconômicos de Embu-Guaçu</p>", unsafe_allow_html=True)
+    with cols_destaque_contexto[1]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <li> O <font color='red'><b> IDHM</b></font> em Embu-Guaçu atingiu, em 2010, o patamar de <b>0,749 (alto)</b> 
+                             correspondente aos países em desenvolvimento. Grande parte do avanço é creditado a melhora do indicador 
+                             de <b>Educação</b>, partindo do muito baixo em 1990 ao nível alto em 2010. Embora há muito espaço para melhoras.
+                        </li>
+                        <li> Em relação à <font color='red'><b>condição de vida</b></font>, Embu-Guaçu possui indicadores de pobreza
+                             e vulnerabilidade abaixo do Brasil como um todo (<b>36,99%</b> contra <b>54,38%</b>), porém extremamente 
+                             elevado em relação à <b>RMSP</b> e o <b>Estado de São Paulo</b> (<b>22,8%</b> e <b>21,95%</b>). 
+                             Praticamente <b>60%</b> das crianças em Embu-Guaçu estão nessas condições adversas.
+                        </li>
+                        <li> Em relação à <font color='red'><b>renda e escolaridade</b></font>, segundo dados de 2021 do IBGE,
+                             o salário médio dos trabalhadores formais é de <b>2,5 salários mínimos</b>, com apenas <b>13,3%</b> da população ocupada. 
+                             E a escolaridade do município também é bem desafiante, com apenas <b>60%</b> dos maiores de 18 anos concluíram o Ensino
+                             Fundamental e <b>40%</b> da mesma faixa etária que concluíram o Ensino Médio. 
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+
+    st.markdown('#')
+    st.markdown('#')
+
+    cols_local = st.columns(2)
+    with cols_local[0]:
+        st.image("images/contexto-img01-localizacao_embu-guacu.png")
+    with cols_local[1]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <li> O município de <font color='red'><b> Embu-Guaçu</b></font>, está localizado na porção Sudoeste da Região
+                             Metropolitanda de São Paulo (RMSP)
+                        </li>
+                        <li> A <font color='red'><b>população no censo de 2022</b></font> foi de <b>66.970 pessoas</b>, ocupando a 489ª posição no Brasil, com a densidade
+                             demográfica de aproximadamente <b>430 habitantes</b> por quilômetro quadrado.
+                        </li>
+                        <li> Em <font color='red'><b>níveis educacionais</b></font>, o município possui uma taxa de <b>97%</b> de escolarização de 6 a 14 anos de idade, com
+                             com mais de <b>13.000 matrículas</b> no Ensino Fundamental (EF) e Médio (EM). O IDEB da rede pública de ensino em 2021
+                             foi de <b>5,8</b> no EFAI (Anos Iniciais) e <b>5,2</b> no EFAF (Anos Finais). 
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+
+    st.markdown('#')
+    st.markdown('#')
+
+    # cols_perfil_se = st.columns(2)
+    # with cols_local[0]:
+    #     st.image("images/contexto-img01-localizacao_embu-guacu.png")
+    # with cols_local[1]:
+    #     st.markdown('''Algum texto''')
+    #     st.markdown('''Algum texto''')
+
+
+    #     Pequenos textos juntos dos visuais
+    # Localização
+    # viz1 - Localização Embu-Guaçu
+    # Perfil SE crianças e jovens
+    # viz2 - Pirâmide Etária Embu-Guaçu 2020 (pesquisar se achar)
+    # viz3 - tabela Pobreza em Embu-Guaçu
+    # viz4 - População de crianças e jovens por cor e raça
+
+
+
+
+
+
  
 with tabs[1]:
     st.header('Plot')
@@ -139,14 +203,21 @@ css = '''
     background-color: #68a4d0;    
     border-radius: 30px;
     }
-
     /*Tabs da Pesquisa*/
     div.stTabs [data-baseweb="tab-list"] button [data-testid="stMarkdownContainer"] p {
     font-size:1.2rem;
     font-weight:bold;
     margin-left: 2rem;
     }
-
+    p.font-text-destaques {
+    font-size:40px;
+    font-weight:bold;
+    color:#0367b0;
+    padding: 200px 0 200px;
+    }
+    ul.font-text-destaques li{
+    font-size:20px;
+    }
 </style>
 '''
 st.markdown(css, unsafe_allow_html=True)
