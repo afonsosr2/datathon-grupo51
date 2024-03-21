@@ -160,24 +160,9 @@ with tabs[0]:
                     o EF é de <b>16,4%</b> e <b>3%</b> das crianças em idade escolar ainda não frequentam a escola (PNUD, 2020).  
                 </li>
             </ul>''', unsafe_allow_html=True)
-
-    # cols_perfil_se = st.columns(2)
-    # with cols_local[0]:
-    #     st.image("images/contexto-img01-localizacao_embu-guacu.png")
-    # with cols_local[1]:
-    #     st.markdown('''Algum texto''')
-    #     st.markdown('''Algum texto''')
-
-
-    # Perfil SE crianças e jovens
-    # viz4 - População de crianças e jovens por cor e raça
-
-
-
-
-
-
- 
+        
+    st.markdown('#')
+    st.markdown('#') 
 with tabs[1]:
     st.header('Plot')
 

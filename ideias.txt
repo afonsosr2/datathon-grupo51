@@ -9,14 +9,11 @@ Contexto, Demografia, Passos Mágicos, Trabalho, Renda e Moradia
 Principais destaques sobre o contexto 
 
 Pequenos textos juntos dos visuais
-viz1 - Localização Embu-Guaçu
-viz2 - Pirâmide Etária Embu-Guaçu 2020 (pesquisar se achar)
-viz3 - tabela Pobreza em Embu-Guaçu
-viz4 - População de crianças e jovens por cor e raça
+(OK) viz1 - Localização Embu-Guaçu
+(OK) viz2 - Pirâmide Etária Embu-Guaçu 2020 (pesquisar se achar)
+(OK) viz3 - População de crianças e jovens por cor e raça
 
-5 visuais
-
-- Dados Gerais
+- Demografia
 
 5 visuais
 
