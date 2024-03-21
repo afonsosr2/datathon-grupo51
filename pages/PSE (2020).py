@@ -93,10 +93,9 @@ with tabs[0]:
                              elevado em relação à <b>RMSP</b> e o <b>Estado de São Paulo</b> (<b>22,8%</b> e <b>21,95%</b>). 
                              Praticamente <b>60%</b> das crianças em Embu-Guaçu estão nessas condições adversas.
                         </li>
-                        <li> Em relação à <font color='red'><b>renda e escolaridade</b></font>, segundo dados de 2021 do IBGE,
-                             o salário médio dos trabalhadores formais é de <b>2,5 salários mínimos</b>, com apenas <b>13,3%</b> da população ocupada. 
-                             E a escolaridade do município também é bem desafiante, com apenas <b>60%</b> dos maiores de 18 anos concluíram o Ensino
-                             Fundamental e <b>40%</b> da mesma faixa etária que concluíram o Ensino Médio. 
+                        <li> Em relação à <font color='red'><b>renda</b></font>, segundo dados de 2021 do IBGE, o salário médio dos trabalhadores
+                             formais é de <b>2,5 salários mínimos</b>, com apenas <b>13,3%</b> da população ocupada, sendo esta uma das menores taxas
+                             entre os municípios do Estado de São Paulo (543º lugar dentre 645 municípios). 
                         </li>
                     </ul>''', unsafe_allow_html=True)
 
@@ -149,15 +148,11 @@ with tabs[0]:
 
     with cols_perfil_se_estudantes[1]:
         st.markdown('''<ul class="font-text-destaques">
-                <li> Cerca de <font color='red'><b>22% dos habitantes</b></font> de Embu-Guaçu, aproximadamente 14.500 pessoas,
-                        são crianças e jovens com idades entre 5 e 19 anos.
+                <li> Entre os <font color='red'><b>indivíduos em idade escolar</b></font>, quanto à raça declarada, estão distribuídos
+                    <b>54,4%</b> de Brancos, <b>44,8%</b> de Pretos e Pardos, <b>0,7%</b> de Amarelos e <b>0,1%</b> de Indígenas.
                 </li>
-                <li> Considerando que <font color='red'><b>60% da parcela da população</b></font> vive em condição de vulnerabilidade,
-                        pobreza ou extrema pobreza, estamos falando de cerca de <b>8.700 crianças e jovens</b>.
-                </li>
-                <li> A <font color='red'><b>mortalidade infantil</b></font> caiu para <b>9,27</b> a cada 1.000 nascidos em 2022, 
-                        abaixo da média nacional (<b>12,59</b>). A porcentagem de crianças que vivem em domicílios em que ninguém completou
-                    o EF é de <b>16,4%</b> e <b>3%</b> das crianças em idade escolar ainda não frequentam a escola (PNUD, 2020).  
+                <li> A <font color='red'><b>escolaridade do município</b></font> é bem desafiante, sendo que apenas <b>60%</b> dos maiores
+                     de 18 anos concluíram o Ensino Fundamental e <b>40%</b> da mesma faixa etária concluíram o Ensino Médio.
                 </li>
             </ul>''', unsafe_allow_html=True)
         
@@ -177,8 +172,15 @@ with tabs[3]:
 
 
 ## Rodapé
-    
+st.markdown("---")
 
+st.markdown('''<div class="center">
+                    <a target="_self" href="#b1732366">
+                        <button class="back-to-top">
+                            Voltar ao topo
+                        </button>
+                    </a>
+                </div>''', unsafe_allow_html=True)
 
 # estilização dos parâmetros dos textos e elementos da página
 css = '''
@@ -229,14 +231,32 @@ css = '''
     font-weight:bold;
     margin-left: 2rem;
     }
+    /*Texto do princiapl destaque de cada aba*/
     p.font-text-destaques {
     font-size:40px;
     font-weight:bold;
     color:#0367b0;
     padding: 200px 0 200px;
     }
+    /*Texto dos destaques de cada aba*/
     ul.font-text-destaques li{
     font-size:20px;
+    }
+    /*Botão de retorno ao topo do relatório*/
+    .center {
+    position: absolute;
+    left: 50%;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    }
+    button.back-to-top{
+    background-color: #2c5381;
+    color:#ffffff;
+    border-radius: 8px;
+    }
+    button.back-to-top:hover{
+    background-color: #ffffff;
+    color:#000000;
     }
 </style>
 '''
