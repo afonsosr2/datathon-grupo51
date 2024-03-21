@@ -123,6 +123,44 @@ with tabs[0]:
     st.markdown('#')
     st.markdown('#')
 
+    cols_perfil_se = st.columns(2)
+    with cols_perfil_se[0]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <li> Cerca de <font color='red'><b>22% dos habitantes</b></font> de Embu-Guaçu, aproximadamente 14.500 pessoas,
+                             são crianças e jovens com idades entre 5 e 19 anos.
+                        </li>
+                        <li> Considerando que <font color='red'><b>60% da parcela da população</b></font> vive em condição de vulnerabilidade,
+                             pobreza ou extrema pobreza, estamos falando de cerca de <b>8.700 crianças e jovens</b>.
+                        </li>
+                        <li> A <font color='red'><b>mortalidade infantil</b></font> caiu para <b>9,27</b> a cada 1.000 nascidos em 2022, 
+                             abaixo da média nacional (<b>12,59</b>). A porcentagem de crianças que vivem em domicílios em que ninguém completou
+                            o EF é de <b>16,4%</b> e <b>3%</b> das crianças em idade escolar ainda não frequentam a escola (PNUD, 2020).  
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+    with cols_perfil_se[1]:
+        st.image("images/contexto-img02-piramide-etaria_embu-guacu.png")
+
+    st.markdown('#')
+    st.markdown('#')
+
+    cols_perfil_se_estudantes = st.columns(2)
+    with cols_perfil_se_estudantes[0]:
+        st.image("images/contexto-img03-pop-criancas-jovens_embu-guacu.png")
+
+    with cols_perfil_se_estudantes[1]:
+        st.markdown('''<ul class="font-text-destaques">
+                <li> Cerca de <font color='red'><b>22% dos habitantes</b></font> de Embu-Guaçu, aproximadamente 14.500 pessoas,
+                        são crianças e jovens com idades entre 5 e 19 anos.
+                </li>
+                <li> Considerando que <font color='red'><b>60% da parcela da população</b></font> vive em condição de vulnerabilidade,
+                        pobreza ou extrema pobreza, estamos falando de cerca de <b>8.700 crianças e jovens</b>.
+                </li>
+                <li> A <font color='red'><b>mortalidade infantil</b></font> caiu para <b>9,27</b> a cada 1.000 nascidos em 2022, 
+                        abaixo da média nacional (<b>12,59</b>). A porcentagem de crianças que vivem em domicílios em que ninguém completou
+                    o EF é de <b>16,4%</b> e <b>3%</b> das crianças em idade escolar ainda não frequentam a escola (PNUD, 2020).  
+                </li>
+            </ul>''', unsafe_allow_html=True)
+
     # cols_perfil_se = st.columns(2)
     # with cols_local[0]:
     #     st.image("images/contexto-img01-localizacao_embu-guacu.png")
@@ -131,12 +169,7 @@ with tabs[0]:
     #     st.markdown('''Algum texto''')
 
 
-    #     Pequenos textos juntos dos visuais
-    # Localização
-    # viz1 - Localização Embu-Guaçu
     # Perfil SE crianças e jovens
-    # viz2 - Pirâmide Etária Embu-Guaçu 2020 (pesquisar se achar)
-    # viz3 - tabela Pobreza em Embu-Guaçu
     # viz4 - População de crianças e jovens por cor e raça
 
 
@@ -158,9 +191,11 @@ with tabs[3]:
     st.number_input('Enter a number')
 
 
+## Rodapé
+    
 
 
-# Ajustando parâmetros dos textos
+# estilização dos parâmetros dos textos e elementos da página
 css = '''
 <style>
     /* Ajusta topicalização*/
