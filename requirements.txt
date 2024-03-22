@@ -1,6 +1,7 @@
 pandas
 numpy
 matplotlib
+seaborn
 streamlit
 plotly
 nbformat>=4.2.0
