@@ -1,8 +1,6 @@
 import streamlit as st
 
-###### Páginal de Referências do Streamlit ######
-st.set_page_config(layout= 'wide')
-
+#### Páginas
 cols = st.columns(6, gap="large")
 with cols[0]:
     st.image("images/Passos-magicos-icon-cor.png")
@@ -21,6 +19,7 @@ with cols[4]:
 
 st.header("", divider="gray")
 
+###### Página de Referências do Streamlit ######
 st.header(":books: Referências")
 
 st.markdown('''<style>
@@ -40,8 +39,8 @@ st.markdown('''
             - KNAFLIC, Cole Nussbaumer. Storytelling com dados: uma guia sobre visualização de dados para profissionais de negócio [Livro físico]
             - IBGE, Panorama de Embu-Guaçu. [acessado 2023 Mar].  
             Disponível em: https://cidades.ibge.gov.br/brasil/sp/embu-guacu/panorama
-            - REF_2, Desc Ref. [acessado 2023 Mar].  
-            Disponível em: link_ref
+            - SEADE População, Desc Ref. [acessado 2023 Mar].  
+            Disponível em: https://populacao.seade.gov.br/evolucao-populacional-esp/
             - REF_3, Desc Ref. [acessado 2023 Mar].  
             Disponível em: link_ref             
             ''')

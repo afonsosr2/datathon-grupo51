@@ -4,7 +4,7 @@ TABS
 
 Contexto, Demografia, Passos Mágicos, Trabalho, Renda e Moradia
 
-- Contexto
+- Contexto (OK)
 
 Principais destaques sobre o contexto 
 
@@ -15,7 +15,26 @@ Pequenos textos juntos dos visuais
 
 - Demografia
 
-5 visuais
+Principais destaques sobre demografia 
+
+Índividuos
+viz1 - População por sexo (pictograma ou outro)
+viz2 - População por cor ou raça (barras valores) - % nos destaques
+
+Domicílios
+viz 3 - Total de domicílios por sexo do responsável (colunas ou outro dicotômico sem ser pizza)
+viz 4 - Domicílios por cor ou raça (barras valores) - % nos destaques
+viz 5 - Domicílios por número de moradores (histograma)
+viz 6 - Domicílios por arranjo (barras)
+    Mais de 23% dos arranjos familiares são monoparentais (apenas mulher ou homem)
+
+Outros destaques sobre demografia 
+
+1. Um ponto curioso quanto a pirâmide etária na pesquisa é a baixa frequência de indivíduos na faixa de 20 a 34 anos
+em Embu-Guaçu, uma hipótese é a taxa de migração negativa observada no município de Embu-Guaçu para a faixa.  
+
+
+
 
 - Estudantes
 

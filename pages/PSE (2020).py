@@ -1,11 +1,19 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+from pywaffle import Waffle
 from plotly import express as px
 from plotly import graph_objs as go
 
-###### Páginal Inicial do Streamlit ######
-st.set_page_config(layout= 'wide')
+###### Configuração Inicial ######
+@st.cache_data
+def config_inicial():
+    df = pd.read_excel("dados/PSE2020_domicílios.xlsx", sheet_name = "PSE2020_domicílios")
+    # Retirando as colunas do ano (todos são 2020) e entrevistador(a)
+    cols_a_retirar = ["V100_first", "V101_first", "V106_first", "filter_$"]
+    dados = df.drop(columns=cols_a_retirar)
+    return dados
 
 #### Páginas
 cols = st.columns(6, gap="large")
@@ -26,10 +34,14 @@ with cols[4]:
 
 st.header("", divider="gray")
 
+#### Página dos modelos de previsão do petróleo Brent ####
+# Função que roda as configurações iniciais
+# Leitura dos dados do IPEA, treino e retreino de modelos 
+dados = config_inicial()
 
 cols_intro = st.columns(2)
 with cols_intro[0]:
-    st.markdown("### :mag_right: Pesquisa Sócio Econômica (2020)")
+    st.markdown("## :mag_right: Pesquisa Sócio Econômica (2020)")
     st.markdown('''Aqui compilamos os dados da Pesquisa Socioeconômica 2020 organizada e produzida pela [Associação Passos Mágicos](https://passosmagicos.org.br/).
                    Essa pesquisa, visa conhecer melhor o contexto das famílias atendidas pelo projeto e seuas condições reais de vida.
                    Como a própria ONG prega, a Educação não está desvinculada das condições materiais de vida, da organização familiar,
@@ -70,14 +82,12 @@ with st.container(border=True):
         quadro_2.markdown("### 141.669")
         quadro_2.markdown("\nquestões respondidas no total")
 
-
 # Criando as tabs da pesquisa
 tab_titles = ["Contexto", "Demografia", "Passos Mágicos", "Trabalho", "Renda", "Moradia"]
 tabs = st.tabs(tab_titles)
- 
+
 # Add content to each tab
 with tabs[0]:
-
     st.markdown("")
     cols_destaque_contexto = st.columns(2)
     with cols_destaque_contexto[0]:
@@ -85,21 +95,21 @@ with tabs[0]:
     with cols_destaque_contexto[1]:
         st.markdown('''<ul class="font-text-destaques">
                         <li> O <font color='red'><b> IDHM</b></font> em Embu-Guaçu atingiu, em 2010, o patamar de <b>0,749 (alto)</b> 
-                             correspondente aos países em desenvolvimento. Grande parte do avanço é creditado a melhora do indicador 
-                             de <b>Educação</b>, partindo do muito baixo em 1990 ao nível alto em 2010. Embora há muito espaço para melhoras.
+                             correspondente aos países em desenvolvimento. Parte do avanço é creditado ao indicador <b>Educação</b>, 
+                             partindo do muito baixo em 1990 ao nível alto em 2010.
                         </li>
                         <li> Em relação à <font color='red'><b>condição de vida</b></font>, Embu-Guaçu possui indicadores de pobreza
-                             e vulnerabilidade abaixo do Brasil como um todo (<b>36,99%</b> contra <b>54,38%</b>), porém extremamente 
+                             e vulnerabilidade abaixo do Brasil (<b>36,99%</b> contra <b>54,38%</b>), porém extremamente 
                              elevado em relação à <b>RMSP</b> e o <b>Estado de São Paulo</b> (<b>22,8%</b> e <b>21,95%</b>). 
                              Praticamente <b>60%</b> das crianças em Embu-Guaçu estão nessas condições adversas.
                         </li>
-                        <li> Em relação à <font color='red'><b>renda</b></font>, segundo dados de 2021 do IBGE, o salário médio dos trabalhadores
-                             formais é de <b>2,5 salários mínimos</b>, com apenas <b>13,3%</b> da população ocupada, sendo esta uma das menores taxas
-                             entre os municípios do Estado de São Paulo (543º lugar dentre 645 municípios). 
+                        <li> Em relação à <font color='red'><b>renda</b></font>, o salário médio dos trabalhadores formais é de <b>2,5 
+                             salários mínimos</b>, com apenas <b>13,3%</b> da população ocupada, uma das menores taxas
+                             entre os municípios do Estado de São Paulo (543º lugar dentre 645 municípios) (IGBE, 2021). 
                         </li>
                     </ul>''', unsafe_allow_html=True)
 
-    st.markdown('#')
+    st.markdown("---")
     st.markdown('#')
 
     cols_local = st.columns(2)
@@ -159,7 +169,98 @@ with tabs[0]:
     st.markdown('#')
     st.markdown('#') 
 with tabs[1]:
-    st.header('Plot')
+    st.markdown("")
+    cols_destaque_contexto = st.columns(2)
+    with cols_destaque_contexto[0]:
+        st.markdown("<p class='font-text-destaques'>Principais destaques sobre Demografia</p>", unsafe_allow_html=True)
+    with cols_destaque_contexto[1]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <li> A <font color='red'><b>PSE 2020</b></font> trouxe dados de <b>784</b> alunos da <b>Associação Passos Mágicos</b>.
+                             Considerando a população de <b>68.053</b> habitantes em 2020 (SEADE, 2020), a pesquisa representa <b>4% da 
+                             população</b> do município.
+                        </li>
+                        <li> <font color='red'><b>Na faixa entre 5 a 19 anos de idade</b></font> na pesquisa temos <b>1.137</b> crianças e
+                             jovens. Considerando os dados apenas nos domicílios entrevistados, <b>353</b> jovens ainda não foram atendidos
+                             pela APM. 
+                        </li>
+                        <li> Extrapolando a população dessa faixa etária para <b>42,5%</b> e uma população de <b>68.053</b> habitantes,
+                             <b>28.923</b> seriam de crianças e jovens. <font color='red'><b>Aproximadamente 17.350 crianças e jovens</b></font>
+                             como público potencial da APM (<b>60%</b> da população socialmente vulnerável).
+                        </li>
+                        <li> Foi possível observar uma <font color='red'><b>preponderância do gênero feminino</b></font> em diversas 
+                             categorias, bem como de Pardos e Pretos. Em domicílios monoparentais, mais de <b>90%</b> dos casos são de 
+                             mulheres responsáveis, com <b>60%</b> de Pretas ou Pardas e <b>71%</b> do total
+                             de domicílios monoparentais com 1 a 2 filhos e/ou enteados.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+
+    st.markdown("---")
+    st.markdown('#')
+
+    st.markdown('## Indivíduos')
+
+    
+    cols_pop_sexo = st.columns(2)
+    with cols_pop_sexo[0]:
+        mulheres = dados.D1702_sum.sum()
+        homens = dados.D1701_sum.sum()
+        total = mulheres + homens
+        pct_mulheres = (100 *mulheres/total).round(0)
+        pct_homens = (100 * homens/total).round(0)
+
+        data = {'Mulheres': pct_mulheres, 'Homens': pct_homens}
+        fig = plt.figure(FigureClass=Waffle, rows=5, values=data, colors=["#f58334", "#0367b0"],
+                        title={'label': 'População total por sexo', 'loc': 'left', 'size':10},
+                        labels=[f"{k} ({v:.0f}%)" for k, v in data.items()],
+                        legend={'loc': 'lower left', 'bbox_to_anchor': (0, -0.4), 'ncol': len(data), 'framealpha': 0},
+                        starting_location='NW', block_arranging_style='snake')
+        st.pyplot(fig)
+    with cols_pop_sexo[1]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <li> O recorte da pesquisa engloba <font color='red'><b>4% do total da população</b></font> de Embu-Guaçu, uma amostra considerável.
+                        </li>
+                        <li> Da população pesquisada, <font color='red'><b>1.452 são mulheres</b></font>, representando aproximadamente <b>54%</b>
+                             do total, e <font color='red'><b>1.221 moradores são homens</b></font>, representando <b>46%</b> do total.
+                        </li>
+                        <li> A <font color='red'><b>proporção entre homens e mulheres</b></font> em Embu-Guaçu em 2020 é de <b>50,5%</b> de mulheres
+                     e <b>49,5%</b> de homens. O ligeiro afastamento em relação a pesquisa pode ser explicado pelo recorte socioeconômico.  
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+
+    st.markdown('#')
+    st.markdown('#')    
+
+    cols_pop_cor_raca = st.columns(2)
+    with cols_pop_cor_raca[0]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <li> Com relação à <font color='red'><b>distribuição da população por raça e cor</b></font>, as proporções da 
+                             população total do Brasil se assemelham ao de Embu-Guaçu, que podemos observar na imagem ao lado
+                        </li>
+                        <li> Os declarados <font color='red'><b>Pretos e Pardos</b></font> somam cerca de <b>54,8%</b>, próximo dos <b>54%</b> do Brasil e
+                             os declarados <font color='red'><b>Brancos, Amarelos e Indígenas</b></font> juntos somam <b>45,2%</b> próximo dos 
+                             <b>46%</b> do Brasil.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+    with cols_pop_cor_raca[1]:
+        pop_cor_raca = dados.copy()
+        pop_cor_raca["pop"] =  dados["D1701_sum"] + dados["D1702_sum"]
+        pop_cor_raca = pop_cor_raca.groupby("V109_first")[["pop"]].sum().reset_index()
+        pop_cor_raca.columns = ["cor_raca", "qtd"]
+
+        fig = px.bar(pop_cor_raca, x="qtd", y="cor_raca", color = "cor_raca", text_auto=True,
+                    color_discrete_sequence=["#fec52b","#00b050","#f58334", "#ed3237", "#0367b0"],
+                    category_orders={'cor_raca':["Parda", "Preta", "Branca", "Amarela","Indígena"]})
+
+        # Ajustando o layout do gráfico
+        fig.update_layout(width=700, height=300, font_family = 'Open Sans', font_size=15, font_color= "black", 
+                          title_font_color= "black", title_font_size=24, title_text='População por Cor ou Raça' + 
+                          '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', xaxis_title='', yaxis_title='',
+                           xaxis_range = [0,1350], plot_bgcolor= "#f8f9fa", showlegend=False)
+
+        fig.update_traces(textfont_size=15, textposition="outside", cliponaxis=False)
+        st.plotly_chart(fig)
+
+    st.markdown('## Domicílios')
 
 with tabs[2]:
     st.markdown("- Testando...")
@@ -231,12 +332,12 @@ css = '''
     font-weight:bold;
     margin-left: 2rem;
     }
-    /*Texto do princiapl destaque de cada aba*/
+    /*Texto do principal destaque de cada aba*/
     p.font-text-destaques {
     font-size:40px;
     font-weight:bold;
     color:#0367b0;
-    padding: 200px 0 200px;
+    padding: 150px 0 150px;
     }
     /*Texto dos destaques de cada aba*/
     ul.font-text-destaques li{

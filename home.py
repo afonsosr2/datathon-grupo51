@@ -7,6 +7,7 @@ from plotly import graph_objs as go
 ###### Páginal Inicial do Streamlit ######
 st.set_page_config(layout= 'wide')
 
+#### Páginas
 cols = st.columns(6, gap="large")
 with cols[0]:
     st.image("images/Passos-magicos-icon-cor.png")

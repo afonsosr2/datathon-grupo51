@@ -1,8 +1,6 @@
 import streamlit as st
 
-###### Páginal Inicial do Streamlit ######
-st.set_page_config(layout= 'wide')
-
+#### Páginas
 cols = st.columns(6, gap="large")
 with cols[0]:
     st.image("images/Passos-magicos-icon-cor.png")
@@ -21,6 +19,7 @@ with cols[4]:
 
 st.header("", divider="gray")
 
+###### Página Sobre o Streamlit ######
 st.header(":bar_chart: Sobre o MVP")
 
 st.markdown('''<style>
