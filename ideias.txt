@@ -22,7 +22,7 @@ viz1 - População por sexo (pictograma ou outro)
 viz2 - População por cor ou raça (barras valores) - % nos destaques
 
 Domicílios
-viz 3 - Total de domicílios por sexo do responsável (colunas ou outro dicotômico sem ser pizza)
+viz 3 - Total de domicílios por sexo do responsável
 viz 4 - Domicílios por cor ou raça (barras valores) - % nos destaques
 viz 5 - Domicílios por número de moradores (histograma)
 viz 6 - Domicílios por arranjo (barras)

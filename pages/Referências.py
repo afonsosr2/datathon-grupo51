@@ -29,6 +29,8 @@ st.markdown('''<style>
 unsafe_allow_html=True)
 
 st.markdown('''
+            - PASSOS MÁGICOS, Website da ONG Passos Mágicos. [acessado 2023 Mar].  
+            Disponível em: https://passosmagicos.org.br/  
             - PANDAS. Documentação da biblioteca Pandas [Internet]. [acessado 2023 Jan].  
              Disponível em: https://pandas.pydata.org/docs/reference/
             - STREAMLIT. Documentação da biblioteca Streamlit [Internet]. [acessado 2023 Jan].  
@@ -40,7 +42,5 @@ st.markdown('''
             - IBGE, Panorama de Embu-Guaçu. [acessado 2023 Mar].  
             Disponível em: https://cidades.ibge.gov.br/brasil/sp/embu-guacu/panorama
             - SEADE População, Desc Ref. [acessado 2023 Mar].  
-            Disponível em: https://populacao.seade.gov.br/evolucao-populacional-esp/
-            - REF_3, Desc Ref. [acessado 2023 Mar].  
-            Disponível em: link_ref             
+            Disponível em: https://populacao.seade.gov.br/evolucao-populacional-esp/           
             ''')

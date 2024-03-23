@@ -252,16 +252,152 @@ with tabs[1]:
                     category_orders={'cor_raca':["Parda", "Preta", "Branca", "Amarela","Indígena"]})
 
         # Ajustando o layout do gráfico
-        fig.update_layout(width=700, height=300, font_family = 'Open Sans', font_size=15, font_color= "black", 
+        fig.update_layout(width=700, height=350, font_family = 'Open Sans', font_color= "black", 
                           title_font_color= "black", title_font_size=24, title_text='População por Cor ou Raça' + 
                           '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', xaxis_title='', yaxis_title='',
-                           xaxis_range = [0,1350], plot_bgcolor= "#f8f9fa", showlegend=False)
+                          xaxis_tickfont_size=14, yaxis_tickfont_size=14, xaxis_range = [0,1350], 
+                          plot_bgcolor= "#f8f9fa", showlegend=False)
 
-        fig.update_traces(textfont_size=15, textposition="outside", cliponaxis=False)
+        fig.update_traces(textfont_size=15, textposition="outside", texttemplate='<b>%{x}</b>', cliponaxis=False)
+ 
         st.plotly_chart(fig)
 
     st.markdown('## Domicílios')
 
+    cols_dom_sexo = st.columns(2)
+    with cols_dom_sexo[0]:
+        domicilio_sexo_resp = dados.V107_first.value_counts()
+        domicilio_sexo_resp.index = ["Mulheres", "Homens"]
+        total = domicilio_sexo_resp.sum()
+        pct_mulheres = (100 * domicilio_sexo_resp.loc["Mulheres"]/total).round(0)
+        pct_homens = (100 * domicilio_sexo_resp.loc["Homens"]/total).round(0)
+
+        data = {'Mulheres': pct_mulheres, 'Homens': pct_homens}
+        fig = plt.figure(FigureClass=Waffle, rows=5, values=data, colors=["#f58334", "#0367b0"],
+                title={'label': 'Total de domicílios por sexo do responsável', 'loc': 'left', 'size':10},
+                labels=[f"{k} ({v:.0f}%)" for k, v in data.items()],
+                legend={'loc': 'lower left', 'bbox_to_anchor': (0, -0.4), 'ncol': len(data), 'framealpha': 0},
+                starting_location='NW', block_arranging_style='snake')
+        
+        st.pyplot(fig)
+    with cols_dom_sexo[1]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <li> Embu-Guaçu tem um total projetado de <b>22.112</b> domicílios em 2020 (SEADE, 2020). Este recorte da pesquisa 
+                             engloba <font color='red'><b>3% do total de domicílios</b></font> do município.
+                        </li>
+                        <li> Dos responsáveis pelo domicílio, <font color='red'><b>354 são mulheres</b></font>, representando aproximadamente <b>54%</b>
+                             do total, e <font color='red'><b>300 moradores são homens</b></font>, representando <b>46%</b> do total.
+                        </li>
+                        <li> A <font color='red'><b>vantagem numérica dos domicílios chefiados por mulheres</b></font> foi destacado nos dados 
+                             demográficos dos domicílios entrevistados de Embu-Guaçu, principalmente pelos arranjos familiares.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+
+    st.markdown('#')
+    st.markdown('#')
+
+    cols_dom_cor_raca = st.columns(2)
+    with cols_dom_cor_raca[0]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <li> A <font color='red'><b>distribuição por cor e raça dos responsáveis dos domicílios</b></font>, tem relação
+                             direta com os dados da população da amostra e, consequentemente, com a proporção da população total do Brasil.
+                             Isso evidencia uma homogeneidade dos domicílios quanto a característica dos indivíduos, em que a frequência de
+                             domicílios heterogêneos são pouco significativos.
+                        </li>
+                        <li> Os responsáveis declarados <font color='red'><b>Pretos e Pardos</b></font> somam cerca de <b>54,9%</b>, próximo dos <b>54%</b> do Brasil e
+                             os declarados <font color='red'><b>Brancos, Amarelos e Indígenas</b></font> juntos somam <b>45,1%</b> próximo dos 
+                             <b>46%</b> do Brasil.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+    with cols_dom_cor_raca[1]:
+        pop_cor_raca = dados.V109_first.value_counts().to_frame().reset_index()
+        pop_cor_raca.columns = ["cor_raca", "qtd"]
+
+        fig = px.bar(pop_cor_raca, x="qtd", y="cor_raca", color = "cor_raca", text_auto=True,
+                    color_discrete_sequence=["#fec52b","#00b050","#f58334", "#ed3237", "#0367b0"],
+                    category_orders={'cor_raca':["Parda", "Preta", "Branca", "Amarela","Indígena"]})
+
+        # Ajustando o layout do gráfico
+        fig.update_layout(width=700, height=350, font_family = 'Open Sans', font_size=15, font_color= "black", 
+                        title_font_color= "black", title_font_size=24, title_text='População por Cor ou Raça do responsável' + 
+                        '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', xaxis_title='', yaxis_title='',
+                        xaxis_tickfont_size=14, yaxis_tickfont_size=14, xaxis_range = [0,350], 
+                        plot_bgcolor= "#f8f9fa", showlegend=False)
+
+        fig.update_traces(textfont_size=15, textposition="outside", texttemplate='<b>%{x}</b>', cliponaxis=False)
+        st.plotly_chart(fig)
+
+    cols_dom_n_moradores = st.columns(2)
+    with cols_dom_n_moradores[0]:
+        domicilio_n_moradores = dados.V104_max.value_counts().to_frame()
+        domicilio_n_moradores.loc["1"], domicilio_n_moradores.loc["9"] = 0, 0
+        domicilio_n_moradores = domicilio_n_moradores.reset_index()
+        domicilio_n_moradores.columns = ["Nº de Moradores", "Nº de Domicílios"]
+
+        fig = px.histogram(domicilio_n_moradores, x="Nº de Moradores", y="Nº de Domicílios", 
+                        text_auto=True, color_discrete_sequence=["#68a4d0"], nbins= 10)
+
+        # Ajustando o layout do gráfico
+        fig.update_layout(width=700, height=500, font_family = 'Open Sans', font_color= "black", 
+                        title_font_color= "black", title_font_size=24, title_text='Distribuição dos domicílios por nº de moradores' + 
+                        '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', 
+                        xaxis_title='Nº de Moradores', yaxis_title='Nº de Domicílios',
+                        xaxis_tickfont_size=14, yaxis_tickfont_size=14, yaxis_range = [0,270], 
+                        plot_bgcolor= "#f8f9fa", showlegend=False, bargap=0.1)
+
+        fig.update_xaxes(tickmode='array', tickvals=np.arange(1,11))
+        fig.update_traces(textfont_size=15, textposition="outside", texttemplate='<b>%{y}</b>', cliponaxis=False)
+        st.plotly_chart(fig)
+    with cols_dom_n_moradores[1]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <li> Segundo as projeções da Fundação SEADE, no município em 2020, os <font color='red'><b>68.503 habitantes se dividem em 22.112
+                             domicílios</b></font>, o que resultaria numa média de pouco mais de <b>3</b> moradores por domicílio.
+                        </li>
+                        <li> Observando o gráfico ao lado, com a distribuição dos domicílios na pesquisa, podemos notar <font color='red'><b>uma concentração
+                             maior dos domicílios entrevistados com 4 moradores</b></font> tanto na média, quanto na moda e mediana.
+                        </li>
+                        <li> Extrapolando para a faixa <font color='red'><b>entre 3 e 5 moradores, são somados 538 domicílios,</b></font> ou seja, mais de <b>82%</b> do total
+                             de domicílios entrevistados. É importante focar em moradias com um número <b>acima de 5 filhos</b> verificando o impacto
+                             de acordo com a condição de moradia desses locais.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+
+    st.markdown('#')
+    st.markdown('#')
+
+    cols_dom_arranjo = st.columns(2)
+    with cols_dom_arranjo[0]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <li> Podemos notar no gráfico ao lado, que o <font color='red'><b>arranjo familiar de união e casamento entre indivíduos de sexo diferente</b></font>,
+                             é amplamente representado com mais de <b>75%</b> dos arranjos familiares. Outro fator relevantes é de que mais de <b>23%</b> dos 
+                             arranjos familiares são <b>monoparentais</b> (apenas mulher ou homem), que é <b>muito</b> superior à média nacional de <b>13%</b>.
+                        </li>
+                        <li> Dos <font color='red'><b>arranjos monoparentais, mais de 90% são de mulheres</b></font>, acima dos <b>83,3%</b> de Embu-Guaçu dada pelo Censo do IBGE em 2010.
+                             Dos <font color='red'><b>arranjos de união ou casamento, em 38,6% dos casos a mulher é a responsável pelo domicílio</b></font>.
+                        </li>
+                        <li> Dos <font color='red'><b>138 domicílios monoparentais chefiados por mulheres, a proporção de Pardas e Pretas representam 61,6% do total</b></font>,
+                             e temos uma média de <b>41</b> anos de idade para a responsável.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+    with cols_dom_arranjo[1]:
+        domicilio_arranjo_familiar = dados.D1606D.value_counts().to_frame().reset_index()
+        domicilio_arranjo_familiar.columns = ["arranjo", "qtd"]
+
+        fig = px.bar(domicilio_arranjo_familiar, x="qtd", y="arranjo", color = "arranjo", text_auto=True,
+                    color_discrete_sequence=["#fec52b","#00b050", "#ed3237", "#0367b0"])
+
+        # Ajustando o layout do gráfico
+        fig.update_layout(width=700, height=500, font_family = 'Open Sans', font_size=15, font_color= "black", 
+                        title_font_color= "black", title_font_size=24, title_text='Distribuição dos domicílios pelos arranjos familiares' + 
+                        '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', xaxis_title='', yaxis_title='',
+                        xaxis_tickfont_size=14, yaxis_tickfont_size=14, xaxis_range = [0,550], 
+                        plot_bgcolor= "#f8f9fa", showlegend=False)
+
+        fig.update_yaxes(tickmode='array', tickvals=np.arange(0,4), 
+                         ticktext = ["União ou casamento<br>(indivíduos de sexo<br>diferente)", "Monoparental", "Consanguíneo",
+                                     "União ou casamento<br>(indivíduos do<br>mesmo sexo)"])
+        fig.update_traces(textfont_size=15, textposition="outside", texttemplate='<b>%{x}</b>', cliponaxis=False)
+        st.plotly_chart(fig)
 with tabs[2]:
     st.markdown("- Testando...")
     st.header('Chart')
