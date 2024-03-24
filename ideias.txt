@@ -5,40 +5,35 @@ TABS
 Contexto, Demografia, Passos Mágicos, Trabalho, Renda e Moradia
 
 - Contexto (OK)
-
-Principais destaques sobre o contexto 
-
-Pequenos textos juntos dos visuais
+Principais destaques sobre o contexto
 (OK) viz1 - Localização Embu-Guaçu
 (OK) viz2 - Pirâmide Etária Embu-Guaçu 2020 (pesquisar se achar)
 (OK) viz3 - População de crianças e jovens por cor e raça
 
-- Demografia
-
-Principais destaques sobre demografia 
-
+- Demografia (OK)
+Principais destaques sobre demografia
 Índividuos
-viz1 - População por sexo (pictograma ou outro)
-viz2 - População por cor ou raça (barras valores) - % nos destaques
-
+    viz1 - População por sexo (pictograma ou outro)
+    viz2 - População por cor ou raça (barras valores) - % nos destaques
 Domicílios
-viz 3 - Total de domicílios por sexo do responsável
-viz 4 - Domicílios por cor ou raça (barras valores) - % nos destaques
-viz 5 - Domicílios por número de moradores (histograma)
-viz 6 - Domicílios por arranjo (barras)
-    Mais de 23% dos arranjos familiares são monoparentais (apenas mulher ou homem)
+    viz 3 - Total de domicílios por sexo do responsável
+    viz 4 - Domicílios por cor ou raça (barras valores) - % nos destaques
+    viz 5 - Domicílios por número de moradores (histograma)
+    viz 6 - Domicílios por arranjo (barras)
 
-Outros destaques sobre demografia 
+- Alunos Passos Mágicos
+Principais destaques dos Alunos PM
+    viz 1 - Proporção dos APM na população - pizza ou rosca (OK)
 
-1. Um ponto curioso quanto a pirâmide etária na pesquisa é a baixa frequência de indivíduos na faixa de 20 a 34 anos
-em Embu-Guaçu, uma hipótese é a taxa de migração negativa observada no município de Embu-Guaçu para a faixa.  
+Perfil dos alunos Passos Mágicos
+    viz 2 - Total de alunos por sexo - waffle chart (OK)
+    viz 3 - Total de alunos por cor ou raça - barra (OK)
+    viz 4 - Aluno pela condição do domicílios - barra (OK)
+    viz 5 - Distribuição por idade - histograma (OK)
+    viz 6 - Distribuição de alunos por domicílios - histograma (OK)
+    viz 7 - Imagem dos núcleos - imagem (OK)
+    viz 8 - Distribuição por núcleo - waffle chart (OK)
 
-
-
-
-- Estudantes
-
-5 visuais
 
 - Ocupação
 

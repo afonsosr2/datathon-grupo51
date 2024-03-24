@@ -87,7 +87,7 @@ tab_titles = ["Contexto", "Demografia", "Passos Mágicos", "Trabalho", "Renda", 
 tabs = st.tabs(tab_titles)
 
 # Add content to each tab
-with tabs[0]:
+with tabs[0]: # TAB de Contexto
     st.markdown("")
     cols_destaque_contexto = st.columns(2)
     with cols_destaque_contexto[0]:
@@ -168,7 +168,7 @@ with tabs[0]:
         
     st.markdown('#')
     st.markdown('#') 
-with tabs[1]:
+with tabs[1]: # TAB de Demografia
     st.markdown("")
     cols_destaque_contexto = st.columns(2)
     with cols_destaque_contexto[0]:
@@ -205,13 +205,13 @@ with tabs[1]:
         mulheres = dados.D1702_sum.sum()
         homens = dados.D1701_sum.sum()
         total = mulheres + homens
-        pct_mulheres = (100 *mulheres/total).round(0)
-        pct_homens = (100 * homens/total).round(0)
+        pct_mulheres = (100 *mulheres/total)
+        pct_homens = (100 * homens/total)
 
         data = {'Mulheres': pct_mulheres, 'Homens': pct_homens}
         fig = plt.figure(FigureClass=Waffle, rows=5, values=data, colors=["#f58334", "#0367b0"],
                         title={'label': 'População total por sexo', 'loc': 'left', 'size':10},
-                        labels=[f"{k} ({v:.0f}%)" for k, v in data.items()],
+                        labels=[f"{k} ({v:.1f}%)" for k, v in data.items()],
                         legend={'loc': 'lower left', 'bbox_to_anchor': (0, -0.4), 'ncol': len(data), 'framealpha': 0},
                         starting_location='NW', block_arranging_style='snake')
         st.pyplot(fig)
@@ -219,8 +219,8 @@ with tabs[1]:
         st.markdown('''<ul class="font-text-destaques">
                         <li> O recorte da pesquisa engloba <font color='red'><b>4% do total da população</b></font> de Embu-Guaçu, uma amostra considerável.
                         </li>
-                        <li> Da população pesquisada, <font color='red'><b>1.452 são mulheres</b></font>, representando aproximadamente <b>54%</b>
-                             do total, e <font color='red'><b>1.221 moradores são homens</b></font>, representando <b>46%</b> do total.
+                        <li> Da população pesquisada, <font color='red'><b>1.452 são mulheres</b></font>, representando aproximadamente <b>54.3%</b>
+                             do total, e <font color='red'><b>1.221 moradores são homens</b></font>, representando <b>45.7%</b> do total.
                         </li>
                         <li> A <font color='red'><b>proporção entre homens e mulheres</b></font> em Embu-Guaçu em 2020 é de <b>50,5%</b> de mulheres
                      e <b>49,5%</b> de homens. O ligeiro afastamento em relação a pesquisa pode ser explicado pelo recorte socioeconômico.  
@@ -269,13 +269,13 @@ with tabs[1]:
         domicilio_sexo_resp = dados.V107_first.value_counts()
         domicilio_sexo_resp.index = ["Mulheres", "Homens"]
         total = domicilio_sexo_resp.sum()
-        pct_mulheres = (100 * domicilio_sexo_resp.loc["Mulheres"]/total).round(0)
-        pct_homens = (100 * domicilio_sexo_resp.loc["Homens"]/total).round(0)
+        pct_mulheres = (100 * domicilio_sexo_resp.loc["Mulheres"]/total)
+        pct_homens = (100 * domicilio_sexo_resp.loc["Homens"]/total)
 
         data = {'Mulheres': pct_mulheres, 'Homens': pct_homens}
         fig = plt.figure(FigureClass=Waffle, rows=5, values=data, colors=["#f58334", "#0367b0"],
                 title={'label': 'Total de domicílios por sexo do responsável', 'loc': 'left', 'size':10},
-                labels=[f"{k} ({v:.0f}%)" for k, v in data.items()],
+                labels=[f"{k} ({v:.1f}%)" for k, v in data.items()],
                 legend={'loc': 'lower left', 'bbox_to_anchor': (0, -0.4), 'ncol': len(data), 'framealpha': 0},
                 starting_location='NW', block_arranging_style='snake')
         
@@ -285,8 +285,8 @@ with tabs[1]:
                         <li> Embu-Guaçu tem um total projetado de <b>22.112</b> domicílios em 2020 (SEADE, 2020). Este recorte da pesquisa 
                              engloba <font color='red'><b>3% do total de domicílios</b></font> do município.
                         </li>
-                        <li> Dos responsáveis pelo domicílio, <font color='red'><b>354 são mulheres</b></font>, representando aproximadamente <b>54%</b>
-                             do total, e <font color='red'><b>300 moradores são homens</b></font>, representando <b>46%</b> do total.
+                        <li> Dos responsáveis pelo domicílio, <font color='red'><b>354 são mulheres</b></font>, representando aproximadamente <b>54.1%</b>
+                             do total, e <font color='red'><b>300 moradores são homens</b></font>, representando <b>45.9%</b> do total.
                         </li>
                         <li> A <font color='red'><b>vantagem numérica dos domicílios chefiados por mulheres</b></font> foi destacado nos dados 
                              demográficos dos domicílios entrevistados de Embu-Guaçu, principalmente pelos arranjos familiares.
@@ -398,10 +398,297 @@ with tabs[1]:
                                      "União ou casamento<br>(indivíduos do<br>mesmo sexo)"])
         fig.update_traces(textfont_size=15, textposition="outside", texttemplate='<b>%{x}</b>', cliponaxis=False)
         st.plotly_chart(fig)
-with tabs[2]:
-    st.markdown("- Testando...")
-    st.header('Chart')
+with tabs[2]: # TAB dos Alunos Passos Mágicos
+    st.markdown("")
+    cols_destaque_contexto = st.columns(2)
+    with cols_destaque_contexto[0]:
+        st.markdown("<p class='font-text-destaques'>Principais destaques sobre os<br>Alunos Passos Mágicos</p>", unsafe_allow_html=True)
+    with cols_destaque_contexto[1]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <li> A <font color='red'><b>PSE 2020</b></font> trouxe dados de <b>784</b> alunos da <b>Associação Passos Mágicos</b> 
+                             ativos. Esse número é estatisticamente censitário do universos de alunos atendidos, ou seja, é uma contagem completa 
+                             dos <b>Alunos Passos Mágicos</b>.
+                        </li>
+                        <li> A <font color='red'><b>distribuição geral dos indivíduos e domicílios</b></font>, é bastante homogênea às 
+                             características dos <b>Alunos Passos Mágicos</b>, especialmente quanto a cor ou raça e ao sexo. Conforme outros 
+                             recortes, a uma <font color='red'><b>prevalência feminina e parda e preta</b></font>, em pequena vantagem acima dos demais. 
+                        </li>
+                        <li> Quanto à idade, a <font color='red'><b>concentração dos Alunos Passos Mágicos se encontra nos ciclos correspondentes
+                             ao EFAF (Ensino Fundamental Anos Finais)</b></font>. O que pode levantar a hipótese do porquê baseado na 
+                             pirâmide etária dos habitantes de Embu-Guaçu.
+                        </li>
+                        <li> Abaixo, trazemos algumas <font color='red'><b>características demográficas dos Alunos Passos Mágicos</b></font>, 
+                            como sexo biológico, etnia ,condição no domicílio e distribuição por núcleo da <b>Associação Passos Mágicos</b>.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+
+    st.markdown("---")
+    st.markdown('#')
+
+    st.markdown('## Alunos Passos Mágicos')
+    st.markdown('#')
+
+    cols_alunos_totais = st.columns(2)
+    with cols_alunos_totais[0]:
+        total_individuos = dados.V104_max.sum()
+        total_alunos_ativos = dados.D201_sum.sum() - 1  # Um aluno inativo na lista
+        total_demais_indivíduos = total_individuos - total_alunos_ativos
+
+        labels = ["Alunos Passos Mágicos", "Demais Indivíduos"]
+        values = [total_alunos_ativos, total_demais_indivíduos]
+
+        fig = go.Figure(
+            data=[
+                go.Pie(labels = labels, values = values, textinfo='label+percent',
+                    marker_colors=["#0367b0","#68a4d0"], rotation = 90 )
+                ]
+            )
+
+        # Ajustando o layout do gráfico
+        fig.update_layout(width=500, height=500, font_family = 'Open Sans', font_color= "white", title_font_color= "black", 
+                        title_font_size=24, title_text='Proporção dos Alunos Passos Mágicos<br>Ativos na amostra da pesquisa' + 
+                        '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', showlegend=False)
+
+        fig.update_traces(textfont_size=12, texttemplate='<b>%{label}<br>%{value} (%{percent})<br></b>')
+
+        st.plotly_chart(fig)
+    with cols_alunos_totais[1]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <br><br><br><br><br>                    
+                        <li> Em relação a amostra da população entrevistada pela PSE 2020, o <font color='red'><b> total de 783 indivíduos</b></font> 
+                             representam <b>29,3%</b> dos moradores pesquisados, como podemos notar no gráfico ao lado.
+                        </li>
+                        <li> Os demais moradores, responsáveis, pessoas da família e com alguma relação com o aluno, somam <font color='red'><b>1.890 pessoas,
+                             o equivalente a 70,7% da população total</b></font> pesquisada.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+        
+    cols_aluno_sexo = st.columns(2)
+    with cols_aluno_sexo[0]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <br><br>
+                        <li> Da população pesquisada, foram registradas <font color='red'><b>783 crianças e jovens</b></font>. Desses,
+                             <b>442</b> estudantes, ou <b>56,4%</b>, são meninas e <b>341</b>, ou <b>43,6%</b> são meninos.
+                        </li>
+                        <li> Mais detalhes sobre o perfil dos alunos veremos mais abaixo.  
+                        </li>
+                    </ul>''', unsafe_allow_html=True)        
+    with cols_aluno_sexo[1]:
+        pct_meninas = (100 * 442/783)
+        pct_meninos = (100 * 341/783)
+        data = {'Meninas': pct_meninas, 'Meninos': pct_meninos}
+        fig = plt.figure(FigureClass=Waffle, rows=5, values=data, colors=["#f58334", "#0367b0"],
+                        title={'label': 'Total de Alunos Passos Mágicos por sexo', 'loc': 'left', 'size':10},
+                        labels=[f"{k} ({v:.1f}%)" for k, v in data.items()],
+                        legend={'loc': 'lower left', 'bbox_to_anchor': (0, -0.4), 'ncol': len(data), 'framealpha': 0},
+                        starting_location='NW', block_arranging_style='snake')
+        st.pyplot(fig)
+
+    st.markdown('#')
+    st.markdown('## Perfil dos Alunos Passos Mágicos')
+    st.markdown('#')
+  
+    cols_aluno_cor_raca = st.columns(2)
+    with cols_aluno_cor_raca[0]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <li> Com relação à <font color='red'><b>distribuição dos alunos por raça e cor</b></font>, temos bastante similariedades
+                             com a população da PSE 2020. Esse dado reforça a homogeneidade observada em toda pesquisa da composição dos arranjos
+                             familiares neste quesito
+                        </li>
+                        <li> Os declarados <font color='red'><b>Brancos, Amarelos e Indígenas</b></font> somam cerca de <b>47,5%</b>, 
+                             próximo dos <b>46%</b> do Brasil e os declarados <font color='red'><b>Pardos e Pretos</b></font> juntos 
+                             somam <b>52,5%</b> próximo dos <b>54%</b> do Brasil.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+    with cols_aluno_cor_raca[1]:
+        aluno_cor_raca = pd.DataFrame({
+            "cor_raca": ["Branca", "Parda", "Preta", "Amarela", "Indígena","Ignorada"],
+            "qtd": [368, 358, 51, 4, 1, 1]
+        })
+
+        fig = px.bar(aluno_cor_raca, x="qtd", y="cor_raca", color = "cor_raca", text_auto=True,
+                    color_discrete_sequence=["#f58334", "#fec52b","#00b050", "#ed3237", "#0367b0", "#cccccc"],
+                    category_orders={'cor_raca':["Branca", "Parda", "Preta", "Amarela","Indígena", "Ignorada"]})
+
+        # Ajustando o layout do gráfico
+        fig.update_layout(width=700, height=300, font_family = 'Open Sans', font_size=15, font_color= "black", 
+                        title_font_color= "black", title_font_size=24, title_text='População por Cor ou Raça' + 
+                        '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', xaxis_title='', yaxis_title='',
+                        xaxis_tickfont_size=14, yaxis_tickfont_size=14, xaxis_range = [0,400], 
+                        plot_bgcolor= "#f8f9fa", showlegend=False)
+
+        fig.update_traces(textfont_size=15, textposition="outside", texttemplate='<b>%{x}</b>', cliponaxis=False)
  
+        st.plotly_chart(fig)
+
+    st.markdown('#')
+    st.markdown('#')  
+   
+    cols_aluno_condicao_dom = st.columns(2)
+    with cols_aluno_condicao_dom[0]:
+        condicao_domicilio = dados.loc[dados.index.repeat(dados.D201_sum)].V201_first.value_counts()
+        condicao_domicilio = condicao_domicilio.to_frame().reset_index()
+        condicao_domicilio.columns = ["condicao", "qtd"]
+        condicao_domicilio = condicao_domicilio.head(4) # retirando o aluno desistente
+
+        condicao = {'Pai ou mãe de aluno(a) ativo (atualmente cursando)': "Filho(a) do responsável e/ou do cônjuge",
+                    'Responsável por aluno(a) ativo (atualmente cursando)': "Outra relação com o responsável",
+                    'Avô(ó) de aluno(a) ativo (atualmente cursando)': "Neto(a) do responsável",
+                    'Sem relação': "Sem relação com o responsável"}
+
+        condicao_domicilio.condicao = condicao_domicilio.condicao.map(condicao)
+
+        fig = px.bar(condicao_domicilio, x="qtd", y="condicao", color = "condicao", text_auto=True,
+                    color_discrete_sequence=["#fec52b","#00b050", "#ed3237", "#0367b0"])
+
+        # Ajustando o layout do gráfico
+        fig.update_layout(width=700, height=500, font_family = 'Open Sans', font_size=15, font_color= "black", 
+                        title_font_color= "black", title_font_size=24, title_text='Distribuição dos alunos por sua condição no domicílio' + 
+                        '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', xaxis_title='', yaxis_title='',
+                        xaxis_tickfont_size=14, yaxis_tickfont_size=14, xaxis_range = [0,850], 
+                        plot_bgcolor= "#f8f9fa", showlegend=False, yaxis_categoryorder='total descending')
+
+        fig.update_yaxes(tickmode='array', tickvals=np.arange(0,4), ticktext = ["Filho(a) do responsável<br>e/ou do cônjuge",
+                                                                        "Outra relação com<br>o responsável",
+                                                                        "Neto(a) do<br>responsável",
+                                                                        "Sem relação com<br>o responsável"])
+
+        fig.update_traces(textfont_size=15, textposition="outside", texttemplate='<b>%{x}</b>', cliponaxis=False)
+        
+        st.plotly_chart(fig)
+
+###PAREI AQUI!!!###
+
+    with cols_aluno_condicao_dom[1]:        
+        st.markdown('''<ul class="font-text-destaques">
+                        <li> Embu-Guaçu tem um total projetado de <b>22.112</b> domicílios em 2020 (SEADE, 2020). Este recorte da pesquisa 
+                             engloba <font color='red'><b>3% do total de domicílios</b></font> do município.
+                        </li>
+                        <li> Dos responsáveis pelo domicílio, <font color='red'><b>354 são mulheres</b></font>, representando aproximadamente <b>54.1%</b>
+                             do total, e <font color='red'><b>300 moradores são homens</b></font>, representando <b>45.9%</b> do total.
+                        </li>
+                        <li> A <font color='red'><b>vantagem numérica dos domicílios chefiados por mulheres</b></font> foi destacado nos dados 
+                             demográficos dos domicílios entrevistados de Embu-Guaçu, principalmente pelos arranjos familiares.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+
+    st.markdown('#')
+    st.markdown('#')
+
+    cols_alunos_idade = st.columns(2)
+    with cols_alunos_idade[0]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <li> A <font color='red'><b>distribuição por cor e raça dos responsáveis dos domicílios</b></font>, tem relação
+                             direta com os dados da população da amostra e, consequentemente, com a proporção da população total do Brasil.
+                             Isso evidencia uma homogeneidade dos domicílios quanto a característica dos indivíduos, em que a frequência de
+                             domicílios heterogêneos são pouco significativos.
+                        </li>
+                        <li> Os responsáveis declarados <font color='red'><b>Pretos e Pardos</b></font> somam cerca de <b>54,9%</b>, próximo dos <b>54%</b> do Brasil e
+                             os declarados <font color='red'><b>Brancos, Amarelos e Indígenas</b></font> juntos somam <b>45,1%</b> próximo dos 
+                             <b>46%</b> do Brasil.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+    with cols_alunos_idade[1]:
+        aluno_idade = pd.DataFrame({
+            "Idade": [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21],
+            "Nº de Alunos": [11, 45, 62, 107, 107, 84, 84, 84, 52, 62, 57, 20, 6, 1, 1]
+        })
+
+        fig = px.histogram(aluno_idade, x="Idade", y="Nº de Alunos", text_auto=True, color_discrete_sequence=["#68a4d0"], nbins= 8)
+
+        # Ajustando o layout do gráfico
+        fig.update_layout(width=700, height=500, font_family = 'Open Sans', font_color= "black", 
+                        title_font_color= "black", title_font_size=24, title_text='Distribuição dos alunos por idade' + 
+                        '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', 
+                        xaxis_title='Idade', yaxis_title='Nº de Alunos',
+                        xaxis_tickfont_size=14, yaxis_tickfont_size=14, yaxis_range = [0,240], 
+                        plot_bgcolor= "#f8f9fa", showlegend=False, bargap=0.1)
+
+        fig.update_xaxes(tickmode='array', tickvals=np.arange(6.5,22.5,2), ticktext = ["6 - 7", "8 - 9", "10 - 11", "12 - 13", 
+                                                                                    "14 - 15", "16 - 17", "18 - 19", "20 - 21"])
+        fig.update_traces(textfont_size=15, textposition="outside", texttemplate='<b>%{y}</b>', cliponaxis=False)
+        st.plotly_chart(fig)
+
+    cols_dom_n_alunos = st.columns(2)
+    with cols_dom_n_alunos[0]:
+        domicilio_n_alunos = dados.D201_sum.value_counts().to_frame().reset_index()
+        domicilio_n_alunos.columns = ["Nº de Alunos Passos Mágicos", "Nº de Domicílios"]
+
+        fig = px.histogram(domicilio_n_alunos, x="Nº de Alunos Passos Mágicos", y="Nº de Domicílios", 
+                        text_auto=True, color_discrete_sequence=["#68a4d0"], nbins= 5)
+
+        # Ajustando o layout do gráfico
+        fig.update_layout(width=700, height=500, font_family = 'Open Sans', font_color= "black", 
+                        title_font_color= "black", title_font_size=24, title_text='Distribuição dos domicílios por nº de alunos' + 
+                        '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', 
+                        xaxis_title='Nº de Alunos Passos Mágicos', yaxis_title='Nº de Domicílios',
+                        xaxis_tickfont_size=14, yaxis_tickfont_size=14, yaxis_range = [0,580], 
+                        plot_bgcolor= "#f8f9fa", showlegend=False, bargap=0.1)
+
+        fig.update_traces(textfont_size=15, textposition="outside", texttemplate='<b>%{y}</b>', cliponaxis=False)
+        st.plotly_chart(fig)
+    with cols_dom_n_alunos[1]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <li> Segundo as projeções da Fundação SEADE, no município em 2020, os <font color='red'><b>68.503 habitantes se dividem em 22.112
+                             domicílios</b></font>, o que resultaria numa média de pouco mais de <b>3</b> moradores por domicílio.
+                        </li>
+                        <li> Observando o gráfico ao lado, com a distribuição dos domicílios na pesquisa, podemos notar <font color='red'><b>uma concentração
+                             maior dos domicílios entrevistados com 4 moradores</b></font> tanto na média, quanto na moda e mediana.
+                        </li>
+                        <li> Extrapolando para a faixa <font color='red'><b>entre 3 e 5 moradores, são somados 538 domicílios,</b></font> ou seja, mais de <b>82%</b> do total
+                             de domicílios entrevistados. É importante focar em moradias com um número <b>acima de 5 filhos</b> verificando o impacto
+                             de acordo com a condição de moradia desses locais.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+
+    st.markdown('#')
+    st.markdown('#')  
+
+    cols_nucleo = st.columns([1,3,4])
+    with cols_nucleo[1]:
+        st.image("images/alunos-passos-magicos-img01-nucleos.png",width=400)
+    with cols_nucleo[2]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <li> O município de <font color='red'><b> Embu-Guaçu</b></font>, está localizado na porção Sudoeste da Região
+                             Metropolitanda de São Paulo (RMSP)
+                        </li>
+                        <li> A <font color='red'><b>população no censo de 2022</b></font> foi de <b>66.970 pessoas</b>, ocupando a 489ª posição no Brasil, com a densidade
+                             demográfica de aproximadamente <b>430 habitantes</b> por quilômetro quadrado.
+                        </li>
+                        <li> Em <font color='red'><b>níveis educacionais</b></font>, o município possui uma taxa de <b>97%</b> de escolarização de 6 a 14 anos de idade, com
+                             com mais de <b>13.000 matrículas</b> no Ensino Fundamental (EF) e Médio (EM). O IDEB da rede pública de ensino em 2021
+                             foi de <b>5,8</b> no EFAI (Anos Iniciais) e <b>5,2</b> no EFAF (Anos Finais). 
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+
+    st.markdown('#')
+    st.markdown('#')
+
+    cols_dom_arranjo = st.columns(2)
+    with cols_dom_arranjo[0]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <li> Podemos notar no gráfico ao lado, que o <font color='red'><b>arranjo familiar de união e casamento entre indivíduos de sexo diferente</b></font>,
+                             é amplamente representado com mais de <b>75%</b> dos arranjos familiares. Outro fator relevantes é de que mais de <b>23%</b> dos 
+                             arranjos familiares são <b>monoparentais</b> (apenas mulher ou homem), que é <b>muito</b> superior à média nacional de <b>13%</b>.
+                        </li>
+                        <li> Dos <font color='red'><b>arranjos monoparentais, mais de 90% são de mulheres</b></font>, acima dos <b>83,3%</b> de Embu-Guaçu dada pelo Censo do IBGE em 2010.
+                             Dos <font color='red'><b>arranjos de união ou casamento, em 38,6% dos casos a mulher é a responsável pelo domicílio</b></font>.
+                        </li>
+                        <li> Dos <font color='red'><b>138 domicílios monoparentais chefiados por mulheres, a proporção de Pardas e Pretas representam 61,6% do total</b></font>,
+                             e temos uma média de <b>41</b> anos de idade para a responsável.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+    with cols_dom_arranjo[1]:
+        alunos_nucleo = dados.loc[dados.index.repeat(dados.D201_sum)].V102_first.value_counts(normalize=True)
+        data = (alunos_nucleo * 100)
+
+        fig = plt.figure(FigureClass=Waffle, rows=5, values=data, colors=["#f58334", "#fec52b", "#ed3237", "#0367b0"],
+                        title={'label': 'Total de Alunos Passos Mágicos por núcleo', 'loc': 'left', 'size':10},
+                        labels=[f"{k} ({v:.0f}%)" for k, v in data.items()],
+                        legend={'loc': 'lower left', 'bbox_to_anchor': (0, -0.4), 'ncol': 2, 'framealpha': 0},
+                        starting_location='NW', block_arranging_style='snake')
+        st.pyplot(fig)
+
 with tabs[3]:
     st.header('Input')
     st.text_input('Enter some text')
