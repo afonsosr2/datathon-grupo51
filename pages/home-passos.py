@@ -12,11 +12,11 @@ with colunas_1 [0]:
             atividades extracurriculares de finais de semana e bolsas de estudos no colégio particular, em cursos técnicos e de graduação..""")
 
 with colunas_1 [1]:
-            st.image(""images\Ong-Passos Mágicos.jpeg",width= 250,use_column_width=True)
+            st.image(""images\Ong-Passos-Magicos.jpeg",width= 250,use_column_width=True)
 
 colunas_2 = st.columns(2, gap="large")
 with colunas_2 [0]:
-            st.image(""images\foto-passos-2.jpg"width= 250,use_column_width=True)
+            st.image(""images\metodologia.jpg"width= 250,use_column_width=True)
             
 
 with colunas_2 [1]:
