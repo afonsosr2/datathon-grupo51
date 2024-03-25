@@ -7,16 +7,16 @@ import streamlit as st
 colunas_1 = st.columns(2, gap="large")
 with colunas_1 [0]:
 
-             st.markdown("""A Passos Mágicos tem como objetivo acelerar a ascensão social de crianças e jovens do município de Embu Guaçu através da educação. 
+            st.markdown("""A Passos Mágicos tem como objetivo acelerar a ascensão social de crianças e jovens do município de Embu Guaçu através da educação. 
             Fornecendo aulas de português, matemática e inglês três vezes na semana, 
             atividades extracurriculares de finais de semana e bolsas de estudos no colégio particular, em cursos técnicos e de graduação..""")
 
 with colunas_1 [1]:
-            st.image(""images\Ong-Passos-Magicos.jpeg",width= 250,use_column_width=True)
+            st.image("images\Ong-Passos-Magicos.jpeg",width= 250,use_column_width=True")
 
 colunas_2 = st.columns(2, gap="large")
 with colunas_2 [0]:
-            st.image(""images\metodologia.jpg"width= 250,use_column_width=True)
+            st.image("images\metodologia.jpg"width= 250,use_column_width=True")
             
 
 with colunas_2 [1]:
@@ -45,7 +45,7 @@ with colunas_3 [0]:
             
 colunas_3 = st.columns(2, gap="large")
 with colunas_3 [1]:
-            st.image(""images\alunos-pac.jpg",width= 250,use_column_width=True)
+            st.image("images\alunos-pac.jpg",width= 250,use_column_width=True")
 
 
 
