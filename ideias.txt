@@ -34,10 +34,22 @@ Perfil dos alunos Passos Mágicos
     viz 7 - Imagem dos núcleos - imagem (OK)
     viz 8 - Distribuição por núcleo - waffle chart (OK)
 
+- Relações de trabalho
 
-- Ocupação
+Principais destaques da Relações de Trabalho
 
-5 visuais
+Relações de Trabalho
+    viz 1 - Conceitos das relações de trabalho (img)
+    viz 2 - PTo, PIT e PFIT + PIT, FT e FFT +FT, PO e PD (3 waffle chart) (OK)
+    viz 3 - Conceitos das relações de trabalho com valores (img)
+
+Indicadores das relações de trabalho
+    viz 4 - Taxa de participação
+    viz 5 - Taxa de ocupação (geral, homens e mulheres)
+    viz 6 - Caracteríticas das ocupações
+    viz 7 - Taxa de desemprego (geral, homens e mulheres) (brancos e pardos e pretos citados em texto)
+    viz 8 - Taxa de assalariamento x informalidade (homens e mulheres citados em texto)
+    viz 9 - Domicílios por relação de trabalho
 
 - Renda
 

@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from pywaffle import Waffle
 from plotly import express as px
 from plotly import graph_objs as go
+from plotly.subplots import make_subplots
 
 ###### Configuração Inicial ######
 @st.cache_data
@@ -98,11 +99,13 @@ with tabs[0]: # TAB de Contexto
                              correspondente aos países em desenvolvimento. Parte do avanço é creditado ao indicador <b>Educação</b>, 
                              partindo do muito baixo em 1990 ao nível alto em 2010.
                         </li>
+                    <br>
                         <li> Em relação à <font color='red'><b>condição de vida</b></font>, Embu-Guaçu possui indicadores de pobreza
                              e vulnerabilidade abaixo do Brasil (<b>36,99%</b> contra <b>54,38%</b>), porém extremamente 
                              elevado em relação à <b>RMSP</b> e o <b>Estado de São Paulo</b> (<b>22,8%</b> e <b>21,95%</b>). 
                              Praticamente <b>60%</b> das crianças em Embu-Guaçu estão nessas condições adversas.
                         </li>
+                    <br>
                         <li> Em relação à <font color='red'><b>renda</b></font>, o salário médio dos trabalhadores formais é de <b>2,5 
                              salários mínimos</b>, com apenas <b>13,3%</b> da população ocupada, uma das menores taxas
                              entre os municípios do Estado de São Paulo (543º lugar dentre 645 municípios) (IGBE, 2021). 
@@ -120,9 +123,11 @@ with tabs[0]: # TAB de Contexto
                         <li> O município de <font color='red'><b> Embu-Guaçu</b></font>, está localizado na porção Sudoeste da Região
                              Metropolitanda de São Paulo (RMSP)
                         </li>
+                    <br>
                         <li> A <font color='red'><b>população no censo de 2022</b></font> foi de <b>66.970 pessoas</b>, ocupando a 489ª posição no Brasil, com a densidade
                              demográfica de aproximadamente <b>430 habitantes</b> por quilômetro quadrado.
                         </li>
+                    <br>
                         <li> Em <font color='red'><b>níveis educacionais</b></font>, o município possui uma taxa de <b>97%</b> de escolarização de 6 a 14 anos de idade, com
                              com mais de <b>13.000 matrículas</b> no Ensino Fundamental (EF) e Médio (EM). O IDEB da rede pública de ensino em 2021
                              foi de <b>5,8</b> no EFAI (Anos Iniciais) e <b>5,2</b> no EFAF (Anos Finais). 
@@ -138,9 +143,11 @@ with tabs[0]: # TAB de Contexto
                         <li> Cerca de <font color='red'><b>22% dos habitantes</b></font> de Embu-Guaçu, aproximadamente 14.500 pessoas,
                              são crianças e jovens com idades entre 5 e 19 anos.
                         </li>
+                    <br>
                         <li> Considerando que <font color='red'><b>60% da parcela da população</b></font> vive em condição de vulnerabilidade,
                              pobreza ou extrema pobreza, estamos falando de cerca de <b>8.700 crianças e jovens</b>.
                         </li>
+                    <br>
                         <li> A <font color='red'><b>mortalidade infantil</b></font> caiu para <b>9,27</b> a cada 1.000 nascidos em 2022, 
                              abaixo da média nacional (<b>12,59</b>). A porcentagem de crianças que vivem em domicílios em que ninguém completou
                             o EF é de <b>16,4%</b> e <b>3%</b> das crianças em idade escolar ainda não frequentam a escola (PNUD, 2020).  
@@ -158,35 +165,40 @@ with tabs[0]: # TAB de Contexto
 
     with cols_perfil_se_estudantes[1]:
         st.markdown('''<ul class="font-text-destaques">
-                <li> Entre os <font color='red'><b>indivíduos em idade escolar</b></font>, quanto à raça declarada, estão distribuídos
-                    <b>54,4%</b> de Brancos, <b>44,8%</b> de Pretos e Pardos, <b>0,7%</b> de Amarelos e <b>0,1%</b> de Indígenas.
-                </li>
-                <li> A <font color='red'><b>escolaridade do município</b></font> é bem desafiante, sendo que apenas <b>60%</b> dos maiores
-                     de 18 anos concluíram o Ensino Fundamental e <b>40%</b> da mesma faixa etária concluíram o Ensino Médio.
-                </li>
-            </ul>''', unsafe_allow_html=True)
+                    <br><br>
+                        <li> Entre os <font color='red'><b>indivíduos em idade escolar</b></font>, quanto à raça declarada, estão distribuídos
+                            <b>54,4%</b> de Brancos, <b>44,8%</b> de Pretos e Pardos, <b>0,7%</b> de Amarelos e <b>0,1%</b> de Indígenas.
+                        </li>
+                    <br>                    
+                        <li> A <font color='red'><b>escolaridade do município</b></font> é bem desafiante, sendo que apenas <b>60%</b> dos maiores
+                            de 18 anos concluíram o Ensino Fundamental e <b>40%</b> da mesma faixa etária concluíram o Ensino Médio.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
         
     st.markdown('#')
     st.markdown('#') 
 with tabs[1]: # TAB de Demografia
     st.markdown("")
-    cols_destaque_contexto = st.columns(2)
-    with cols_destaque_contexto[0]:
-        st.markdown("<p class='font-text-destaques'>Principais destaques sobre Demografia</p>", unsafe_allow_html=True)
-    with cols_destaque_contexto[1]:
+    cols_destaque_demografia = st.columns(2)
+    with cols_destaque_demografia[0]:
+        st.markdown("<p class='font-text-destaques'><br>Principais destaques sobre Demografia</p>", unsafe_allow_html=True)
+    with cols_destaque_demografia[1]:
         st.markdown('''<ul class="font-text-destaques">
                         <li> A <font color='red'><b>PSE 2020</b></font> trouxe dados de <b>784</b> alunos da <b>Associação Passos Mágicos</b>.
                              Considerando a população de <b>68.053</b> habitantes em 2020 (SEADE, 2020), a pesquisa representa <b>4% da 
                              população</b> do município.
                         </li>
+                    <br>
                         <li> <font color='red'><b>Na faixa entre 5 a 19 anos de idade</b></font> na pesquisa temos <b>1.137</b> crianças e
                              jovens. Considerando os dados apenas nos domicílios entrevistados, <b>353</b> jovens ainda não foram atendidos
                              pela APM. 
                         </li>
+                    <br>
                         <li> Extrapolando a população dessa faixa etária para <b>42,5%</b> e uma população de <b>68.053</b> habitantes,
                              <b>28.923</b> seriam de crianças e jovens. <font color='red'><b>Aproximadamente 17.350 crianças e jovens</b></font>
                              como público potencial da APM (<b>60%</b> da população socialmente vulnerável).
                         </li>
+                    <br>
                         <li> Foi possível observar uma <font color='red'><b>preponderância do gênero feminino</b></font> em diversas 
                              categorias, bem como de Pardos e Pretos. Em domicílios monoparentais, mais de <b>90%</b> dos casos são de 
                              mulheres responsáveis, com <b>60%</b> de Pretas ou Pardas e <b>71%</b> do total
@@ -198,7 +210,6 @@ with tabs[1]: # TAB de Demografia
     st.markdown('#')
 
     st.markdown('## Indivíduos')
-
     
     cols_pop_sexo = st.columns(2)
     with cols_pop_sexo[0]:
@@ -219,9 +230,11 @@ with tabs[1]: # TAB de Demografia
         st.markdown('''<ul class="font-text-destaques">
                         <li> O recorte da pesquisa engloba <font color='red'><b>4% do total da população</b></font> de Embu-Guaçu, uma amostra considerável.
                         </li>
+                    <br>
                         <li> Da população pesquisada, <font color='red'><b>1.452 são mulheres</b></font>, representando aproximadamente <b>54.3%</b>
                              do total, e <font color='red'><b>1.221 moradores são homens</b></font>, representando <b>45.7%</b> do total.
                         </li>
+                    <br>
                         <li> A <font color='red'><b>proporção entre homens e mulheres</b></font> em Embu-Guaçu em 2020 é de <b>50,5%</b> de mulheres
                      e <b>49,5%</b> de homens. O ligeiro afastamento em relação a pesquisa pode ser explicado pelo recorte socioeconômico.  
                         </li>
@@ -233,9 +246,11 @@ with tabs[1]: # TAB de Demografia
     cols_pop_cor_raca = st.columns(2)
     with cols_pop_cor_raca[0]:
         st.markdown('''<ul class="font-text-destaques">
+                    <br><br>
                         <li> Com relação à <font color='red'><b>distribuição da população por raça e cor</b></font>, as proporções da 
                              população total do Brasil se assemelham ao de Embu-Guaçu, que podemos observar na imagem ao lado
                         </li>
+                    <br>
                         <li> Os declarados <font color='red'><b>Pretos e Pardos</b></font> somam cerca de <b>54,8%</b>, próximo dos <b>54%</b> do Brasil e
                              os declarados <font color='red'><b>Brancos, Amarelos e Indígenas</b></font> juntos somam <b>45,2%</b> próximo dos 
                              <b>46%</b> do Brasil.
@@ -285,9 +300,11 @@ with tabs[1]: # TAB de Demografia
                         <li> Embu-Guaçu tem um total projetado de <b>22.112</b> domicílios em 2020 (SEADE, 2020). Este recorte da pesquisa 
                              engloba <font color='red'><b>3% do total de domicílios</b></font> do município.
                         </li>
+                    <br>
                         <li> Dos responsáveis pelo domicílio, <font color='red'><b>354 são mulheres</b></font>, representando aproximadamente <b>54.1%</b>
                              do total, e <font color='red'><b>300 moradores são homens</b></font>, representando <b>45.9%</b> do total.
                         </li>
+                    <br>
                         <li> A <font color='red'><b>vantagem numérica dos domicílios chefiados por mulheres</b></font> foi destacado nos dados 
                              demográficos dos domicílios entrevistados de Embu-Guaçu, principalmente pelos arranjos familiares.
                         </li>
@@ -299,11 +316,13 @@ with tabs[1]: # TAB de Demografia
     cols_dom_cor_raca = st.columns(2)
     with cols_dom_cor_raca[0]:
         st.markdown('''<ul class="font-text-destaques">
+                    <br>
                         <li> A <font color='red'><b>distribuição por cor e raça dos responsáveis dos domicílios</b></font>, tem relação
                              direta com os dados da população da amostra e, consequentemente, com a proporção da população total do Brasil.
                              Isso evidencia uma homogeneidade dos domicílios quanto a característica dos indivíduos, em que a frequência de
                              domicílios heterogêneos são pouco significativos.
                         </li>
+                    <br>
                         <li> Os responsáveis declarados <font color='red'><b>Pretos e Pardos</b></font> somam cerca de <b>54,9%</b>, próximo dos <b>54%</b> do Brasil e
                              os declarados <font color='red'><b>Brancos, Amarelos e Indígenas</b></font> juntos somam <b>45,1%</b> próximo dos 
                              <b>46%</b> do Brasil.
@@ -353,9 +372,11 @@ with tabs[1]: # TAB de Demografia
                         <li> Segundo as projeções da Fundação SEADE, no município em 2020, os <font color='red'><b>68.503 habitantes se dividem em 22.112
                              domicílios</b></font>, o que resultaria numa média de pouco mais de <b>3</b> moradores por domicílio.
                         </li>
+                    <br>
                         <li> Observando o gráfico ao lado, com a distribuição dos domicílios na pesquisa, podemos notar <font color='red'><b>uma concentração
                              maior dos domicílios entrevistados com 4 moradores</b></font> tanto na média, quanto na moda e mediana.
                         </li>
+                    <br>
                         <li> Extrapolando para a faixa <font color='red'><b>entre 3 e 5 moradores, são somados 538 domicílios,</b></font> ou seja, mais de <b>82%</b> do total
                              de domicílios entrevistados. É importante focar em moradias com um número <b>acima de 5 filhos</b> verificando o impacto
                              de acordo com a condição de moradia desses locais.
@@ -372,9 +393,11 @@ with tabs[1]: # TAB de Demografia
                              é amplamente representado com mais de <b>75%</b> dos arranjos familiares. Outro fator relevantes é de que mais de <b>23%</b> dos 
                              arranjos familiares são <b>monoparentais</b> (apenas mulher ou homem), que é <b>muito</b> superior à média nacional de <b>13%</b>.
                         </li>
+                    <br>
                         <li> Dos <font color='red'><b>arranjos monoparentais, mais de 90% são de mulheres</b></font>, acima dos <b>83,3%</b> de Embu-Guaçu dada pelo Censo do IBGE em 2010.
                              Dos <font color='red'><b>arranjos de união ou casamento, em 38,6% dos casos a mulher é a responsável pelo domicílio</b></font>.
                         </li>
+                    <br>
                         <li> Dos <font color='red'><b>138 domicílios monoparentais chefiados por mulheres, a proporção de Pardas e Pretas representam 61,6% do total</b></font>,
                              e temos uma média de <b>41</b> anos de idade para a responsável.
                         </li>
@@ -399,34 +422,33 @@ with tabs[1]: # TAB de Demografia
         fig.update_traces(textfont_size=15, textposition="outside", texttemplate='<b>%{x}</b>', cliponaxis=False)
         st.plotly_chart(fig)
 with tabs[2]: # TAB dos Alunos Passos Mágicos
-    st.markdown("")
-    cols_destaque_contexto = st.columns(2)
-    with cols_destaque_contexto[0]:
-        st.markdown("<p class='font-text-destaques'>Principais destaques sobre os<br>Alunos Passos Mágicos</p>", unsafe_allow_html=True)
-    with cols_destaque_contexto[1]:
+    cols_destaque_passos_magicos = st.columns(2)
+    with cols_destaque_passos_magicos[0]:
+        st.markdown("<p class='font-text-destaques'><br>Principais destaques sobre os<br>Alunos Passos Mágicos</p>", unsafe_allow_html=True)
+    with cols_destaque_passos_magicos[1]:
         st.markdown('''<ul class="font-text-destaques">
                         <li> A <font color='red'><b>PSE 2020</b></font> trouxe dados de <b>784</b> alunos da <b>Associação Passos Mágicos</b> 
                              ativos. Esse número é estatisticamente censitário do universos de alunos atendidos, ou seja, é uma contagem completa 
                              dos <b>Alunos Passos Mágicos</b>.
                         </li>
+                        <br>
                         <li> A <font color='red'><b>distribuição geral dos indivíduos e domicílios</b></font>, é bastante homogênea às 
                              características dos <b>Alunos Passos Mágicos</b>, especialmente quanto a cor ou raça e ao sexo. Conforme outros 
                              recortes, a uma <font color='red'><b>prevalência feminina e parda e preta</b></font>, em pequena vantagem acima dos demais. 
                         </li>
+                        <br>
                         <li> Quanto à idade, a <font color='red'><b>concentração dos Alunos Passos Mágicos se encontra nos ciclos correspondentes
                              ao EFAF (Ensino Fundamental Anos Finais)</b></font>. O que pode levantar a hipótese do porquê baseado na 
                              pirâmide etária dos habitantes de Embu-Guaçu.
                         </li>
+                        <br>
                         <li> Abaixo, trazemos algumas <font color='red'><b>características demográficas dos Alunos Passos Mágicos</b></font>, 
-                            como sexo biológico, etnia ,condição no domicílio e distribuição por núcleo da <b>Associação Passos Mágicos</b>.
+                            como sexo biológico, etnia, condição no domicílio e distribuição por núcleo da <b>Associação Passos Mágicos</b>.
                         </li>
                     </ul>''', unsafe_allow_html=True)
 
-    st.markdown("---")
-    st.markdown('#')
-
+    st.markdown("---") 
     st.markdown('## Alunos Passos Mágicos')
-    st.markdown('#')
 
     cols_alunos_totais = st.columns(2)
     with cols_alunos_totais[0]:
@@ -458,6 +480,7 @@ with tabs[2]: # TAB dos Alunos Passos Mágicos
                         <li> Em relação a amostra da população entrevistada pela PSE 2020, o <font color='red'><b> total de 783 indivíduos</b></font> 
                              representam <b>29,3%</b> dos moradores pesquisados, como podemos notar no gráfico ao lado.
                         </li>
+                        <br>
                         <li> Os demais moradores, responsáveis, pessoas da família e com alguma relação com o aluno, somam <font color='red'><b>1.890 pessoas,
                              o equivalente a 70,7% da população total</b></font> pesquisada.
                         </li>
@@ -470,7 +493,8 @@ with tabs[2]: # TAB dos Alunos Passos Mágicos
                         <li> Da população pesquisada, foram registradas <font color='red'><b>783 crianças e jovens</b></font>. Desses,
                              <b>442</b> estudantes, ou <b>56,4%</b>, são meninas e <b>341</b>, ou <b>43,6%</b> são meninos.
                         </li>
-                        <li> Mais detalhes sobre o perfil dos alunos veremos mais abaixo.  
+                        <br>
+                        <li> Mais detalhes sobre o perfil dos alunos veremos logo abaixo.  
                         </li>
                     </ul>''', unsafe_allow_html=True)        
     with cols_aluno_sexo[1]:
@@ -478,7 +502,7 @@ with tabs[2]: # TAB dos Alunos Passos Mágicos
         pct_meninos = (100 * 341/783)
         data = {'Meninas': pct_meninas, 'Meninos': pct_meninos}
         fig = plt.figure(FigureClass=Waffle, rows=5, values=data, colors=["#f58334", "#0367b0"],
-                        title={'label': 'Total de Alunos Passos Mágicos por sexo', 'loc': 'left', 'size':10},
+                        title={'label': 'Total de Alunos Passos Mágicos por sexo', 'loc': 'left', 'size':14, 'weight':'bold', 'family': 'Open Sans'},
                         labels=[f"{k} ({v:.1f}%)" for k, v in data.items()],
                         legend={'loc': 'lower left', 'bbox_to_anchor': (0, -0.4), 'ncol': len(data), 'framealpha': 0},
                         starting_location='NW', block_arranging_style='snake')
@@ -495,6 +519,7 @@ with tabs[2]: # TAB dos Alunos Passos Mágicos
                              com a população da PSE 2020. Esse dado reforça a homogeneidade observada em toda pesquisa da composição dos arranjos
                              familiares neste quesito
                         </li>
+                        <br>
                         <li> Os declarados <font color='red'><b>Brancos, Amarelos e Indígenas</b></font> somam cerca de <b>47,5%</b>, 
                              próximo dos <b>46%</b> do Brasil e os declarados <font color='red'><b>Pardos e Pretos</b></font> juntos 
                              somam <b>52,5%</b> próximo dos <b>54%</b> do Brasil.
@@ -542,7 +567,7 @@ with tabs[2]: # TAB dos Alunos Passos Mágicos
                     color_discrete_sequence=["#fec52b","#00b050", "#ed3237", "#0367b0"])
 
         # Ajustando o layout do gráfico
-        fig.update_layout(width=700, height=500, font_family = 'Open Sans', font_size=15, font_color= "black", 
+        fig.update_layout(width=700, height=400, font_family = 'Open Sans', font_size=15, font_color= "black", 
                         title_font_color= "black", title_font_size=24, title_text='Distribuição dos alunos por sua condição no domicílio' + 
                         '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', xaxis_title='', yaxis_title='',
                         xaxis_tickfont_size=14, yaxis_tickfont_size=14, xaxis_range = [0,850], 
@@ -556,19 +581,18 @@ with tabs[2]: # TAB dos Alunos Passos Mágicos
         fig.update_traces(textfont_size=15, textposition="outside", texttemplate='<b>%{x}</b>', cliponaxis=False)
         
         st.plotly_chart(fig)
-
-###PAREI AQUI!!!###
-
     with cols_aluno_condicao_dom[1]:        
         st.markdown('''<ul class="font-text-destaques">
-                        <li> Embu-Guaçu tem um total projetado de <b>22.112</b> domicílios em 2020 (SEADE, 2020). Este recorte da pesquisa 
-                             engloba <font color='red'><b>3% do total de domicílios</b></font> do município.
+                    <br><br>
+                        <li> Investigando a condição das crianças e jovens, considerando a relação destas com o indivíduo responsável 
+                             pelo município, notamos que em <font color='red'><b>aproximadamente 94% dos casos os Alunos Passos Mágicos
+                             possui em seu arranjo familiar a presença da figura paterna e/ou materna</b></font>.                          
                         </li>
-                        <li> Dos responsáveis pelo domicílio, <font color='red'><b>354 são mulheres</b></font>, representando aproximadamente <b>54.1%</b>
-                             do total, e <font color='red'><b>300 moradores são homens</b></font>, representando <b>45.9%</b> do total.
-                        </li>
-                        <li> A <font color='red'><b>vantagem numérica dos domicílios chefiados por mulheres</b></font> foi destacado nos dados 
-                             demográficos dos domicílios entrevistados de Embu-Guaçu, principalmente pelos arranjos familiares.
+                        <br>
+                        <li> Isso demonstra que <font color='red'><b>o vínculo afetivo da criança ou jovem na condição de vida auxilia na capacidade de 
+                             atuação no processo educacional de forma plena</b></font>. Essa carcaterística suporta o <b>planejamento e direcionamento
+                             das ações de suporte psicológico e psicopedagágico</b>, individual e familiar, que são rotina da Associação 
+                             Passos Mágicos.
                         </li>
                     </ul>''', unsafe_allow_html=True)
 
@@ -578,14 +602,15 @@ with tabs[2]: # TAB dos Alunos Passos Mágicos
     cols_alunos_idade = st.columns(2)
     with cols_alunos_idade[0]:
         st.markdown('''<ul class="font-text-destaques">
-                        <li> A <font color='red'><b>distribuição por cor e raça dos responsáveis dos domicílios</b></font>, tem relação
-                             direta com os dados da população da amostra e, consequentemente, com a proporção da população total do Brasil.
-                             Isso evidencia uma homogeneidade dos domicílios quanto a característica dos indivíduos, em que a frequência de
-                             domicílios heterogêneos são pouco significativos.
+                        <br><br><br>
+                        <li> A <font color='red'><b>distribuição por idade dos Alunos Passos Mágicos</b></font>, mostra uma alta 
+                             concentração de alunos na etapa do <b>EFAF (sexto ao nono ano do ensino regular)</b>. Essa etapa, idealmente
+                             com crianças na faixa entre <b>10 a 14 anos</b>, soma <b>466 alunos</b>, ou <b>59,5%</b> do total.
                         </li>
-                        <li> Os responsáveis declarados <font color='red'><b>Pretos e Pardos</b></font> somam cerca de <b>54,9%</b>, próximo dos <b>54%</b> do Brasil e
-                             os declarados <font color='red'><b>Brancos, Amarelos e Indígenas</b></font> juntos somam <b>45,1%</b> próximo dos 
-                             <b>46%</b> do Brasil.
+                        <br>
+                        <li> Nas faixas equivalentes a <font color='red'><b>EFAI (7 a 9 anos) tem-se 118 crianças</b></font>, <b>15%</b> do total de alunos, equanto os jovens
+                             que frequentam o <font color='red'><b>Ensino Médio (15 a 17 anos) somam 171 alunos</b></font>, o equivalente a <b>21,8%</b> do total. Por fim,
+                             os <font color='red'><b>alunos em idade universitária, 18 ou mais, somam 28 jovens (3,6% do total)</b></font>.
                         </li>
                     </ul>''', unsafe_allow_html=True)
     with cols_alunos_idade[1]:
@@ -618,7 +643,7 @@ with tabs[2]: # TAB dos Alunos Passos Mágicos
                         text_auto=True, color_discrete_sequence=["#68a4d0"], nbins= 5)
 
         # Ajustando o layout do gráfico
-        fig.update_layout(width=700, height=500, font_family = 'Open Sans', font_color= "black", 
+        fig.update_layout(width=700, height=400, font_family = 'Open Sans', font_color= "black", 
                         title_font_color= "black", title_font_size=24, title_text='Distribuição dos domicílios por nº de alunos' + 
                         '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', 
                         xaxis_title='Nº de Alunos Passos Mágicos', yaxis_title='Nº de Domicílios',
@@ -629,15 +654,13 @@ with tabs[2]: # TAB dos Alunos Passos Mágicos
         st.plotly_chart(fig)
     with cols_dom_n_alunos[1]:
         st.markdown('''<ul class="font-text-destaques">
-                        <li> Segundo as projeções da Fundação SEADE, no município em 2020, os <font color='red'><b>68.503 habitantes se dividem em 22.112
-                             domicílios</b></font>, o que resultaria numa média de pouco mais de <b>3</b> moradores por domicílio.
+                        <br><br><br>
+                        <li> Dos 654 domicílios entrevistados, com os dados dos Alunos Passos Mágicos, cerca de <font color='red'><b>530 domicílios, ou 81% dos
+                             domicílios, temos apenas um Aluno Passos Mágicos</b></font>.
                         </li>
-                        <li> Observando o gráfico ao lado, com a distribuição dos domicílios na pesquisa, podemos notar <font color='red'><b>uma concentração
-                             maior dos domicílios entrevistados com 4 moradores</b></font> tanto na média, quanto na moda e mediana.
-                        </li>
-                        <li> Extrapolando para a faixa <font color='red'><b>entre 3 e 5 moradores, são somados 538 domicílios,</b></font> ou seja, mais de <b>82%</b> do total
-                             de domicílios entrevistados. É importante focar em moradias com um número <b>acima de 5 filhos</b> verificando o impacto
-                             de acordo com a condição de moradia desses locais.
+                        <br>
+                        <li> <font color='red'><b>Cerca de 18%, 118 domicílios, possuimos 2 ou mais alunos</b></font>. Por fim, temos em nossa pesquisa, <font color='red'><b>6 domicílios
+                             com nenhum aluno ativo</b></font>.
                         </li>
                     </ul>''', unsafe_allow_html=True)
 
@@ -649,15 +672,14 @@ with tabs[2]: # TAB dos Alunos Passos Mágicos
         st.image("images/alunos-passos-magicos-img01-nucleos.png",width=400)
     with cols_nucleo[2]:
         st.markdown('''<ul class="font-text-destaques">
-                        <li> O município de <font color='red'><b> Embu-Guaçu</b></font>, está localizado na porção Sudoeste da Região
-                             Metropolitanda de São Paulo (RMSP)
+                        <br><br><br>
+                        <li> A  <font color='red'><b> Associação Passos Mágicos possui 4 núcleos em Embu-Guaçu</b></font> sendo eles <b>Filipinho, 
+                             Centro, Granjinha e Cipó</b>. Dentro desses núcleos são desenvolvidas as ações educacionais no município.
                         </li>
-                        <li> A <font color='red'><b>população no censo de 2022</b></font> foi de <b>66.970 pessoas</b>, ocupando a 489ª posição no Brasil, com a densidade
-                             demográfica de aproximadamente <b>430 habitantes</b> por quilômetro quadrado.
-                        </li>
-                        <li> Em <font color='red'><b>níveis educacionais</b></font>, o município possui uma taxa de <b>97%</b> de escolarização de 6 a 14 anos de idade, com
-                             com mais de <b>13.000 matrículas</b> no Ensino Fundamental (EF) e Médio (EM). O IDEB da rede pública de ensino em 2021
-                             foi de <b>5,8</b> no EFAI (Anos Iniciais) e <b>5,2</b> no EFAF (Anos Finais). 
+                        <br>
+                        <li> <font color='red'><b>O maior dos núcleos de ensino da APM é o núcleo Centro</b></font>, que recebe
+                             crianças e jovens de diversos bairros por ser de fácil acesso, oferencendo aulas de Português, Matemática
+                             e Inglês, como os demais Núcleos de ensino.
                         </li>
                     </ul>''', unsafe_allow_html=True)
 
@@ -667,15 +689,18 @@ with tabs[2]: # TAB dos Alunos Passos Mágicos
     cols_dom_arranjo = st.columns(2)
     with cols_dom_arranjo[0]:
         st.markdown('''<ul class="font-text-destaques">
-                        <li> Podemos notar no gráfico ao lado, que o <font color='red'><b>arranjo familiar de união e casamento entre indivíduos de sexo diferente</b></font>,
-                             é amplamente representado com mais de <b>75%</b> dos arranjos familiares. Outro fator relevantes é de que mais de <b>23%</b> dos 
-                             arranjos familiares são <b>monoparentais</b> (apenas mulher ou homem), que é <b>muito</b> superior à média nacional de <b>13%</b>.
+                        <li> Como falamos anteriormente, <font color='red'><b>o núcleo Centro atende mais crianças e jovens</b></font>,
+                             cerca de <b>329 alunos</b>, representando por volta de <b>42%</b> dos estudantes atendidos pela Passos Mágicos. 
                         </li>
-                        <li> Dos <font color='red'><b>arranjos monoparentais, mais de 90% são de mulheres</b></font>, acima dos <b>83,3%</b> de Embu-Guaçu dada pelo Censo do IBGE em 2010.
-                             Dos <font color='red'><b>arranjos de união ou casamento, em 38,6% dos casos a mulher é a responsável pelo domicílio</b></font>.
+                        <br>
+                        <li> Em seguida, temos <font color='red'><b>o núcleo localizado no bairo Filipinho, com 240 alunos,</b></font>
+                             em que <b>135 são meninas</b> e <b>105 meninos</b>. Em Filipinho notamos a presença de um público maior de
+                             alunos de raça ou cor <font color='red'><b>Parda e Preta</b></font>, com 60% do público contra 40% de Brancos. 
                         </li>
-                        <li> Dos <font color='red'><b>138 domicílios monoparentais chefiados por mulheres, a proporção de Pardas e Pretas representam 61,6% do total</b></font>,
-                             e temos uma média de <b>41</b> anos de idade para a responsável.
+                        <br>
+                        <li> Os <font color='red'><b>núcleos subsequentes, Cipó e Granjinha, juntos atendem 214 crianças e jovens</b></font>,
+                             representando <b>28%</b> dos estudantes atendidos pela APM. No núcleo Granjinha, observamos um desvio levemente
+                             maior entre os alunos do sexo feminino, com <b>60%</b> contra <b>40%</b> do sexo masculino.
                         </li>
                     </ul>''', unsafe_allow_html=True)
     with cols_dom_arranjo[1]:
@@ -683,16 +708,425 @@ with tabs[2]: # TAB dos Alunos Passos Mágicos
         data = (alunos_nucleo * 100)
 
         fig = plt.figure(FigureClass=Waffle, rows=5, values=data, colors=["#f58334", "#fec52b", "#ed3237", "#0367b0"],
-                        title={'label': 'Total de Alunos Passos Mágicos por núcleo', 'loc': 'left', 'size':10},
+                        title={'label': 'Total de Alunos Passos Mágicos por núcleo', 'loc': 'left', 'size':14, 'weight':'bold', 'family': 'Open Sans'},
                         labels=[f"{k} ({v:.0f}%)" for k, v in data.items()],
                         legend={'loc': 'lower left', 'bbox_to_anchor': (0, -0.4), 'ncol': 2, 'framealpha': 0},
                         starting_location='NW', block_arranging_style='snake')
         st.pyplot(fig)
+with tabs[3]: # TAB das Relações de Trabalho
 
-with tabs[3]:
-    st.header('Input')
-    st.text_input('Enter some text')
-    st.number_input('Enter a number')
+    ##### EM CONSTRUÇÃO ####
+    st.markdown("")
+    cols_destaque_trabalho = st.columns(2)
+    with cols_destaque_trabalho[0]:
+        st.markdown("<p class='font-text-destaques'><br>Principais destaques sobre as<br>Relações de Trabalho</p>", unsafe_allow_html=True)
+    with cols_destaque_trabalho[1]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <li> A <font color='red'><b>PSE 2020 trouxe dados sobre as relações de trabalho</b></font>, permitindo uma avaliação mais
+                             ampla e detalhada sobre as condições de trabalho da população estudada. Houve uma <font color='red'><b>prevalência da 
+                             precariedade nas relações de trabalho em relação ao gênero</b></font>, em que a mulher tem maior parcela fora da força
+                             de trabalho (<b>62,8%</b>), maior população desocupada (<b>62%</b>), menor taxa de ocupação (<b>80,3%</b>), maior taxa
+                             de desemprego (<b>24,5%</b>), entre outros.
+                        </li>
+                        <br>
+                        <li> A <font color='red'><b>população em idade de trabalho</b></font> segue uma distribuição próxima a pirâmide etária da
+                             população total, em que a força de trabalho (FT) está mais concentrada nas faixas entre <b>30 e 49 anos</b>, com <b>71,8%</b>
+                             do total desse indicador. A <font color='red'><b>faixa etária com maior atenção da Associação Passos Mágicos é a de 15 aos 19 anos
+                             </b></font>, pois inclui indivíduos ainda em formação escolar ou acadêmica. Nessa faixa, temos <b>37 indivíduos</b>, ou <b>3,6%</b> do 
+                             total da FT, em que apenas <b>19</b> desses (<b>51,4%</b>) encontram-se ocupados. 
+                        </li>
+                        <br>
+                        <li> A <font color='red'><b>população estudada não apresenta nenhum indicador de trabalho com resultados melhores que as 
+                             estatísticas públicas</b></font>. A população tem hoje um baixo nível de trabalho infanto-juvenil (<b>1,6%</b>)
+                             , mas altas taxas de desemprego geral e segmentado, com <font color='red'><b>destaque para o desemprego entre as mulheres
+                             e uma altíssima taxa de informalidade</b></font>. Há uma prevalência de desemprego de longo prazo (<b>57,2%</b> dos 
+                             desocupados) e uma taxa significativa de desemprego oculto pelo desalento.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+
+    st.markdown("---")
+    
+    st.markdown('## Relações de Trabalho')
+
+    cols_conceitos = st.columns(1)
+    with cols_conceitos[0]:
+        with st.columns([1,3,1])[1]:
+            st.markdown("<h3 style='text-align: center;'>Conceitos Analíticos das Relações de Trabalho</h3>", unsafe_allow_html=True)
+            st.image("images/trabalho-img01-conceitos-analiticos.png")
+    
+        st.markdown(''' <p style='font-size:20px;'>
+                        <b>PTo - População Total</b>: corresponde ao número total de indivíduos pesquisados
+                        <br> 
+                        <b>PIT - População em Idade de Trabalho</b>: corresponde ao primeiro grupo da População Total (PTo) cuja idade esteja entre
+                        15 e 65 anos.
+                        <br> 
+                        <b>PFIT - População fora da Idade de Trabalho</b>: correponde a diferença entre a PTo e a PIT, ou seja, todos os indivíduos
+                        menores de 15 anos ou maiores de 65 anos, idade não laborial.
+                        <br>
+                        <b>FT - Força de Trabalho</b>: corresponde aos indivíduos que se inserem no mundo do trabalho por meio de uma atividade
+                        regular de trabalho remunerado, ou que estabelecem relação por meio do ato da busca por uma vaga para exercer uma atividade
+                        regular de trabalho remunerado. Ou seja, parcela de individuos que está trabalhando, disponível para trabalho buscando 
+                        ativamente.
+                        <br>
+                        <b>FFT - Fora da Força de Trabalho</b>: corresponde aos indivíduos que não trabalham ou não estão em busca de trabalho 
+                        (estudantes, aposentados precoces, dependentes, ou desocupados afetados pelo desalento). É calculado por meio da diferença 
+                        entre PIT e FT. 
+                        <br>
+                        <b>PO - População Ocupada</b>: corresponde a parcela de indivíduos da FT que estão atualmente trabalhando em trabalho
+                        remunerado.
+                        <br>
+                        <b>PD - População Desocupada</b>: corresponde a parcela de indivíduos da FT que mesmo não exercendo atividade laborial, está
+                        engajada na busca por uma nova vaga de trabalho.
+                        </p> 
+                        ''', unsafe_allow_html=True)
+        
+    cols_relacao_trabalho = st.columns(2)
+    with cols_relacao_trabalho[0]:
+        # PTo, PIT e PFIT
+        PTo = dados.D1702_sum.sum() + dados.D1701_sum.sum()
+        PIT = dados.D301_sum.sum()
+        PFIT = PTo - PIT
+
+        pct_PIT = (100 * PIT/PTo)
+        pct_PFIT = (100 * PFIT/PTo)
+        data = {'PIT': pct_PIT, 'PFIT': pct_PFIT}
+        fig = plt.figure(FigureClass=Waffle, rows=5, values=data, colors=["#f58334", "#fec52b"],
+                        title={'label': 'População Total dentro e fora da Idade de Trabalho', 'loc': 'left', 'size':14, 'weight':'bold', 'family': 'Open Sans'},
+                        labels=[f"{k} ({v:.1f}%)" for k, v in data.items()],
+                        legend={'loc': 'lower left', 'bbox_to_anchor': (0, -0.4), 'ncol': len(data), 'framealpha': 0},
+                        starting_location='NW', block_arranging_style='snake')
+        st.pyplot(fig)
+
+        # PIT, FT e FFT
+        PIT = dados.D301_sum.sum()
+        FT = dados.D306_sum.sum()
+        FFT = dados.D305_sum.sum()
+
+        pct_FT = (100 * FT/PIT)
+        pct_FFT = (100 * FFT/PIT)
+        data = {'FT': pct_FT, 'FFT': pct_FFT}
+        fig2 = plt.figure(FigureClass=Waffle, rows=5, values=data, colors=["#0367b0", "#68a4d0"],
+                        title={'label': 'População em Idade de Trabalho dentro e fora da Força de Trabalho', 'loc': 'left', 'size':14, 'weight':'bold', 'family': 'Open Sans'},
+                        labels=[f"{k} ({v:.1f}%)" for k, v in data.items()],
+                        legend={'loc': 'lower left', 'bbox_to_anchor': (0, -0.4), 'ncol': len(data), 'framealpha': 0},
+                        starting_location='NW', block_arranging_style='snake')
+        st.pyplot(fig2)
+
+        # FT, PO e PD
+        FT = dados.D306_sum.sum()
+        PO = dados.D302_sum.sum()
+        PD = dados.D303_sum.sum()
+
+        pct_PO = (100 * PO/FT)
+        pct_PD = (100 * PD/FT)
+        data = {'PO': pct_PO, 'PD': pct_PD}
+        fig3 = plt.figure(FigureClass=Waffle, rows=5, values=data, colors=["#7030a0", "#ff3399"],
+                        title={'label': 'População Ocupada e Desocupada da Força de Trabalho ', 'loc': 'left', 'size':14, 'weight':'bold', 'family': 'Open Sans'},
+                        labels=[f"{k} ({v:.1f}%)" for k, v in data.items()],
+                        legend={'loc': 'lower left', 'bbox_to_anchor': (0, -0.4), 'ncol': len(data), 'framealpha': 0},
+                        starting_location='NW', block_arranging_style='snake')
+        st.pyplot(fig3)
+    with cols_relacao_trabalho[1]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <br><br>
+                        <li> Na PSE 2020, <font color='red'><b>a População Total (PTo) é de 2.673 indivíduos</b></font>. O nº de indivíduos entre
+                        <b>15 e 65 anos</b> (a População em Idade de Trabalho - PIT) é de <b>1.674 indivíduos</b>, ou <b>62,6%</b> da PTo. 
+                        Consequentemente, a População Fora da Idade de Trabalho (PFIT), soma 999 indivíduos, ou seja 37,4% do total de 
+                        indivíduos pesquisados.
+                        </li>
+                        <br><br><br>
+                        <li> Partindo agora para divisão da PIT, temos <font color='red'><b>a parcela de pessoas trabalhando ou em busca por trabalho 
+                        (Força de Trabalho - FT) correspondente à 1.018 indivíduos</b></font> e a parcela dos indivíduos Fora da Força de Trabalho 
+                        (FFT) de <b>656</b> indivíduos. Uma proporção próxima de 2/3 entre quem está na FFT em relação a FT.                    
+                        </li>
+                        <br><br><br>
+                        <li> Por fim, <font color='red'><b>divindo a Força de Trabalho em dois grupos, aqueles que estão ocupados em atividades remuneradas População
+                        Ocupada - PO) e aqueles desocupados dessas atividades, mas engajados na busca de um novo trabalho (População Desocupada - PD)</b></font>,
+                        temos: PO com <b>853</b> índivíduos e PD com <b>165</b> pessoas. Ou seja, aproximadamente <b>5 vezes</b> mais pessoas 
+                        ocupadas que desocupadas na FT.  
+                        </li>
+                    </ul>''', unsafe_allow_html=True) 
+
+    cols_conceitos_2 = st.columns(1)
+    with cols_conceitos_2[0]:
+        with st.columns([1,3,1])[1]:
+            st.markdown("<h3 style='text-align: center;'>Conceitos das Relações de Trabalho da PSE 2020</h3>", unsafe_allow_html=True)
+            st.image("images/trabalho-img02-conceitos-analiticos.png")
+    
+        st.markdown(''' <p style='font-size:20px;'>
+                        Podemos notar no diagrama acima a <font color='red'><b>divisão de cada relação de trabalho com os valores apresentados na interpretação
+                        da pesquisa</b></font> e compilados nos gráficos anteriores. A demonstração dos dados dessa maneira são de grande
+                        relevância para o entendimento dos <font color='red'><b>indicadores das relações de trabalho</b></font> que veremos logo
+                        no tópico a seguir.
+                        </p> 
+                        ''', unsafe_allow_html=True)
+  
+    st.markdown('## Indicadores das Relações de Trabalho')
+    st.markdown('#')
+   
+    cols_taxa_participacao = st.columns(2)
+    with cols_taxa_participacao[0]:
+        FT = dados.D306_sum.sum()
+        PIT = dados.D301_sum.sum()
+        TP = FT/PIT
+
+        labels = ["Taxa de Participação", "Complementar da Taxa de Participação"]
+        values = [TP, 1 - TP]
+
+        fig = go.Figure( data=[ go.Pie(labels=labels, values = values, marker_colors=["#0367b0","#cce2f2"], hole = 0.6) ] )
+
+        # Ajustando o layout do gráfico
+        fig.update_layout(width=500, height=500, font_family = 'Open Sans', font_color= "black", title_font_color= "black",
+                        title_font_size=24, title_text='Taxa de Participação Geral' + '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>',
+                        showlegend=False, annotations=[dict(text=f'<b>Taxa de<br>Participação<br>{TP*100:.1f}%</b>', x=0.5, y=0.5, font_size=28, 
+                                                            showarrow=False)])
+
+        fig.update_traces(hoverinfo='label+percent', textinfo='none')       
+        st.plotly_chart(fig)
+    with cols_taxa_participacao[1]:        
+        st.markdown('''<ul class="font-text-destaques">
+                    <br><br>
+                        <li> Investigando a <font color='red'><b>disposição da FT em participar das relações de produção</b></font> é o que define
+                        a <b>Taxa de Participação</b>. Ela nada mais é que a razão entre a Força de Trabalho e a População em Idade de Trabalho.                          
+                        </li>
+                        <br>
+                        <li> A <font color='red'><b>Taxa de Participação (Tp) observada na pesquisa foi de 60,8%</b></font>, o que significa que
+                        essa é a parcela da população em idade de trabalhar que participa efetivamente da estrutura produtiva e é a parcela 
+                        efetivamente envolvida com a geração de renda por meio do trabalho. Esse valor é bem próximo ao da RMSP (<b>61%</b>).
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+
+    cols_taxa_ocupacao = st.columns(2)
+    with cols_taxa_ocupacao[0]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <br><br><br>
+                        <li> Calculando a <font color='red'><b>razão entre a População Ocupada (PO) e a Força de Trabalho (FT) </b></font> 
+                        definimos a <b>Taxa de Ocupação</b>. Essa taxa é a proporção dos indivíduos ocupados em relação a FT, expressando
+                        o quanto o fator de produção está efetivamente sendo utilizado.                          
+                        </li>
+                        <br>
+                        <li> Temos ao lado,a <font color='red'><b>Taxa de Ocupação (To) geral e por gênero</b></font>. Destaque para uma <b>menor
+                        To de mulheres</b>, aproximadamente <b>7</b> pontos percentuais menor que os homens. Essa diferença de gênero será presente
+                        em outros indicadores da pesquisa.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+    with cols_taxa_ocupacao[1]:
+        # Taxa de Ocupação Geral
+        FT = dados.D306_sum.sum()
+        PO = dados.D302_sum.sum()
+        TO = PO/FT
+        labels = ["TO", "Complementar da TO"]
+        values = [TO, 1 - TO]
+
+        # Taxa de Ocupação Homens
+        TO_H = 0.874
+        values_2 = [TO_H, 1 - TO_H]
+
+        # Taxa de Ocupação Mulheres
+        TO_M = 0.803
+        values_3 = [TO_M, 1 - TO_M]
+
+        fig = make_subplots(1, 3, specs=[[{'type':'domain'}, {'type':'domain'}, {'type':'domain'}]])
+        fig.add_trace(go.Pie(labels=labels, values=values, marker_colors=["#203864","#d2d7e0"], hole = 0.6), 1, 1)
+        fig.add_trace(go.Pie(labels=labels, values=values_2, marker_colors=["#203864","#d2d7e0"], hole = 0.6), 1, 2)
+        fig.add_trace(go.Pie(labels=labels, values=values_3, marker_colors=["#203864","#d2d7e0"], hole = 0.6), 1, 3)
+
+        #Ajustando o layout do gráfico
+        fig.update_layout(width=700, height=500, font_family = 'Open Sans', font_color= "black", title_font_color= "black",
+                        title_font_size=24, title_text='Taxa de Ocupação geral e por gênero' + '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>',
+                        showlegend=False, 
+                        annotations=[dict(text=f'<b>Taxa de<br>Ocupação<br>GERAL<br>{TO*100:.1f}%</b>', x=0.08, y=0.5, font_size=18, showarrow=False),
+                                    dict(text=f'<b>Taxa de<br>Ocupação<br>HOMENS<br>{TO_H*100:.1f}%</b>', x=0.5, y=0.5, font_size=18, showarrow=False),
+                                    dict(text=f'<b>Taxa de<br>Ocupação<br>MULHERES<br>{TO_M*100:.1f}%</b>', x=0.93, y=0.5, font_size=18, showarrow=False)]
+                                    )
+
+        fig.update_traces(hoverinfo='label+percent', textinfo='none')
+        st.plotly_chart(fig)
+
+    cols_taxa_ocupacao = st.columns(1)
+    with cols_taxa_ocupacao[0]:
+        dados_ocupacao = pd.DataFrame(
+            {
+                "Ocupação":["Conta Própria", "Conta Própria", "Doméstico", "Doméstico", "Empregado c/ carteira", "Empregado c/ carteira",
+                            "Empregado s/ carteira", "Empregado s/ carteira", "Empregador", "Empregador", "Funcionário público",
+                            "Funcionário público", "Militar", "Militar", "Não Caracterizado", "Não Caracterizado"],
+                "Gênero": ['Homens', 'Mulheres', 'Homens', 'Mulheres', 'Homens', 'Mulheres', 'Homens', 'Mulheres', 'Homens', 'Mulheres',
+                            'Homens', 'Mulheres', 'Homens', 'Mulheres', 'Homens', 'Mulheres'],
+                "Qtd": [158, 127, 5, 45, 169, 125, 39, 31, 17, 21, 28, 55, 2, 2, 18, 11]
+            }
+        )
+
+        fig = px.bar(dados_ocupacao, x="Qtd", y="Ocupação", color = "Gênero", text_auto=True,
+                    color_discrete_sequence=["#0367b0","#f58334"])
+
+        # Ajustando o layout do gráfico
+        fig.update_layout(width=1200, height=400, font_family = 'Open Sans', font_size=15, font_color= "black", 
+                        title_font_color= "black", title_font_size=24, title_text='Caracteríticas das Ocupações com distribuição por gênero' + 
+                        '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', xaxis_title='', yaxis_title='',
+                        xaxis_tickfont_size=14, yaxis_tickfont_size=14, xaxis_range = [0,305], 
+                        plot_bgcolor= "#f8f9fa", yaxis_categoryorder='total ascending', legend=dict(x=0.82, y=0.1, bgcolor="#f8f9fa", title=None))
+
+        fig.update_traces(textfont_size=15, textposition="outside", texttemplate='<b>%{x}</b>', cliponaxis=False)
+        st.plotly_chart(fig)
+ 
+        st.markdown('''<ul class="font-text-destaques">
+                        <li> Observamos no gráfico acima, <font color='red'><b>a distribuição da População Ocupada (PO) pelas características declaradas de suas 
+                        ocupações</b></font>, detalhadas por gênero. É possível notar uma grande relevância dos empregos de carteira assinada e 
+                        trabalhadores por conta própria. Vamos investigar as diferenças entre informalidade e assalariamento mais a frente.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+
+    st.markdown('#')
+    st.markdown('#')  
+
+    cols_taxa_desemprego = st.columns(2)
+    with cols_taxa_desemprego[0]:
+        st.markdown('<br><br>', unsafe_allow_html=True) 
+        # Taxa de Desemprego Geral
+        PD = dados.D303_sum.sum()
+        PO = dados.D302_sum.sum()
+        TD = PD/PO
+        labels = ["TD", "Complementar da TD"]
+        values = [TD, 1 - TD]
+
+        # Taxa de Desemprego Homens
+        TD_H = 0.144
+        values_2 = [TD_H, 1 - TD_H]
+
+        # Taxa de Desemprego Mulheres
+        TD_M = 0.245
+        values_3 = [TD_M, 1 - TD_M]
+
+        fig = make_subplots(1, 3, specs=[[{'type':'domain'}, {'type':'domain'}, {'type':'domain'}]])
+        fig.add_trace(go.Pie(labels=labels, values=values, marker_colors=["#be282c","#fac2c3"], hole = 0.6, rotation = 90), 1, 1)
+        fig.add_trace(go.Pie(labels=labels, values=values_2, marker_colors=["#be282c","#fac2c3"], hole = 0.6, rotation = 90), 1, 2)
+        fig.add_trace(go.Pie(labels=labels, values=values_3, marker_colors=["#be282c","#fac2c3"], hole = 0.6, rotation = 90), 1, 3)
+
+        #Ajustando o layout do gráfico
+        fig.update_layout(width=700, height=500, font_family = 'Open Sans', font_color= "black", title_font_color= "black",
+                        title_font_size=24, title_text='Taxa de Desemprego geral e por gênero' + '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>',
+                        showlegend=False, 
+                        annotations=[dict(text=f'<b>Taxa de<br>Desemprego<br>GERAL<br>{TD*100:.1f}%</b>', x=0.06, y=0.5, font_size=18, showarrow=False),
+                                    dict(text=f'<b>Taxa de<br>Desemprego<br>HOMENS<br>{TD_H*100:.1f}%</b>', x=0.5, y=0.5, font_size=18, showarrow=False),
+                                    dict(text=f'<b>Taxa de<br>Desemprego<br>MULHERES<br>{TD_M*100:.1f}%</b>', x=0.94, y=0.5, font_size=18, showarrow=False)])
+
+        fig.update_traces(hoverinfo='label+percent', textinfo='none')
+        st.plotly_chart(fig)
+    with cols_taxa_desemprego[1]:        
+        st.markdown('''<ul class="font-text-destaques">
+                        <li> O <font color='red'><b>indicador da condição das relações de trabalho e das condições sociais de vida em uma 
+                        dada sociedade é a Taxa de Desemprego (Td)</b></font>. Esta taxa mede a porporção entre a <b>População Ocupada (PO)</b> e a
+                        <b>População Desocupada (PD)</b>, ambas culminando na <b>Força de Trabalho (FT)</b>. É a relação entre quem busca emprego
+                        e quem está efetivamente trabalhando.                  
+                        </li>
+                        <br>
+                        <li> Na PSE 2020, <font color='red'><b>a taxa de desemprego geral é de 19,3%, algo em torno de 43% maior que a taxa 
+                        apurada para RMSP (13,5%)</b></font>. Ao decompormos para <b>critérios de cor ou raça</b>, podemos perceber uma <b>baixa 
+                        sensibilidade entre as diferenças de raça ou cor</b>, apontando que na prática, Brancos, Pardos e Pretos tem as mesmas 
+                        dificuldades de acesso às formas de ocupação, formais e/ou informais.
+                        <li> Entretanto, <font color='red'><b>no recorte do gênero, notamos uma maior sensibilidade (de 70% - 14,4% contra 
+                        24,5%)</b></font> apontando que as mulheres possuem uma <b>maior vulnerabilidade ao acesso ao trabalho</b>. Para a 
+                        população estudada do PSE 2020, <b>o gênero foi o principal elemento</b> diferenciador da vulnerabilidade no acesso ao trabalho.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+
+    cols_taxa_info_salario = st.columns(2)
+    with cols_taxa_info_salario[0]:
+        st.markdown('''<ul class="font-text-destaques">
+                    <br><br>
+                        <li> Outro aspecto importante das relações de trabalho é <font color='red'><b>a diferenciação entre as ocupações formais e 
+                        informais</b></font>. Na PSE 2020, os vínculos considerados formais foram: Militar, empregado com carteira assinada, 
+                        estatutário do setor público e empregador. Os vínculos considerados informais foram: trabalhador doméstico, empregado
+                        sem carteira assinada e trabalhador por conta própria.             
+                        </li>
+                        <br>
+                        <li> Na PSE 2020, <font color='red'><b>a taxa de informalidade geral é foi de 47,5%, acima do Brasil, Sudeste e RMSP</b></font>. 
+                        Sendo oposta a taxa de informalidade, a <b>taxa de assalariamento foi de 52,5%</b>, como podemos notar no gráfico ao lado.
+                        Podemos observar, novamente pelo gênero, uma <font color='red'><b>maior informalidade entre as mulheres, por serem a 
+                        maioria em quase todas as modalidades ditas de ocupação informal</b></font>. A característica do trabalho formal ou
+                        informal não possui um desvio significativo da distribuição geral de cor ou raça.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+    with cols_taxa_info_salario[1]:
+        formal = ["Militar", "Empregado c/ carteira", "Funcionário público", "Empregador", "Não Caracterizado"]
+        informal = ["Doméstico", "Empregado s/ carteira", "Conta Própria"]
+        trabalhadores_formais = dados_ocupacao.query("Ocupação in @formal ").Qtd.sum()
+        trabalhadores_informais = dados_ocupacao.query("Ocupação in @informal ").Qtd.sum()
+        PO = dados_ocupacao.Qtd.sum()
+        TI = trabalhadores_informais/PO
+        TA = trabalhadores_formais/PO
+
+        # Taxa de Informalidade
+        labels = ["TI", "Complementar da TI"]
+        values = [TI, 1 - TI]
+
+        # Taxa de Assalariamento
+        labels = ["TA", "Complementar da TA"]
+        values_2 = [TA, 1 - TA]
+
+        from plotly.subplots import make_subplots
+
+        fig = make_subplots(1, 2, specs=[[{'type':'domain'}, {'type':'domain'}]])
+        fig.add_trace(go.Pie(labels=labels, values=values, marker_colors=["#00b050","#99dfb9"], hole = 0.6, rotation = 180), 1, 1)
+        fig.add_trace(go.Pie(labels=labels, values=values_2, marker_colors=["#fec52b","#ffe8aa"], hole = 0.6, rotation = 0), 1, 2)
+
+        #Ajustando o layout do gráfico
+        fig.update_layout(width=700, height=500, font_family = 'Open Sans', font_color= "black", title_font_color= "black",
+                        title_font_size=24, title_text='Taxa de Informalidade x assalariamento geral' + '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>',
+                        showlegend=False, 
+                        annotations=[dict(text=f'<b>Taxa de<br>Informalidade<br>{TI*100:.1f}%</b>', x=0.11, y=0.5, font_size=21, showarrow=False),
+                                    dict(text=f'<b>Taxa de<br>Assalariamento<br>{TA*100:.1f}%</b>', x=0.9, y=0.5, font_size=21, showarrow=False)]
+                        )
+
+        fig.update_traces(hoverinfo='label+percent', textinfo='none')
+        st.plotly_chart(fig)
+
+    cols_taxa_participacao = st.columns(2)
+    with cols_taxa_participacao[0]:
+        sem_formais = dados.query("D316A_sum == 0").shape[0]
+        sem_trabalhadores = formais_e_informais = dados.query("D316B_sum == 0 and D316A_sum == 0").shape[0]
+        apenas_formais = dados.query("D316B_sum == 0 and D316A_sum > 0").shape[0]
+        com_formais_e_informais = dados.shape[0] - (sem_formais + sem_trabalhadores + apenas_formais)
+
+
+        labels = ["SEM Formais", "APENAS Formais", "COM Formais<br>e Informais", "SEM<br>Trabalhadores"]
+        values = [sem_formais, apenas_formais, com_formais_e_informais, sem_trabalhadores]
+
+        fig = go.Figure(
+            data=[
+                go.Pie(labels = labels, values = values, textinfo='label+percent',
+                    marker_colors=["#00b050", "#fec52b", "#0367b0","#be282c"])
+                ]
+            )
+
+        # Ajustando o layout do gráfico
+        fig.update_layout(width=700, height=700, font_family = 'Open Sans', font_color= "white", title_font_color= "black", 
+                        title_font_size=24, title_text='Domicílios pelas relações de trabalho' + 
+                        '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', showlegend=False)
+
+        fig.update_traces(textfont_size=14, texttemplate='<b>%{label}<br>%{value} (%{percent})<br></b>')   
+        st.plotly_chart(fig)
+    with cols_taxa_participacao[1]:        
+        st.markdown('''<ul class="font-text-destaques">
+                    <br><br>
+                        <li> Se contarmos os <font color='red'><b>654 domicílios que compõem a PSE 2020, aqueles com ao menos um trabalhador com trabalho
+                        informal é de aproximadamente 370 domicílios, ou 56% do total</b></font>. A distribuição por gênero do total de informais dos 
+                        responsáveis pelos domicílios é levemente superior para os homens em relação às mulheres (<b>188</b> contra <b>182</b>). 
+                        Entretanto quando contamos os domicílios sem um indivíduo fazendo trabalho formal, chegamos a <b>283 domicílios</b>, 
+                        ou seja <b>43,3%</b> de todos os domicílios da pesquisa.            
+                        </li>
+                        <br>
+                        <li> Dos <font color='red'><b>370 domicílios com algum trabalhador informal, apenas 85 possuem também pelo menos um trabalhador
+                        formal</b></font>. Por fim, <b>225</b> domicílios possuem todos os trabalhadores com acesso ao emprego formal, finalizando 
+                        com <b>61</b> domicílios sem registros de trabalhadores.
+                        </li>
+                        <br>
+                        <li>
+                        A distribuição por gênero da pesquisa com apenas trabalhadores informais, aponta que <font color='red'><b>a condição de 
+                        informalidade é majoritariamente encontrada em domicílios chefiados por mulheres</b></font>. Entretanto em domicílios com
+                        apenas trabalhadores formais chefiados por mulheres, também temos uma maior quantidade de casos.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
 
 
 ## Rodapé
