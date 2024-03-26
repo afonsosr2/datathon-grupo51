@@ -16,7 +16,7 @@ with colunas_1 [0]:
                 Passaram então a atuar como um projeto social e educacional, criando assim a Associação Passos Mágicos.""")
 
 with colunas_1 [1]:
-            st.image("/content/Ong-Passos-Magicos.jpeg",width= 250,use_column_width=True)
+            st.image("images/Ong-Passos-Magicos.jpeg",width= 250,use_column_width=True)
 
 
 
@@ -53,7 +53,7 @@ with tabs_2[0]:
     
             
     with colunas_3 [1]:
-            st.image("/content/pac-passos.png",width= 400)
+            st.image("images/pac-passos.png",width= 400)
 
 
 
