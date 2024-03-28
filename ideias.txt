@@ -77,7 +77,6 @@ Renda
 
     Renda dos Programas Sociais
         viz 12 - Renda domicílios somente programas sociais - waffle
-        viz 13 - Renda domicílios programas sociais e outras rendas - pizza
         Rendas de outras fontes em texto
 
 - Moradia

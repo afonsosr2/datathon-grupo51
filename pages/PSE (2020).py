@@ -717,8 +717,6 @@ with tabs[2]: # TAB dos Alunos Passos Mágicos
                         starting_location='NW', block_arranging_style='snake')
         st.pyplot(fig)
 with tabs[3]: # TAB das Relações de Trabalho
-
-    ##### EM CONSTRUÇÃO ####
     st.markdown("")
     cols_destaque_trabalho = st.columns(2)
     with cols_destaque_trabalho[0]:
@@ -946,8 +944,8 @@ with tabs[3]: # TAB das Relações de Trabalho
         fig.update_traces(hoverinfo='label+percent', textinfo='none')
         st.plotly_chart(fig)
 
-    cols_taxa_ocupacao = st.columns(1)
-    with cols_taxa_ocupacao[0]:
+    cols_ocupacao_sexo = st.columns(1)
+    with cols_ocupacao_sexo[0]:
         dados_ocupacao = pd.DataFrame(
             {
                 "Ocupação":["Conta Própria", "Conta Própria", "Doméstico", "Doméstico", "Empregado c/ carteira", "Empregado c/ carteira",
@@ -1130,6 +1128,521 @@ with tabs[3]: # TAB das Relações de Trabalho
                         apenas trabalhadores formais chefiados por mulheres, também temos uma maior quantidade de casos.
                         </li>
                     </ul>''', unsafe_allow_html=True)
+with tabs[4]: # TAB da Renda
+    cols_destaque_renda = st.columns(2)
+    with cols_destaque_renda[0]:
+        st.markdown("<p class='font-text-destaques'><br>Principais destaques sobre Renda</p>", unsafe_allow_html=True)
+    with cols_destaque_renda[1]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <li> A <font color='red'><b>renda média domiciliar, na PSE 2020, abaixo de 4 salários mínimos abrange 83,5% das famílias 
+                        pesquisadas</b></font>. A renda per capita  é de <b>R$ 659,00</b>, equivalente a um <b>1/3 da renda per capita</b> do Estado de
+                        São Paulo e <b>menos da metade</b> de Embu-Guaçu. 
+                        </li>
+                        <br>
+                        <li> Tratando os núcleos separadamente, <font color='red'><b>dois deles possuem uma renda per capita abaixo da média da PSE 2020
+                        </b></font>: o núcleo <b>Filipinho com R$ 586,00</b> (2º maior em estudantes da Passos Mágicos) seguido do núcleo <b>Granjinha 
+                        com apenas R$ 518,00</b> (menor de todos os núcleos). 
+                        </li>
+                        <br>
+                        <li> Não encontramos, nos indicadores pesquisados, <font color='red'><b>qualquer evidência de distribução significativamente 
+                        desigual quando observamos os domícilios por cor e raça</b></font>. Infelizmente pelo recorte de gênero a <font color='red'><b>
+                        condição feminina predispõe a um nível maior de precariedade</b></font>, com renda média domiciliar <b>10% menores</b> em domicílios
+                        liderado por mulheres.
+                        </li>
+                        <br>
+                        <li> Quanto a <font color='red'><b>origem da renda, 91,3% advém de rendas do trabalho, sendo exlusiva em 47,7% deles</b></font>. 
+                        Os <font color='red'><b>programas sociais correspondem a 12,4% de renda para os domicílios que possuem</b></font>, com <b>35</b>
+                        domícilios pesquisados cujos <b>programas sociais são responsáveis por toda renda disponível</b>. A aposentadoria  é o programa
+                        mais importante com <b>43%</> da renda.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+
+    st.markdown("---") 
+    st.markdown('## Renda média e per capita dos domicílios')
+
+    cols_dom_faixa_renda = st.columns(2)
+    with cols_dom_faixa_renda[0]:
+        domicilios_por_faixa_renda = dados.D425.value_counts().to_frame()
+        domicilios_por_faixa_renda.index = ["2-3 SM", "1-1.5 SM", "3-4 SM", "1.5-2 SM", "5-7 SM", "0.5-1 SM",
+                                            "4-5 SM", "0-0.5 SM", "7-10 SM", "0", "acima de 10 SM"]
+        domicilios_por_faixa_renda = domicilios_por_faixa_renda.sort_index().reset_index()
+        domicilios_por_faixa_renda.columns = ["faixa_renda", "qtd"]
+
+        fig = px.histogram(domicilios_por_faixa_renda, x="faixa_renda", y="qtd", text_auto=True, color_discrete_sequence=["#68a4d0"])
+
+        # Ajustando o layout do gráfico
+        fig.update_layout(width=700, height=500, font_family = 'Open Sans', font_color= "black", 
+                        title_font_color= "black", title_font_size=24, title_text='Domicílios por faixas de renda total' + 
+                        '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', 
+                        xaxis_title='Faixas de Renda Total', yaxis_title='Nº de Domicílios',
+                        xaxis_tickfont_size=14, yaxis_tickfont_size=14, yaxis_range = [0,150], 
+                        plot_bgcolor= "#f8f9fa", showlegend=False, bargap=0.1)
+
+        fig.update_xaxes(tickmode='array', tickvals=np.arange(0,12,1), ticktext = ['0', '0 - 0.5<br>SM', '0.5 - 1<br>SM', '1 - 1.5<br>SM',
+                                                                                '1.5 - 2<br>SM', '2 - 3<br>SM', '3 - 4<br>SM', '4 - 5<br>SM',
+                                                                                '5 - 7<br>SM', '7 - 10<br>SM', 'acima de<br>10 SM'])
+        fig.update_traces(textfont_size=15, textposition="outside", texttemplate='<b>%{y}</b>', cliponaxis=False)
+        st.plotly_chart(fig)
+    with cols_dom_faixa_renda[1]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <br><br><br><br>                  
+                        <li> Em relação a amostra da população entrevistada pela PSE 2020, a <font color='red'><b>renda média dos 654 domicílios foi de
+                        R$ 2.694.54</b></font>. Observando a <b>distribuição domiciliar por faixa de renda</b> no gráfico ao lado, temos uma maior 
+                        quantidade de domicílios <b>entre 1 a 4 salários mínimos</b>.
+                        </li>
+                        <br>
+                        <li> Observamos aqui que <font color='red'><b>8 domicílios sequer possuem acesso a renda</b></font> e o domicílio com maior renda 
+                        entre os pesquisados tinha renda de 10 salários mínimos (R$ 10.648,00, em fev/2020). Notamos também que <b>546 domicílios (83,5%)
+                        </b> recebem o equivalente a <b>4 salários mínimos ou menos</b>.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+        
+    cols_renda_per_capita = st.columns(2)
+    with cols_renda_per_capita[0]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <br><br>
+                        <li> Da população pesquisada, a <font color='red'><b>renda per capita ficou em apenas R$ 659,00</b></font>, sendo <b>44,7%</b>
+                        do mesmo valor em Embu-Guaçu, <b>33,8%</b> do valor do estado de SP e <b>45,8%</b> no Brasil. O gráfico ao lado ilustra essa
+                        comparação em valores monetários.
+                        </li>
+                        <br>
+                        <li> Esse nível de disparidade corrobora a hipótese de <font color='red'><b>vulnerabilidade social e de precariedade das condições
+                        de vida da população atendida pela Associação</b></font>. Pela PSE 2020 este grupo está entre a <b>parcela mais carente</b> de renda
+                        da população de Embu-Guaçu.
+                        </li>
+                    <br>
+                        <li> O <font color='red'><b>total de indivíduos com renda inferior ao da renda per capita geral do município é de 2.523</b></font>,
+                        ou seja <b>94,4%</b> da população estudada.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)        
+    with cols_renda_per_capita[1]:
+        total_moradores, renda_total = dados.V104_max.sum(), dados.D420_sum.sum()
+        renda_per_capita_pse = (renda_total/total_moradores).round(0)
+
+        rendas_per_capita = pd.DataFrame({
+            "local": ["Brasil", "SP", "Embu-Guaçu", "PSE 2020"],
+            "renda_per_capita": [1439, 1946, 1391, renda_per_capita_pse] })
+
+        fig = px.bar(rendas_per_capita, x="local", y="renda_per_capita",  color="local",
+                    color_discrete_sequence=["#f58334", "#fec52b", "#00b050","#be282c"], text_auto=True,)
+
+        # Ajustando o layout do gráfico
+        fig.update_layout(width=700, height=500, font_family = 'Open Sans', font_color= "black", 
+                        title_font_color= "black", title_font_size=24, title_text='Renda <i>per capita</i> PSE 2020 em comparação' + 
+                        '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', 
+                        yaxis_title='Valor da Renda <i>per capita</i>',
+                        xaxis_tickfont_size=14, yaxis_tickfont_size=14, yaxis_range = [0,2100], 
+                        plot_bgcolor= "#f8f9fa", showlegend=False, bargap=0.1)
+
+        fig.update_traces(textfont_size=15, textposition="outside", texttemplate='<b>R$ %{y:,.2f}</b>', cliponaxis=False)
+        fig.update_yaxes(tickprefix = 'R$ ', tickformat = ',.0f')
+        st.plotly_chart(fig)
+
+    st.markdown('## Renda per capita por núcleo da Passos Mágicos')
+    st.markdown('#')
+
+    cols_dom_faixa_renda_per_capita = st.columns(1)
+    with cols_dom_faixa_renda_per_capita[0]:
+        domicilios_por_faixa_renda_per_capita = dados.D423.value_counts().to_frame()
+
+        faixas = ['R$ 0,00 a R$ 278,00','R$ 278,01 a R$ 557,00', 'R$ 557,01 a R$ 836,00', 'R$ 836,01 a R$ 1.115,00',
+                'R$ 1.115,01 a R$ 1.394,00', 'R$ 1.394,01 a R$ 1.673,00', 'R$ 1.673,01 a R$ 1.952,00',
+                'R$ 1.952,01 a R$ 2.231,00', 'R$ 2.231,01 a R$ 2.510,00', 'R$ 2.510,01 acima']
+
+        domicilios_por_faixa_renda_per_capita = domicilios_por_faixa_renda_per_capita.reindex(faixas).reset_index()
+        domicilios_por_faixa_renda_per_capita.columns = ["faixa_renda_per_capita", "qtd"]
+
+        fig = px.histogram(domicilios_por_faixa_renda_per_capita, x="faixa_renda_per_capita", y="qtd", text_auto=True, color_discrete_sequence=["#68a4d0"])
+
+        # Ajustando o layout do gráfico
+        fig.update_layout(width=1200, height=500, font_family = 'Open Sans', font_color= "black", 
+                        title_font_color= "black", title_font_size=24, title_text='Domicílios por faixas de renda per capita' + 
+                        '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', 
+                        xaxis_title='Faixas de Renda <i>per capita</i>', yaxis_title='Nº de Domicílios',
+                        xaxis_tickfont_size=12, yaxis_tickfont_size=14, yaxis_range = [0,220], 
+                        plot_bgcolor= "#f8f9fa", showlegend=False, bargap=0.1)
+
+        fig.update_xaxes(tickmode='array', tickvals=np.arange(0,12,1), 
+                        ticktext = ['R$ 0,00<br>a<br>R$ 278,00','R$ 278,01<br>a<br>R$ 557,00', 'R$ 557,01<br>a<br>R$ 836,00', 
+                                    'R$ 836,01<br>a<br>R$ 1.115,00', 'R$ 1.115,01<br>a<br>R$ 1.394,00', 'R$ 1.394,01<br>a<br>R$ 1.673,00', 
+                                    'R$ 1.673,01<br>a<br>R$ 1.952,00', 'R$ 1.952,01<br>a<br>R$ 2.231,00', 
+                                    'R$ 2.231,01<br>a<br>R$ 2.510,00', 'acima de<br>R$ 2.510,01'])
+        fig.update_traces(textfont_size=15, textposition="outside", texttemplate='<b>%{y}</b>', cliponaxis=False)
+        st.plotly_chart(fig)
+
+        st.markdown('''<ul class="font-text-destaques">
+                <li> A <font color='red'><b>cidade de Embu-Guaçu está listada na posição 562ª (IBGE 2020) entre os 13% municipíos mais pobres do estado de SP
+                </b></font>. Que ilustra a vulnerabilidade da população pesquisada pelo PSE 2020, que tem renda per capita de apenas <b>50% da renda</b>
+                deste município. Se dividirmos do ponto de vista geográfico por núcleo, apenas um deles (<b>Centro</b>) possui uma renda per capita acima
+                do valor da PSE como um todo. <br>Vamos observar pontos de destaque em cada uma delas:
+                    <ul><li>
+                    O <font color='red'><b>Núcleo Centro</b></font> é o maior de todos, atendendo <b>329 alunos (42% do total) de 288 domicílios 
+                    diferentes</b>. A maioria dos domicílios se encontram na 2ª e 3 ª faixas de renda, com <b>151 domicílios (52,4% do grupo) com renda 
+                    entre R$ 278,01 e 836,00</b>. A renda per capita média desses domicílios é de <b>R$ 818,78</b>.
+                    </li></ul>
+                    <br>
+                    <ul><li>
+                    O segundo maior núcleo é o <font color='red'><b>Filipinho</b></font>, que atende <b>239 alunos (30,5% do total) de 180 domicílios 
+                    diferentes</b>. A maioria dos domicílios se encontram na 2ª faixa de renda, com <b>70 domicílios (39% do grupo) com renda 
+                    entre R$ 278,01 e R$ 557,00</b>. A renda per capita média desses domicílios é de <b>R$ 586,51</b>.
+                    </li></ul>
+                    <br>
+                    <ul><li>
+                    O núcleo <font color='red'><b>Cipó</b></font> é o terceiro com mais atendimentos, <b>132 alunos (17% do total) de 119 domicílios 
+                    diferentes</b>. A maioria dos domicílios se encontram na 2ª faixa de renda, com <b>72 domicílios (61% do grupo) com renda 
+                    entre R$ 278,01 e R$ 836,00</b>. A renda per capita média desses domicílios é de <b>R$ 678,99</b>.
+                    </li></ul>
+                    <br>
+                    <ul><li>
+                    Por fim, temos o núcleo <font color='red'><b>Granjinha</b></font> com apenas <b>84 alunos (10,5% do total) de 67 domicílios 
+                    diferentes</b>. Aqui, a maioria dos domicílios se encontram entre a 1ª e 3ª faixa de renda, com <b>48 domicílios (72% do grupo) com renda 
+                    entre R$ 0 e R$ 836,00</b>. A renda per capita média desses domicílios é de apenas <b>R$ 518,88</b>, ou seja 37,3% da renda per capita
+                    do município.
+                    </li></ul>   
+                </li>
+                    <br>
+                <li>
+                    O gráfico abaixo ilustra as rendas per capita dos núcleos da Passos Mágicos comparados com esferas geográficas acima deles:
+                </li>
+            </ul>''', unsafe_allow_html=True)
+        
+        st.markdown('#')
+        
+        # Agrupamento por renda per capita
+        renda_per_capita_brasil, renda_per_capita_SP, renda_per_capita_embu_guacu = 1439, 1946, 1391
+        renda_per_capita_pse = dados.D422.sum() / dados.shape[0]
+        renda_per_capita_centro = dados.query("V102_first =='Centro'").D422.sum() / dados.query("V102_first =='Centro'").shape[0]
+        renda_per_capita_filipinho = dados.query("V102_first =='Filipinho'").D422.sum() / dados.query("V102_first =='Filipinho'").shape[0]
+        renda_per_capita_cipo = dados.query("V102_first =='Cipó'").D422.sum() / dados.query("V102_first =='Cipó'").shape[0]
+        renda_per_capita_granjinha = dados.query("V102_first =='Granjinha'").D422.sum() / dados.query("V102_first =='Granjinha'").shape[0]
+
+        rendas_per_capita = pd.DataFrame({
+        "local": ["Brasil", "SP", "Embu-Guaçu", "PSE 2020", "Centro", "Filipinho", "Cipó", "Granjinha"],
+        "renda_per_capita": [renda_per_capita_brasil, renda_per_capita_SP, renda_per_capita_embu_guacu, renda_per_capita_pse,
+                            renda_per_capita_centro, renda_per_capita_filipinho, renda_per_capita_cipo, renda_per_capita_granjinha] })
+
+        fig = px.bar(rendas_per_capita, x="local", y="renda_per_capita",  color="local",
+                    color_discrete_sequence=["#f58334", "#333333", "#cccccc","#be282c", "#fac2c3", "#fac2c3", "#fac2c3","#fac2c3"], text_auto=True)
+
+        # Ajustando o layout do gráfico
+        fig.update_layout(width=1200, height=500, font_family = 'Open Sans', font_color= "black", 
+                        title_font_color= "black", title_font_size=24, title_text='Agrupamento por Renda <i>per capita</i>' + 
+                        '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', xaxis_title = '', yaxis_title='',
+                        xaxis_tickfont_size=14, yaxis_tickfont_size=14, yaxis_range = [0,2100], 
+                        plot_bgcolor= "#f8f9fa", showlegend=False)
+
+        fig.update_traces(textfont_size=15, textposition="outside", texttemplate='<b>R$ %{y:,.2f}</b>', cliponaxis=False)
+        fig.update_yaxes(tickprefix = 'R$ ', tickformat = ',.0f')
+        st.plotly_chart(fig)
+    
+    st.markdown('## Renda per capita por gênero e por cor ou raça')
+    st.markdown('#')
+   
+    cols_renda_sexo = st.columns(2)
+    with cols_renda_sexo[0]:
+        renda_per_capita_homens = dados.query("V107_first == 'Homem'").D420_sum.sum() / dados.query("V107_first == 'Homem'").V104_max.sum()
+        renda_per_capita_mulheres = dados.query("V107_first == 'Mulher'").D420_sum.sum() / dados.query("V107_first == 'Mulher'").V104_max.sum()
+
+        rendas_per_capita = pd.DataFrame({
+            "genero": ["Homens", "Mulheres"],
+            "renda_per_capita": [renda_per_capita_homens, renda_per_capita_mulheres] })
+
+        fig = px.bar(rendas_per_capita, x="genero", y="renda_per_capita",  color="genero",
+                    color_discrete_sequence=["#0367b0", "#f58334"], text_auto=True)
+
+        # Ajustando o layout do gráfico
+        fig.update_layout(width=700, height=500, font_family = 'Open Sans', font_color= "black", 
+                        title_font_color= "black", title_font_size=24, title_text='Renda <i>per capita</i> por gênero' + 
+                        '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', 
+                        yaxis_title='', xaxis_title='', xaxis_tickfont_size=14, yaxis_tickfont_size=14, 
+                        yaxis_range = [0,770], plot_bgcolor= "#f8f9fa", showlegend=False)
+
+        fig.update_traces(textfont_size=20, textposition="outside", texttemplate='<b>R$ %{y:,.2f}</b>', cliponaxis=False)
+        fig.update_yaxes(tickprefix = 'R$ ', tickformat = ',.2f')
+        st.plotly_chart(fig)
+    with cols_renda_sexo[1]:        
+        st.markdown('''<ul class="font-text-destaques">
+                    <br><br><br><br>
+                        <li> Investigando a renda dos responsáveis pelo domicílio, encontramos uma <font color='red'><b>renda total dos domicílios cujo 
+                        responsável é um  homem, em média 11% acima do que a média dos domicílios chefiados por mulheres</b></font>.                
+                        </li>
+                        <br>
+                        <li> A renda per capita evidenciou algo semelhante, com <font color='red'><b>8,8 pontos percentuais acima do caso dos domicílios 
+                        chefiados por homens em relação a mulher</b></font>.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+
+    cols_renda_cor_raca = st.columns(2)
+    with cols_renda_cor_raca[0]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <br><br><br><br>
+                        <li> Ao avaliarmos a renda dos responsáveis pelo domicílio em relação a cor ou raça, <font color='red'><b>não encontramos qualquer
+                        diferença significativa</b></font>. As dificuldades de acesso à renda dessa população é a mesma para brancos, pretos, pardos,
+                        amarelos e indígenas.                
+                        </li>
+                        <br>
+                        <li> Logo abaixo, vamos explorar a origem das rendas da população investigada na PSE 2020.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+    with cols_renda_cor_raca[1]:
+        renda_per_capita_resp_brancos = dados.query("V109_first == 'Branca'").D420_sum.sum() / dados.query("V109_first == 'Branca'").V104_max.sum()
+        condicao_preto_pardo = "V109_first == 'Parda' or V109_first == 'Preta'"
+        condicao_amarelo_indigena = "V109_first == 'Indígena' or V109_first == 'Amarela'"
+        renda_per_capita_resp_pretos_pardos = dados.query(condicao_preto_pardo).D420_sum.sum() / dados.query(condicao_preto_pardo).V104_max.sum()
+        renda_per_capita_resp_amarelo_indigena = dados.query(condicao_amarelo_indigena).D420_sum.sum() / dados.query(condicao_amarelo_indigena).V104_max.sum()
+
+        rendas_per_capita = pd.DataFrame({
+            "cor_raca": ["Brancos", "Pretos e Pardos", "Amarelos e Indígenas"],
+            "renda_per_capita": [renda_per_capita_resp_brancos, renda_per_capita_resp_pretos_pardos, renda_per_capita_resp_amarelo_indigena] })
+
+        fig = px.bar(rendas_per_capita, x="cor_raca", y="renda_per_capita",  color="cor_raca",
+                    color_discrete_sequence=["#f58334", "#fec52b", "#0367b0"], text_auto=True)
+
+        # Ajustando o layout do gráfico
+        fig.update_layout(width=700, height=500, font_family = 'Open Sans', font_color= "black", 
+                        title_font_color= "black", title_font_size=24, title_text='Renda <i>per capita</i> por gênero' + 
+                        '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', 
+                        yaxis_title='', xaxis_title='', xaxis_tickfont_size=14, yaxis_tickfont_size=14, 
+                        yaxis_range = [0,770], plot_bgcolor= "#f8f9fa", showlegend=False)
+
+        fig.update_traces(textfont_size=20, textposition="outside", texttemplate='<b>R$ %{y:,.2f}</b>', cliponaxis=False)
+        fig.update_yaxes(tickprefix = 'R$ ', tickformat = ',.2f')
+        st.plotly_chart(fig)
+
+    st.markdown('## Origens da Renda dos Domicílios')
+    st.markdown('#')
+
+    cols_origem_renda = st.columns(2)
+    with cols_origem_renda[0]:
+        origem_renda_domicilio = dados.D421.value_counts().to_frame().reset_index()
+        origem_renda_domicilio.columns = ["origem_renda", "qtd"]
+
+        fig = px.bar(origem_renda_domicilio, x="qtd", y="origem_renda", color = "origem_renda", text_auto=True,
+                    color_discrete_sequence=["#0367b0", "#0367b0", "#0367b0", "#fec52b","#0367b0", "#be282c", "#fec52b", "#00b050"])
+
+        # Ajustando o layout do gráfico
+        fig.update_layout(width=700, height=600, font_family = 'Open Sans', font_size=15, font_color= "black", 
+                        title_font_color= "black", title_font_size=24, title_text='Distribuição dos alunos por sua condição no domicílio' + 
+                        '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', xaxis_title='', yaxis_title='',
+                        xaxis_tickfont_size=14, yaxis_tickfont_size=14, xaxis_range = [0,350], 
+                        plot_bgcolor= "#f8f9fa", showlegend=False)
+
+        fig.update_yaxes(tickmode='array', tickvals=np.arange(0,8,1), ticktext = ["Outras Rendas", "Programas Sociais e<br>Outras Rendas", 
+                                                                                "Sem Renda", "Trabalho,<br>Programas Sociais e<br>Outras Rendas",
+                                                                                "Programa Sociais", "Trabalho e<br>Outras Rendas", 
+                                                                                "Trabalho e<br>Programas Sociais", "Apenas Trabalho"])
+
+        fig.update_traces(textfont_size=15, textposition="outside", texttemplate='<b>%{x}</b>', cliponaxis=False)
+        st.plotly_chart(fig)
+    with cols_origem_renda[1]:        
+        st.markdown('''<ul class="font-text-destaques">
+                    <br><br><br><br>
+                        <li> Investigando a renda dos responsáveis pelo domicílio, encontramos uma <font color='red'><b>renda total dos domicílios cujo 
+                        responsável é um  homem, em média 11% acima do que a média dos domicílios chefiados por mulheres</b></font>.                
+                        </li>
+                        <br>
+                        <li> A renda per capita evidenciou algo semelhante, com <font color='red'><b>8,8 pontos percentuais acima do caso dos domicílios 
+                        chefiados por homens em relação a mulher</b></font>.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+
+    cols_renda_por_domicilio = st.columns(2)
+    with cols_renda_por_domicilio[0]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <br><br><br><br>
+                        <li> Ao avaliarmos a renda dos responsáveis pelo domicílio em relação a cor ou raça, <font color='red'><b>não encontramos qualquer
+                        diferença significativa</b></font>. As dificuldades de acesso à renda dessa população é a mesma para brancos, pretos, pardos,
+                        amarelos e indígenas.                
+                        </li>
+                        <br>
+                        <li> Logo abaixo, vamos explorar a origem das rendas da população investigada na PSE 2020.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+    with cols_renda_por_domicilio[1]:
+        renda_media_domicilio = dados.groupby("D421")["D420_sum"].mean().round(2)
+        ordem = ["renda do trabalho", "trabalho e programas sociais", "trabaho e outras rendas", "programas sociais", 
+                "trabalho e programas sociais e outras rendas", "sem renda", "programas sociais e outras rendas", "outras rendas"]
+
+        renda_media_domicilio = renda_media_domicilio.reindex(ordem).reset_index()
+        renda_media_domicilio.columns = ["origem_renda", "renda_media"]
+
+        fig = px.bar(renda_media_domicilio, x="renda_media", y="origem_renda", text_auto=True, color_discrete_sequence=["#0367b0"])
+
+        # Ajustando o layout do gráfico
+        fig.update_layout(width=700, height=600, font_family = 'Open Sans', font_size=15, font_color= "black", 
+                        title_font_color= "black", title_font_size=24, title_text='Renda Média por domicílio e origem da renda' + 
+                        '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', xaxis_title='', yaxis_title='',
+                        xaxis_tickfont_size=14, yaxis_tickfont_size=14, xaxis_range = [0, 5000], 
+                        plot_bgcolor= "#f8f9fa", showlegend=False, yaxis_categoryorder='total ascending')
+
+        fig.update_xaxes(tickprefix = 'R$ ', tickformat = ',.0f')
+        fig.update_yaxes(tickmode='array', tickvals=np.arange(0,8), ticktext = ["Sem Renda", "Programa Sociais", "Outras Rendas", 
+                                                                                "Programas Sociais e<br>Outras Rendas", "Trabalho e<br>Programas Sociais", 
+                                                                                "Trabalho e<br>Outras Rendas", "Apenas Trabalho",
+                                                                                "Trabalho,<br>Programas Sociais e<br>Outras Rendas"])
+
+        fig.update_traces(textfont_size=15, textposition="outside", texttemplate='R$ <b>%{x:,.2f}</b>', cliponaxis=False)
+        st.plotly_chart(fig)
+ 
+    st.markdown('## Renda do Trabalho')
+    st.markdown('#')
+
+    cols_renda_trabalho = st.columns(2)
+    with cols_renda_trabalho[0]:
+        formal_ou_informal = dados.query("D421 == 'renda do trabalho' and (D316A_sum > 0 or D316B_sum > 0)")
+        um_ou_mais_formal = dados.query("D421 == 'renda do trabalho' and D316A_sum > 0")
+        somente_informal = dados.query("D421 == 'renda do trabalho' and (D316A_sum == 0 and D316B_sum > 0)")
+
+        qtd_formal_ou_informal = formal_ou_informal.shape[0]
+        qtd_um_ou_mais_formal = um_ou_mais_formal.shape[0]
+        qtd_somente_informal = somente_informal.shape[0]
+
+        renda_per_capita_formal_ou_informal = (formal_ou_informal.D420_sum.sum() / formal_ou_informal.V104_max.sum()).round(2)
+        renda_per_capita_um_ou_mais_formal = (um_ou_mais_formal.D420_sum.sum() / um_ou_mais_formal.V104_max.sum()).round(2)
+        renda_per_capita_somente_informal = (somente_informal.D420_sum.sum() / somente_informal.V104_max.sum()).round(2)
+
+        rendas_per_capita = pd.DataFrame({
+            "relacao_trabalho": ["formais ou informais", "Ao menos um formal", "somente informais"],
+            "renda_per_capita": [renda_per_capita_formal_ou_informal, renda_per_capita_um_ou_mais_formal, renda_per_capita_somente_informal],
+            "qtd_domicilios": [qtd_formal_ou_informal, qtd_um_ou_mais_formal, qtd_somente_informal]})
+
+        fig = go.Figure(
+            [go.Bar(x=rendas_per_capita["relacao_trabalho"], y=rendas_per_capita["renda_per_capita"], name ='Renda per capita (R$)',
+                    marker_color = ["#f58334", "#00b050", "#0367b0"], text=rendas_per_capita["renda_per_capita"], yaxis='y1',
+                    textfont_size=14, textposition="inside", texttemplate='<b>R$ %{y:,.2f}</b>', cliponaxis=False),
+            go.Scatter(x=rendas_per_capita["relacao_trabalho"], y=rendas_per_capita["qtd_domicilios"], marker={'color':"#fec52b"}, name ='Nº de domicílios', 
+                        text=rendas_per_capita["qtd_domicilios"], yaxis='y2', textfont_size=14, textposition="top right", mode="text+lines",
+                        texttemplate='<b>%{y}</b>')])
+
+        fig.update_layout(width=700, height=500, font_family = 'Open Sans', font_color= "black", hovermode='x', bargap=.3,
+                            title={'text': 'Renda <i>per capita</i> domicílios com renda exclusiva do trabalho' + 
+                                    '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', 
+                                'font_color': "black", 
+                                'font_size': 22}, 
+                            yaxis={'title': "Renda per capita (R$)", 
+                                'range':[0,1000],
+                                'tickfont_size':14},
+                            yaxis2={'rangemode': "tozero", 'overlaying': 'y',
+                                    'position': 1, 'side': 'right',
+                                    'title': 'Nº de domicílios',
+                                    'range':[0,350],
+                                    'tickfont_size':14},
+                            xaxis={'tickfont_size':14},
+                            showlegend=False, plot_bgcolor= "#f8f9fa")
+        st.plotly_chart(fig)
+    with cols_renda_trabalho[1]:        
+        st.markdown('''<ul class="font-text-destaques">
+                    <br><br><br><br>
+                        <li> Investigando a renda dos responsáveis pelo domicílio, encontramos uma <font color='red'><b>renda total dos domicílios cujo 
+                        responsável é um  homem, em média 11% acima do que a média dos domicílios chefiados por mulheres</b></font>.                
+                        </li>
+                        <br>
+                        <li> A renda per capita evidenciou algo semelhante, com <font color='red'><b>8,8 pontos percentuais acima do caso dos domicílios 
+                        chefiados por homens em relação a mulher</b></font>.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+
+    cols_renda_trabalho_PS = st.columns(2)
+    with cols_renda_trabalho_PS[0]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <br><br><br><br>
+                        <li> Ao avaliarmos a renda dos responsáveis pelo domicílio em relação a cor ou raça, <font color='red'><b>não encontramos qualquer
+                        diferença significativa</b></font>. As dificuldades de acesso à renda dessa população é a mesma para brancos, pretos, pardos,
+                        amarelos e indígenas.                
+                        </li>
+                        <br>
+                        <li> Logo abaixo, vamos explorar a origem das rendas da população investigada na PSE 2020.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+    with cols_renda_trabalho_PS[1]:
+        renda_trabalho_TPS = dados.query("D421 == 'trabalho e programas sociais'").D319_sum.sum()
+        renda_programas_sociais_TPS = dados.query("D421 == 'trabalho e programas sociais'").D415_sum.sum()
+
+        labels = ["Trabalho", "Programas<br>Sociais"]
+        values = [renda_trabalho_TPS, renda_programas_sociais_TPS]
+
+        fig = go.Figure(
+            data=[
+                go.Pie(labels = labels, values = values, textinfo='label+percent',
+                    marker_colors=["#0367b0","#fec52b"], hole=.4)
+                ]
+            )
+
+        # Ajustando o layout do gráfico
+        fig.update_layout(width=500, height=500, font_family = 'Open Sans', font_color= "white", title_font_color= "black", 
+                        title_font_size=24, title_text='Renda dos domicílios por<br>trabalho e programas sociais' + 
+                        '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', showlegend=False)
+
+        fig.update_traces(textfont_size=14, texttemplate='<b>%{label}<br>%{percent}</b>')
+        st.plotly_chart(fig)
+
+    st.markdown('## Participação dos Programas Sociais')
+    st.markdown('#')
+
+    cols_programas_sociais = st.columns(2)
+    with cols_programas_sociais[0]:
+        part_aposentadoria_TPS = dados.query("D421 == 'trabalho e programas sociais'").V408_sum.sum()
+        part_outros_TPS = dados.query("D421 == 'trabalho e programas sociais'").V406_sum.sum()
+        part_bolsa_familia_TPS = dados.query("D421 == 'trabalho e programas sociais'").V404_sum.sum()
+        part_seguro_desemprego_TPS = dados.query("D421 == 'trabalho e programas sociais'").V410_sum.sum()
+        part_bpc_loas_TPS = dados.query("D421 == 'trabalho e programas sociais'").V402_sum.sum()
+        renda_programas_sociais_TPS = dados.query("D421 == 'trabalho e programas sociais'").D415_sum.sum()
+
+        pct_aposentadoria_TPS = (100 * part_aposentadoria_TPS/renda_programas_sociais_TPS)
+        pct_outros_TPS = (100 * part_outros_TPS/renda_programas_sociais_TPS)
+        pct_bolsa_familia_TPS = (100 * part_bolsa_familia_TPS/renda_programas_sociais_TPS)
+        pct_seguro_desemprego_TPS = (100 * part_seguro_desemprego_TPS/renda_programas_sociais_TPS)
+        pct_bpc_loas_TPS = (100 * part_bpc_loas_TPS/renda_programas_sociais_TPS)
+
+        data = {'Aposentadoria': pct_aposentadoria_TPS, 'Outros Programas': pct_outros_TPS, 'Bolsa Família': pct_bolsa_familia_TPS,
+                'Seguro Desemprego': pct_seguro_desemprego_TPS, 'BPC/LOAS': pct_bpc_loas_TPS}
+        fig = plt.figure(FigureClass=Waffle, rows=5, values=data, colors=["#fec52b", "#00b050", "#be282c", "#f58334", "#0367b0"],
+                        title={'label': 'Participação dos Programas Sociais', 'loc': 'left', 'size':14, 
+                            'weight':'bold', 'family': 'Open Sans'},
+                        labels=[f"{k} ({v:.1f}%)" for k, v in data.items()],
+                        legend={'loc': 'lower left', 'bbox_to_anchor': (0, -0.5), 'ncol': 2, 'framealpha': 0},
+                        starting_location='NW', block_arranging_style='snake', figsize=(8,8))
+        st.pyplot(fig)
+
+        part_aposentadoria_PS = dados.query("D421 == 'programas sociais'").V408_sum.sum()
+        part_outros_PS = dados.query("D421 == 'programas sociais'").V406_sum.sum()
+        part_bolsa_familia_PS = dados.query("D421 == 'programas sociais'").V404_sum.sum()
+        part_seguro_desemprego_PS = dados.query("D421 == 'programas sociais'").V410_sum.sum()
+        part_bpc_loas_PS = dados.query("D421 == 'programas sociais'").V402_sum.sum()
+        renda_programas_sociais_PS = dados.query("D421 == 'programas sociais'").D415_sum.sum()
+
+        pct_aposentadoria_PS = (100 * part_aposentadoria_PS/renda_programas_sociais_PS)
+        pct_outros_PS = (100 * part_outros_PS/renda_programas_sociais_PS)
+        pct_bolsa_familia_PS = (100 * part_bolsa_familia_PS/renda_programas_sociais_PS)
+        pct_seguro_desemprego_PS = (100 * part_seguro_desemprego_PS/renda_programas_sociais_PS)
+        pct_bpc_loas_PS = (100 * part_bpc_loas_PS/renda_programas_sociais_PS)
+
+        data = {'Aposentadoria': pct_aposentadoria_PS, 'Outros Programas': pct_outros_PS, 'Bolsa Família': pct_bolsa_familia_PS,
+                'Seguro Desemprego': pct_seguro_desemprego_PS, 'BPC/LOAS': pct_bpc_loas_PS}
+        fig2 = plt.figure(FigureClass=Waffle, rows=5, values=data, colors=["#fec52b", "#00b050", "#be282c", "#f58334", "#0367b0"],
+                        title={'label': 'Renda dos domicílios somente de Programas Sociais', 'loc': 'left', 'size':14, 
+                            'weight':'bold', 'family': 'Open Sans'},
+                        labels=[f"{k} ({v:.1f}%)" for k, v in data.items()],
+                        legend={'loc': 'lower left', 'bbox_to_anchor': (0, -0.5), 'ncol': 2, 'framealpha': 0},
+                        starting_location='NW', block_arranging_style='snake', figsize=(8,8))
+        st.pyplot(fig2)
+
+    with cols_programas_sociais[1]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <br><br>
+                        <li> Na PSE 2020, <font color='red'><b>a População Total (PTo) é de 2.673 indivíduos</b></font>. O nº de indivíduos entre
+                        <b>15 e 65 anos</b> (a População em Idade de Trabalho - PIT) é de <b>1.674 indivíduos</b>, ou <b>62,6%</b> da PTo. 
+                        Consequentemente, a População Fora da Idade de Trabalho (PFIT), soma 999 indivíduos, ou seja 37,4% do total de 
+                        indivíduos pesquisados.
+                        </li>
+                        <br><br><br>
+                        <li> Partindo agora para divisão da PIT, temos <font color='red'><b>a parcela de pessoas trabalhando ou em busca por trabalho 
+                        (Força de Trabalho - FT) correspondente à 1.018 indivíduos</b></font> e a parcela dos indivíduos Fora da Força de Trabalho 
+                        (FFT) de <b>656</b> indivíduos. Uma proporção próxima de 2/3 entre quem está na FFT em relação a FT.                    
+                        </li>
+                    </ul>''', unsafe_allow_html=True) 
+
+
 
 
 ## Rodapé
