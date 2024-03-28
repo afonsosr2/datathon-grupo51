@@ -1,5 +1,8 @@
 import streamlit as st
 
+###### Páginal Inicial do Streamlit ######
+st.set_page_config(layout= 'wide')
+
 #### Páginas
 cols = st.columns(6, gap="large")
 with cols[0]:
