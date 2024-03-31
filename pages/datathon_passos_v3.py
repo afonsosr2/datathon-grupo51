@@ -39,7 +39,7 @@ df_2022 = pd.DataFrame(df_2022).T
 
 df_medias_1 = pd.concat([df_2020,df_2021,df_2022])
 df_medias_1['Ano'] = ["2020","2021","2022"]
-df_medias_1
+
 
 
 fig_2 = go.Figure()
@@ -78,7 +78,7 @@ df_notas = df_notas.query("NOTA_PORT_2022 !=0 and NOTA_MAT_2022 !=0")
 df_medias = pd.DataFrame(df_notas.mean())
 df_medias.reset_index(inplace=True)
 df_medias.rename(columns={"index":"notas",0:"media"}, inplace=True)
-df_medias
+
 
 
 
@@ -105,7 +105,7 @@ df_virada = pd.DataFrame(df_virada.groupby("PONTO_VIRADA_2022")["PONTO_VIRADA_20
 df_virada.rename(columns={"PONTO_VIRADA_2022":"valores"}, inplace=True)
 df_virada.reset_index(inplace=True)
 df_virada["%"] = [(749/(749+113))*100,(113/(749+113))*100]
-df_virada
+
 
 
 #grafico4
@@ -159,7 +159,7 @@ with tabs_2[0]:
             atividades extracurriculares de finais de semana e bolsas de estudos no colégio particular, em cursos técnicos e de graduação..""")
 
     with colunas_1 [1]:
-            st.image("/content/Ong-Passos-Magicos.jpeg",width= 250,use_column_width=True)
+            st.image("images/Ong-Passos-Magicos.jpeg",width= 250,use_column_width=True)
             
     st.markdown("""A Passos Mágicos baseia-se na meritocracia, por isso engajamos nossas crianças para que acreditem que estudar é bom e pode transformar a vida delas.
             Avaliamos a participação, desempenho e presença para decidir quem participará das atividades de finais de semana e quem pode concorrer a bolsas de estudos na escola particular sendo apadrinhado por uma pessoa que se dispõe a financiar seu estudo. 
