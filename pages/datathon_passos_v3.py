@@ -124,7 +124,7 @@ fig_4.show()
 
 df_est_univer = pd.DataFrame({"Ano":["2020","2021","2022"],"alunos_unv":[24,49,59],"total_alunos":[727,737,929]})
 df_est_univer["%_univer"] =(df_est_univer["alunos_unv"]/df_est_univer["total_alunos"])*100
-df_est_univer
+
 
 
 fig_5 = px.line(df_est_univer, x='Ano', y='%_univer',color=pd.Series('Ano', index=range(len(df_medias))),
