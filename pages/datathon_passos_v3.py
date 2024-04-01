@@ -200,7 +200,7 @@ educacional da Passos Mágicos nos jovens da região de Embu-Guaçu''')
 
     with colunas_3 [1]:
 
-        st.plotly_chart(fig_1, use_container_width=True, sharing="streamlit")
+        st.plotly_chart(fig_1, use_container_width=True)
         st.markdown("fonte: PEDE 2022-Passos Magicos")
 
 
