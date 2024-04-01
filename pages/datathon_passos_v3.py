@@ -165,7 +165,7 @@ with tabs_2[0]:
             Avaliamos a participação, desempenho e presença para decidir quem participará das atividades de finais de semana e quem pode concorrer a bolsas de estudos na escola particular sendo apadrinhado por uma pessoa que se dispõe a financiar seu estudo. 
             As aulas são dadas fora do horário de aula escolar em locais fixos cedidos pela comunidade (em 4 núcleos diferentes), ou seja, 
             não temos uma sede construída, pois acreditamos que todo o valor de arrecadação do projeto deve ir para a melhora da qualidade de entrega e investimento em novas oportunidades para as crianças.""")
-    st.image("images/metodologia.jpg")
+    st.image("images/metodologia.jpg",caption="Fonte:Relatório de atividades Passos Mágicos 2022",width= 400)
 
 
 
