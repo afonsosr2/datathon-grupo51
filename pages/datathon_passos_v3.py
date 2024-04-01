@@ -145,7 +145,7 @@ fig_5.show()
 
 import streamlit as st
 
-
+st.set_page_config(layout= 'wide')
 tabs_titles_2= ["Como funciona a Passos","Alunos impactados pela Passos","Indicadores"]
 tabs_2 = st.tabs(tabs_titles_2)
 
