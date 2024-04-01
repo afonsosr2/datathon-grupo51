@@ -220,7 +220,7 @@ educacional da Passos Mágicos nos jovens da região de Embu-Guaçu''')
 
 
           
-    st.plotly_chart(fig_2, use_container_width=False, sharing="streamlit")
+    st.plotly_chart(fig_2, use_container_width=False)
     st.markdown("fonte: PEDE Dataset-FIAP-Passos Magicos")
 
 
@@ -236,7 +236,7 @@ Nota padronizada em português e matemática de acordo com a Prova Saeb/2021
 é de 4,41  que é representada pela linha no gráfico .""")
 
     with cols_perfil_4[1]:
-            st.plotly_chart(fig_3, use_container_width=False, sharing="streamlit")
+            st.plotly_chart(fig_3, use_container_width=False)
 
     st.markdown("""### Ponto de Virada """)
 
@@ -249,7 +249,7 @@ No Ano de 2022 13% dos alunos atingiram o ponto de Virada.""")
     st.dataframe(df_virada)
 
   
-    st.plotly_chart(fig_4, use_container_width=False, sharing="streamlit", theme="streamlit")
+    st.plotly_chart(fig_4, use_container_width=False)
 
 
     
