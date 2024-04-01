@@ -79,6 +79,31 @@ Renda
         viz 12 - Renda domicílios somente programas sociais - waffle
         Rendas de outras fontes em texto
 
-- Moradia
+Moradia
+    Principais destaques da Moradia
+
+
+    - Pela PSE 2020, 58,7% dos domicílios pesquisados possuía ao menos um automóvel, ou seja, 384 dos 654 domicílios. A média é bastante superior à
+    nacional que em 2019 era de 49,2%.
+
+
+    Tipos de Moradia e condição de ocupação
+        viz1 - Tipos de Moradia
+        viz2 - Condição de ocupação das moradias
+    
+    Caracteríticas das moradias
+
+        viz3 - Domicílios pelo material do piso
+        viz4 - Domicílios pela disponibilidade de água encanada
+        viz5 - Domicílios pelo nº de banheiros de uso exclusivo
+        viz6 - Domicílios pela forma de escoamento do esgoto
+        viz7 - Domicílios pelo acesso à energia elétrica (combustível no texto)
+
+    Acesso a bens e serviços
+        viz8 - Domicílios com moradores que possuem celular (tel fixo no texto)
+        viz9 - Domicílios com aparelhos de TV (com geladeira ou freezer no texto)
+        viz10 - Domicílios com computador, acesso à internet banda larga e móvel
+        
+
 
 
