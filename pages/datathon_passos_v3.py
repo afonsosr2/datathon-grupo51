@@ -159,7 +159,7 @@ with tabs_2[0]:
             atividades extracurriculares de finais de semana e bolsas de estudos no colégio particular, em cursos técnicos e de graduação..""")
 
     with colunas_1 [1]:
-            st.image("images/Ong-Passos-Magicos.jpeg",width= 250,use_column_width=True)
+            st.image("images/Ong-Passos-Magicos.jpeg",width= 250)
             
     st.markdown("""A Passos Mágicos baseia-se na meritocracia, por isso engajamos nossas crianças para que acreditem que estudar é bom e pode transformar a vida delas.
             Avaliamos a participação, desempenho e presença para decidir quem participará das atividades de finais de semana e quem pode concorrer a bolsas de estudos na escola particular sendo apadrinhado por uma pessoa que se dispõe a financiar seu estudo. 
