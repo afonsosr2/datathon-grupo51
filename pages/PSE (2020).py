@@ -6,6 +6,8 @@ from pywaffle import Waffle
 from plotly import express as px
 from plotly import graph_objs as go
 from plotly.subplots import make_subplots
+from PIL import Image
+
 
 ###### Configuração Inicial ######
 @st.cache_data
@@ -1682,24 +1684,27 @@ with tabs[5]: # TAB de Moradia
     st.markdown("---")
     st.markdown('#')
 
-    st.markdown('## Indivíduos')
+    st.markdown('## Tipos de Moradia e Condição de Ocupação')
     
-    cols_pop_sexo = st.columns(2)
-    with cols_pop_sexo[0]:
-        mulheres = dados.D1702_sum.sum()
-        homens = dados.D1701_sum.sum()
-        total = mulheres + homens
-        pct_mulheres = (100 *mulheres/total)
-        pct_homens = (100 * homens/total)
+    cols_tipo_moradia = st.columns(2)
+    with cols_tipo_moradia[0]:
+        tipos_moradia = dados.V501_first.value_counts().to_frame().reset_index()
+        tipos_moradia.columns = ["moradia", "qtd"]
 
-        data = {'Mulheres': pct_mulheres, 'Homens': pct_homens}
-        fig = plt.figure(FigureClass=Waffle, rows=5, values=data, colors=["#f58334", "#0367b0"],
-                        title={'label': 'População total por sexo', 'loc': 'left', 'size':10},
-                        labels=[f"{k} ({v:.1f}%)" for k, v in data.items()],
-                        legend={'loc': 'lower left', 'bbox_to_anchor': (0, -0.4), 'ncol': len(data), 'framealpha': 0},
-                        starting_location='NW', block_arranging_style='snake')
-        st.pyplot(fig)
-    with cols_pop_sexo[1]:
+        fig = px.bar(tipos_moradia, x="moradia", y="qtd",  color="moradia", text_auto=True,
+                    color_discrete_sequence=["#0367b0", "#f58334", "#ed3237"])
+
+        # Ajustando o layout do gráfico
+        fig.update_layout(width=700, height=500, font_family = 'Open Sans', font_color= "black", 
+                        title_font_color= "black", title_font_size=24, title_text='Tipos de Moradia' + 
+                        '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', 
+                        yaxis_title='', xaxis_title='', xaxis_tickfont_size=14, yaxis_tickfont_size=14, 
+                        yaxis_range = [0,650], plot_bgcolor= "#f8f9fa", showlegend=False)
+
+        fig.update_traces(textfont_size=20, textposition="outside", texttemplate='<b>%{y}</b>', cliponaxis=False)
+        fig.update_xaxes(tickmode='array', tickvals=np.arange(0,3), ticktext = ["Casa", "Apartamento", "Cortiço"])
+        st.plotly_chart(fig)
+    with cols_tipo_moradia[1]:
         st.markdown('''<ul class="font-text-destaques">
                         <li> O recorte da pesquisa engloba <font color='red'><b>4% do total da população</b></font> de Embu-Guaçu, uma amostra considerável.
                         </li>
@@ -1713,11 +1718,8 @@ with tabs[5]: # TAB de Moradia
                         </li>
                     </ul>''', unsafe_allow_html=True)
 
-    st.markdown('#')
-    st.markdown('#')    
-
-    cols_pop_cor_raca = st.columns(2)
-    with cols_pop_cor_raca[0]:
+    cols_cond_moradia = st.columns(2)
+    with cols_cond_moradia[0]:
         st.markdown('''<ul class="font-text-destaques">
                     <br><br>
                         <li> Com relação à <font color='red'><b>distribuição da população por raça e cor</b></font>, as proporções da 
@@ -1729,46 +1731,59 @@ with tabs[5]: # TAB de Moradia
                              <b>46%</b> do Brasil.
                         </li>
                     </ul>''', unsafe_allow_html=True)
-    with cols_pop_cor_raca[1]:
-        pop_cor_raca = dados.copy()
-        pop_cor_raca["pop"] =  dados["D1701_sum"] + dados["D1702_sum"]
-        pop_cor_raca = pop_cor_raca.groupby("V109_first")[["pop"]].sum().reset_index()
-        pop_cor_raca.columns = ["cor_raca", "qtd"]
+    with cols_cond_moradia[1]:
+        cond_moradia = dados.V511_first.value_counts().to_frame().reset_index()
+        cond_moradia.columns = ["condicao", "qtd"]
 
-        fig = px.bar(pop_cor_raca, x="qtd", y="cor_raca", color = "cor_raca", text_auto=True,
-                    color_discrete_sequence=["#fec52b","#00b050","#f58334", "#ed3237", "#0367b0"],
-                    category_orders={'cor_raca':["Parda", "Preta", "Branca", "Amarela","Indígena"]})
+        fig = px.bar(cond_moradia, x="condicao", y="qtd",  color="condicao", 
+                    color_discrete_sequence=px.colors.qualitative.D3, text_auto=True)
 
         # Ajustando o layout do gráfico
-        fig.update_layout(width=700, height=350, font_family = 'Open Sans', font_color= "black", 
-                          title_font_color= "black", title_font_size=24, title_text='População por Cor ou Raça' + 
-                          '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', xaxis_title='', yaxis_title='',
-                          xaxis_tickfont_size=14, yaxis_tickfont_size=14, xaxis_range = [0,1350], 
-                          plot_bgcolor= "#f8f9fa", showlegend=False)
+        fig.update_layout(width=700, height=500, font_family = 'Open Sans', font_color= "black", 
+                        title_font_color= "black", title_font_size=24, title_text='Condição de ocupação das moradias' + 
+                        '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', 
+                        yaxis_title='', xaxis_title='', xaxis_tickfont_size=14, yaxis_tickfont_size=14, 
+                        yaxis_range = [0,320], plot_bgcolor= "#f8f9fa", showlegend=False)
 
-        fig.update_traces(textfont_size=15, textposition="outside", texttemplate='<b>%{x}</b>', cliponaxis=False)
- 
+        fig.update_traces(textfont_size=20, textposition="outside", texttemplate='<b>%{y}</b>', cliponaxis=False)
+        fig.update_xaxes(tickmode='array', tickvals=np.arange(0,7), ticktext = ["Próprio<br>Já Pago", "Cedido por<br>familiar", "Alugado",
+                                                                                "Próprio<br>Pagando", "Cedido de<br>outra forma", 
+                                                                                "Cedido por<br>empregador", "Outra<br>condição"])
         st.plotly_chart(fig)
 
-    st.markdown('## Domicílios')
+    st.markdown('## Características das moradias')
 
-    cols_dom_sexo = st.columns(2)
-    with cols_dom_sexo[0]:
-        domicilio_sexo_resp = dados.V107_first.value_counts()
-        domicilio_sexo_resp.index = ["Mulheres", "Homens"]
-        total = domicilio_sexo_resp.sum()
-        pct_mulheres = (100 * domicilio_sexo_resp.loc["Mulheres"]/total)
-        pct_homens = (100 * domicilio_sexo_resp.loc["Homens"]/total)
+    cols_dom_agua = st.columns(2)
+    with cols_dom_agua[0]:
+        dom_agua_encanada = dados.V505_first.value_counts().to_frame().reset_index()
+        dom_agua_encanada.columns = ["tipo", "qtd"]
 
-        data = {'Mulheres': pct_mulheres, 'Homens': pct_homens}
-        fig = plt.figure(FigureClass=Waffle, rows=5, values=data, colors=["#f58334", "#0367b0"],
-                title={'label': 'Total de domicílios por sexo do responsável', 'loc': 'left', 'size':10},
-                labels=[f"{k} ({v:.1f}%)" for k, v in data.items()],
-                legend={'loc': 'lower left', 'bbox_to_anchor': (0, -0.4), 'ncol': len(data), 'framealpha': 0},
-                starting_location='NW', block_arranging_style='snake')
-        
-        st.pyplot(fig)
-    with cols_dom_sexo[1]:
+        fig = px.bar(dom_agua_encanada, x="tipo", y="qtd",  color="tipo", text_auto=True,
+                    color_discrete_sequence=["#0367b0", "#f58334", "#ed3237"])
+
+        # Ajustando o layout do gráfico
+        fig.update_layout(width=700, height=500, font_family = 'Open Sans', font_color= "black", 
+                        title_font_color= "black", title_font_size=24, title_text='Domicílios pela disponibilidade de água encanada' + 
+                        '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', 
+                        yaxis_title='', xaxis_title='', xaxis_tickfont_size=14, yaxis_tickfont_size=14, 
+                        yaxis_range = [0,650], plot_bgcolor= "#f8f9fa", showlegend=False)
+
+        fig.update_traces(textfont_size=20, textposition="outside", texttemplate='<b>%{y}</b>', cliponaxis=False)
+        fig.update_xaxes(tickmode='array', tickvals=np.arange(0,3), ticktext = ["Canalizada em pelo<br>menos um cômodo", 
+                                                                                "Canalizada só na<br>propriedade ou terreno	", 
+                                                                                "Não canalizada"])
+        # Adicionando imagens
+        img_1 = Image.open("images/moradia-img01-chuveiro.png")
+        img_2 = Image.open("images/moradia-img02-torneira.png")
+        fig.add_layout_image(dict(source=img_1, x=0.75, y=0.65))
+        fig.add_layout_image(dict(source=img_2, x=0.90, y=0.65))
+        fig.update_layout_images(dict(xref="paper", yref="paper", sizex=0.2, sizey=0.2, xanchor="right", yanchor="bottom"))
+
+        fig.add_annotation(text='Fonte: <a href="https://www.flaticon.com/br/icones-gratis/torneira">Torneira ícones criados por Octopocto - Flaticon</a>'
+                                '<br>Fonte: <a href="https://www.flaticon.com/br/icones-gratis/chuveiro">Chuveiro ícones criados por Freepik - Flaticon</a>',
+                        align="left", xref="paper", yref = "paper", x=1, y=-0.2, showarrow=False, font_size=10)
+        st.plotly_chart(fig)
+    with cols_dom_agua[1]:
         st.markdown('''<ul class="font-text-destaques">
                         <li> Embu-Guaçu tem um total projetado de <b>22.112</b> domicílios em 2020 (SEADE, 2020). Este recorte da pesquisa 
                              engloba <font color='red'><b>3% do total de domicílios</b></font> do município.
@@ -1783,11 +1798,8 @@ with tabs[5]: # TAB de Moradia
                         </li>
                     </ul>''', unsafe_allow_html=True)
 
-    st.markdown('#')
-    st.markdown('#')
-
-    cols_dom_cor_raca = st.columns(2)
-    with cols_dom_cor_raca[0]:
+    cols_dom_banheiro = st.columns(2)
+    with cols_dom_banheiro[0]:
         st.markdown('''<ul class="font-text-destaques">
                     <br>
                         <li> A <font color='red'><b>distribuição por cor e raça dos responsáveis dos domicílios</b></font>, tem relação
@@ -1801,46 +1813,58 @@ with tabs[5]: # TAB de Moradia
                              <b>46%</b> do Brasil.
                         </li>
                     </ul>''', unsafe_allow_html=True)
-    with cols_dom_cor_raca[1]:
-        pop_cor_raca = dados.V109_first.value_counts().to_frame().reset_index()
-        pop_cor_raca.columns = ["cor_raca", "qtd"]
+    with cols_dom_banheiro[1]:
+        dom_banheiro_exc = dados.V506_first.value_counts().to_frame().reset_index()
+        dom_banheiro_exc.columns = ["n_banheiros", "qtd"]
 
-        fig = px.bar(pop_cor_raca, x="qtd", y="cor_raca", color = "cor_raca", text_auto=True,
-                    color_discrete_sequence=["#fec52b","#00b050","#f58334", "#ed3237", "#0367b0"],
-                    category_orders={'cor_raca':["Parda", "Preta", "Branca", "Amarela","Indígena"]})
-
-        # Ajustando o layout do gráfico
-        fig.update_layout(width=700, height=350, font_family = 'Open Sans', font_size=15, font_color= "black", 
-                        title_font_color= "black", title_font_size=24, title_text='População por Cor ou Raça do responsável' + 
-                        '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', xaxis_title='', yaxis_title='',
-                        xaxis_tickfont_size=14, yaxis_tickfont_size=14, xaxis_range = [0,350], 
-                        plot_bgcolor= "#f8f9fa", showlegend=False)
-
-        fig.update_traces(textfont_size=15, textposition="outside", texttemplate='<b>%{x}</b>', cliponaxis=False)
-        st.plotly_chart(fig)
-
-    cols_dom_n_moradores = st.columns(2)
-    with cols_dom_n_moradores[0]:
-        domicilio_n_moradores = dados.V104_max.value_counts().to_frame()
-        domicilio_n_moradores.loc["1"], domicilio_n_moradores.loc["9"] = 0, 0
-        domicilio_n_moradores = domicilio_n_moradores.reset_index()
-        domicilio_n_moradores.columns = ["Nº de Moradores", "Nº de Domicílios"]
-
-        fig = px.histogram(domicilio_n_moradores, x="Nº de Moradores", y="Nº de Domicílios", 
-                        text_auto=True, color_discrete_sequence=["#68a4d0"], nbins= 10)
+        fig = px.histogram(dom_banheiro_exc, x="n_banheiros", y="qtd",  color="n_banheiros", text_auto=True, 
+                        color_discrete_sequence=["#68a4d0"], nbins=5)
 
         # Ajustando o layout do gráfico
         fig.update_layout(width=700, height=500, font_family = 'Open Sans', font_color= "black", 
-                        title_font_color= "black", title_font_size=24, title_text='Distribuição dos domicílios por nº de moradores' + 
+                        title_font_color= "black", title_font_size=24, title_text='Domicílios pelo nº de banheiros de uso exclusivo' + 
                         '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', 
-                        xaxis_title='Nº de Moradores', yaxis_title='Nº de Domicílios',
-                        xaxis_tickfont_size=14, yaxis_tickfont_size=14, yaxis_range = [0,270], 
-                        plot_bgcolor= "#f8f9fa", showlegend=False, bargap=0.1)
+                        yaxis_title='Nº de Domicílios', xaxis_title='Nº de Banheiros Exclusivos', xaxis_tickfont_size=14, yaxis_tickfont_size=14, 
+                        yaxis_range = [0,580], plot_bgcolor= "#f8f9fa", showlegend=False, bargap=0.1)
 
-        fig.update_xaxes(tickmode='array', tickvals=np.arange(1,11))
-        fig.update_traces(textfont_size=15, textposition="outside", texttemplate='<b>%{y}</b>', cliponaxis=False)
+        fig.update_traces(textfont_size=20, textposition="outside", texttemplate='<b>%{y}</b>', cliponaxis=False)
+
+        # Adicionando imagens
+        img_3 = Image.open("images/moradia-img03-sanitario.png")
+        fig.add_layout_image(dict(source=img_3, x=0.85, y=0.55))
+        fig.update_layout_images(dict(xref="paper", yref="paper", sizex=0.3, sizey=0.3, xanchor="right", yanchor="bottom"))
+
+        fig.add_annotation(text='Fonte: <a href="https://www.flaticon.com/br/icones-gratis/banheiro">Banheiro ícones criados por Creaticca Creative Agency - Flaticon</a>',
+                        align="left", xref="paper", yref = "paper", x=1, y=-0.2, showarrow=False, font_size=10)
         st.plotly_chart(fig)
-    with cols_dom_n_moradores[1]:
+
+    cols_dom_esgoto = st.columns(2)
+    with cols_dom_esgoto[0]:
+        dom_esgoto = dados.V508_first.value_counts().to_frame().reset_index()
+        dom_esgoto.columns = ["tipo", "qtd"]
+
+        fig = px.bar(dom_esgoto, x="tipo", y="qtd",  color="tipo", text_auto=True,
+                    color_discrete_sequence=["#f58334", "#fec52b", "#0367b0", "#ed3237", "#cccccc"])
+
+        # Ajustando o layout do gráfico
+        fig.update_layout(width=700, height=500, font_family = 'Open Sans', font_color= "black", 
+                        title_font_color= "black", title_font_size=24, title_text='Domicílios pela forma de escoamento do esgoto' + 
+                        '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', 
+                        yaxis_title='', xaxis_title='', xaxis_tickfont_size=14, yaxis_tickfont_size=14, 
+                        yaxis_range = [0,440], plot_bgcolor= "#f8f9fa", showlegend=False)
+
+        fig.update_traces(textfont_size=20, textposition="outside", texttemplate='<b>%{y}</b>', cliponaxis=False)
+        fig.update_xaxes(tickmode='array', tickvals=np.arange(0,5), ticktext = ["Rede geral", "Fossa não<br>ligada à rede", "Rio, lago ou<br> mar",
+                                                                                "Vala", "Outra forma"])
+        # Adicionando imagens
+        img_4 = Image.open("images/moradia-img04-esgoto.png")
+        fig.add_layout_image(dict(source=img_4, x=0.75, y=0.55))
+        fig.update_layout_images(dict(xref="paper", yref="paper", sizex=0.3, sizey=0.3, xanchor="right", yanchor="bottom"))
+
+        fig.add_annotation(text='Fonte: <a href="https://www.flaticon.com/br/icones-gratis/esgoto">Esgoto ícones criados por Freepik - Flaticon</a>',
+                        align="left", xref="paper", yref = "paper", x=1, y=-0.2, showarrow=False, font_size=10)
+        st.plotly_chart(fig)
+    with cols_dom_esgoto[1]:
         st.markdown('''<ul class="font-text-destaques">
                         <li> Segundo as projeções da Fundação SEADE, no município em 2020, os <font color='red'><b>68.503 habitantes se dividem em 22.112
                              domicílios</b></font>, o que resultaria numa média de pouco mais de <b>3</b> moradores por domicílio.
@@ -1856,11 +1880,8 @@ with tabs[5]: # TAB de Moradia
                         </li>
                     </ul>''', unsafe_allow_html=True)
 
-    st.markdown('#')
-    st.markdown('#')
-
-    cols_dom_arranjo = st.columns(2)
-    with cols_dom_arranjo[0]:
+    cols_dom_energia = st.columns(2)
+    with cols_dom_energia[0]:
         st.markdown('''<ul class="font-text-destaques">
                         <li> Podemos notar no gráfico ao lado, que o <font color='red'><b>arranjo familiar de união e casamento entre indivíduos de sexo diferente</b></font>,
                              é amplamente representado com mais de <b>75%</b> dos arranjos familiares. Outro fator relevantes é de que mais de <b>23%</b> dos 
@@ -1875,28 +1896,183 @@ with tabs[5]: # TAB de Moradia
                              e temos uma média de <b>41</b> anos de idade para a responsável.
                         </li>
                     </ul>''', unsafe_allow_html=True)
-    with cols_dom_arranjo[1]:
-        domicilio_arranjo_familiar = dados.D1606D.value_counts().to_frame().reset_index()
-        domicilio_arranjo_familiar.columns = ["arranjo", "qtd"]
+    with cols_dom_energia[1]:
+        tem_energia = dados.query("V509_first == 'Utiliza ao menos uma fonte de energia elétrica'").shape[0]
+        total = dados.V509_first.shape[0]
+        acesso_energia = tem_energia/total
 
-        fig = px.bar(domicilio_arranjo_familiar, x="qtd", y="arranjo", color = "arranjo", text_auto=True,
-                    color_discrete_sequence=["#fec52b","#00b050", "#ed3237", "#0367b0"])
+        labels = ["Tem energia elétrica", "Não tem energia elétrica"]
+        values = [acesso_energia, 1 - acesso_energia]
+
+        fig = go.Figure( data=[ go.Pie(labels=labels, values = values, marker_colors=["#fec52b","#ffe8aa"], hole = 0.6) ] )
 
         # Ajustando o layout do gráfico
-        fig.update_layout(width=700, height=500, font_family = 'Open Sans', font_size=15, font_color= "black", 
-                        title_font_color= "black", title_font_size=24, title_text='Distribuição dos domicílios pelos arranjos familiares' + 
-                        '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', xaxis_title='', yaxis_title='',
-                        xaxis_tickfont_size=14, yaxis_tickfont_size=14, xaxis_range = [0,550], 
-                        plot_bgcolor= "#f8f9fa", showlegend=False)
+        fig.update_layout(width=500, height=500, font_family = 'Open Sans', font_color= "black", title_font_color= "black",
+                        title_font_size=24, title_text='Domicílios pelo acesso à energia elétrica' + 
+                        '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>',
+                        showlegend=False, annotations=[dict(text=f'<b>{acesso_energia*100:.1f}%</b>', x=0.5, y=0.4, font_size=28, 
+                                                            showarrow=False)])
 
-        fig.update_yaxes(tickmode='array', tickvals=np.arange(0,4), 
-                         ticktext = ["União ou casamento<br>(indivíduos de sexo<br>diferente)", "Monoparental", "Consanguíneo",
-                                     "União ou casamento<br>(indivíduos do<br>mesmo sexo)"])
-        fig.update_traces(textfont_size=15, textposition="outside", texttemplate='<b>%{x}</b>', cliponaxis=False)
+        # Adicionando imagens
+        img_5 = Image.open("images/moradia-img05-lampada.png")
+        fig.add_layout_image(dict(source=img_5, x=0.5, y=0.62))
+        fig.update_layout_images(dict(xref="paper", yref="paper", sizex=0.3, sizey=0.3, xanchor="center", yanchor="middle"))
+
+        fig.update_traces(hoverinfo='label+percent', textinfo='none')
+        fig.add_annotation(text='Fonte: <a href="https://www.flaticon.com/br/icones-gratis/lampada">Lampada ícones criados por Freepik - Flaticon</a>',
+                        align="left", xref="paper", yref = "paper", x=1, y=-0.2, showarrow=False, font_size=10)
         st.plotly_chart(fig)
 
+    st.markdown('## Acesso à bens e serviços')
 
+    cols_dom_celular = st.columns(2)
+    with cols_dom_celular[0]:
+        dom_celular = dados.V512_first.value_counts().to_frame().reset_index()
+        dom_celular.columns = ["n_celulares", "qtd"]
 
+        fig = px.histogram(dom_celular, x="n_celulares", y="qtd",  color="n_celulares", text_auto=True, 
+                        color_discrete_sequence=["#001932"], nbins=8)
+
+        # Ajustando o layout do gráfico
+        fig.update_layout(width=700, height=500, font_family = 'Open Sans', font_color= "black", 
+                        title_font_color= "black", title_font_size=24, title_text='Domicílios pelo nº de moradores que possuem celular' + 
+                        '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', 
+                        yaxis_title='Nº de Domicílios', xaxis_title='Nº de Moradores que possuem celular', xaxis_tickfont_size=14, 
+                        yaxis_tickfont_size=14, yaxis_range = [0,260], plot_bgcolor= "#f8f9fa", showlegend=False, bargap=0.1)
+
+        fig.update_traces(textfont_size=20, textposition="outside", texttemplate='<b>%{y}</b>', cliponaxis=False)
+        fig.update_xaxes(tickmode='array', tickvals=np.arange(0,8))
+
+        # Adicionando imagens
+        img_6 = Image.open("images/moradia-img06-celular.png")
+        fig.add_layout_image(dict(source=img_6, x=0.9, y=0.55))
+        fig.update_layout_images(dict(xref="paper", yref="paper", sizex=0.4, sizey=0.4, xanchor="right", yanchor="bottom"))
+
+        fig.add_annotation(text='Fonte: <a href="https://www.flaticon.com/br/icones-gratis/telefone">Telefone ícones criados por prettycons - Flaticon</a>',
+                        align="left", xref="paper", yref = "paper", x=1, y=-0.2, showarrow=False, font_size=10)
+        st.plotly_chart(fig)
+    with cols_dom_celular[1]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <li> Embu-Guaçu tem um total projetado de <b>22.112</b> domicílios em 2020 (SEADE, 2020). Este recorte da pesquisa 
+                             engloba <font color='red'><b>3% do total de domicílios</b></font> do município.
+                        </li>
+                    <br>
+                        <li> Dos responsáveis pelo domicílio, <font color='red'><b>354 são mulheres</b></font>, representando aproximadamente <b>54.1%</b>
+                             do total, e <font color='red'><b>300 moradores são homens</b></font>, representando <b>45.9%</b> do total.
+                        </li>
+                    <br>
+                        <li> A <font color='red'><b>vantagem numérica dos domicílios chefiados por mulheres</b></font> foi destacado nos dados 
+                             demográficos dos domicílios entrevistados de Embu-Guaçu, principalmente pelos arranjos familiares.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+
+    cols_dom_tv = st.columns(2)
+    with cols_dom_tv[0]:
+        st.markdown('''<ul class="font-text-destaques">
+                    <br>
+                        <li> A <font color='red'><b>distribuição por cor e raça dos responsáveis dos domicílios</b></font>, tem relação
+                             direta com os dados da população da amostra e, consequentemente, com a proporção da população total do Brasil.
+                             Isso evidencia uma homogeneidade dos domicílios quanto a característica dos indivíduos, em que a frequência de
+                             domicílios heterogêneos são pouco significativos.
+                        </li>
+                    <br>
+                        <li> Os responsáveis declarados <font color='red'><b>Pretos e Pardos</b></font> somam cerca de <b>54,9%</b>, próximo dos <b>54%</b> do Brasil e
+                             os declarados <font color='red'><b>Brancos, Amarelos e Indígenas</b></font> juntos somam <b>45,1%</b> próximo dos 
+                             <b>46%</b> do Brasil.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+    with cols_dom_tv[1]:
+        dom_tv = dados.V515_first.value_counts().to_frame().reset_index()
+        dom_tv.columns = ["tipo", "qtd"]
+
+        fig = px.bar(dom_tv, x="tipo", y="qtd",  color="tipo", text_auto=True,
+                    color_discrete_sequence=["#f58334", "#fec52b", "#0367b0", "#ed3237"])
+
+        # Ajustando o layout do gráfico
+        fig.update_layout(width=700, height=500, font_family = 'Open Sans', font_color= "black", 
+                        title_font_color= "black", title_font_size=24, title_text='Domicílios com aparelhos de TV' + 
+                        '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', 
+                        yaxis_title='', xaxis_title='', xaxis_tickfont_size=14, yaxis_tickfont_size=14, 
+                        yaxis_range = [0,590], plot_bgcolor= "#f8f9fa", showlegend=False)
+
+        fig.update_traces(textfont_size=20, textposition="outside", texttemplate='<b>%{y}</b>', cliponaxis=False)
+        fig.update_xaxes(tickmode='array', tickvals=np.arange(0,4), ticktext = ["Sim, somente<br>de tela fina (LED,<br>LCD ou plasma)", 
+                                                                                "Sim, somente<br>de tubo", "Sim, de tela fina<br>e de tubo",
+                                                                                "Não"])
+        # Adicionando imagens
+        img_7 = Image.open("images/moradia-img07-televisao.png")
+        img_8 = Image.open("images/moradia-img08-televisao.png")
+        fig.add_layout_image(dict(source=img_7, x=0.55, y=0.55))
+        fig.add_layout_image(dict(source=img_8, x=0.85, y=0.55))
+        fig.update_layout_images(dict(xref="paper", yref="paper", sizex=0.3, sizey=0.3, xanchor="right", yanchor="bottom"))
+
+        fig.add_annotation(text='Fonte: <a href="https://www.flaticon.com/br/icones-gratis/televisao">Televisão ícones criados por Freepik - Flaticon</a>'
+                        '<br>Fonte: <a href="https://www.flaticon.com/br/icones-gratis/televisao">Televisão ícones criados por Vignesh Oviyan - Flaticon</a>',
+                        align="left", xref="paper", yref = "paper", x=1, y=-0.25, showarrow=False, font_size=10)
+        st.plotly_chart(fig)
+
+    cols_dom_pc_net = st.columns(2)
+    with cols_dom_pc_net[0]:
+        # Domicílios com PC
+        total = dados.shape[0]
+        labels = ["Sim", "Não"]
+        tem_pc = dados.query("V516_first == 'Sim'").shape[0]
+        values = [tem_pc/total, 1 - tem_pc/total]
+
+        # Domicílios com acesso à internet
+        tem_internet = dados.query("V517_first == 'Sim'").shape[0]
+        values_2 = [tem_internet/total, 1 - tem_internet/total]
+
+        # Domicílios com acesso à internet móvel
+        tem_internet_movel = dados.query("V518_first == 'Sim'").shape[0]
+        values_3 = [tem_internet_movel/total, 1 - tem_internet_movel/total]
+
+        from plotly.subplots import make_subplots
+
+        fig = make_subplots(1, 3, specs=[[{'type':'domain'}, {'type':'domain'}, {'type':'domain'}]])
+        fig.add_trace(go.Pie(labels=labels, values=values, marker_colors=["#001932","#b3bac2"], hole = 0.6, rotation = 180), 1, 1)
+        fig.add_trace(go.Pie(labels=labels, values=values_2, marker_colors=["#001932","#b3bac2"], hole = 0.6, rotation = 0), 1, 2)
+        fig.add_trace(go.Pie(labels=labels, values=values_3, marker_colors=["#001932","#b3bac2"], hole = 0.6, rotation = 0), 1, 3)
+
+        #Ajustando o layout do gráfico
+        fig.update_layout(width=700, height=500, font_family = 'Open Sans', font_color= "black", title_font_color= "black",
+                        title_font_size=24, title_text='Taxa de Desemprego geral e por gênero' + '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>',
+                        showlegend=False, 
+                        annotations=[dict(text=f'<b>{tem_pc/total*100:.1f}%</b>', x=0.11, y=0.4, font_size=18, showarrow=False),
+                                    dict(text=f'<b>{tem_internet/total*100:.1f}%</b>', x=0.5, y=0.4, font_size=18, showarrow=False),
+                                    dict(text=f'<b>{tem_internet_movel/total*100:.1f}%</b>', x=0.89, y=0.4, font_size=18, showarrow=False)]
+                                    )
+
+        fig.update_traces(hoverinfo='label+percent', textinfo='none')
+
+        img_9 = Image.open("images/moradia-img09-pc.png")
+        img_10 = Image.open("images/moradia-img10-internet.png")
+        img_11 = Image.open("images/moradia-img11-internet_movel.png")
+        fig.add_layout_image(dict(source=img_9, x=0.15, y=0.55))
+        fig.add_layout_image(dict(source=img_10, x=0.5, y=0.55))
+        fig.add_layout_image(dict(source=img_11, x=0.86, y=0.55))
+        fig.update_layout_images(dict(xref="paper", yref="paper", sizex=0.2, sizey=0.2, xanchor="center", yanchor="middle"))
+
+        fig.add_annotation(text='Fonte: <a href="https://www.flaticon.com/br/icones-gratis/computador">Computador ícones criados por Freepik - Flaticon</a>'
+                        '<br>Fonte: <a href="https://www.flaticon.com/br/icones-gratis/modem">Modem ícones criados por Uniconlabs - Flaticon</a>'
+                        '<br>Fonte: <a href="https://www.flaticon.com/br/icones-gratis/wifi-gratis">Wifi grátis ícones criados por Kalashnyk - Flaticon</a>',
+                        align="left", xref="paper", yref = "paper", x=1, y=-0.2, showarrow=False, font_size=10)
+        st.plotly_chart(fig)
+    with cols_dom_pc_net[1]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <li> Segundo as projeções da Fundação SEADE, no município em 2020, os <font color='red'><b>68.503 habitantes se dividem em 22.112
+                             domicílios</b></font>, o que resultaria numa média de pouco mais de <b>3</b> moradores por domicílio.
+                        </li>
+                    <br>
+                        <li> Observando o gráfico ao lado, com a distribuição dos domicílios na pesquisa, podemos notar <font color='red'><b>uma concentração
+                             maior dos domicílios entrevistados com 4 moradores</b></font> tanto na média, quanto na moda e mediana.
+                        </li>
+                    <br>
+                        <li> Extrapolando para a faixa <font color='red'><b>entre 3 e 5 moradores, são somados 538 domicílios,</b></font> ou seja, mais de <b>82%</b> do total
+                             de domicílios entrevistados. É importante focar em moradias com um número <b>acima de 5 filhos</b> verificando o impacto
+                             de acordo com a condição de moradia desses locais.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
 
 ## Rodapé
 st.markdown("---")
