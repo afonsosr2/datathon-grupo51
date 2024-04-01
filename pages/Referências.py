@@ -44,6 +44,8 @@ st.markdown('''
             - KNAFLIC, Cole Nussbaumer. Storytelling com dados: uma guia sobre visualização de dados para profissionais de negócio [Livro físico]
             - IBGE, Panorama de Embu-Guaçu. [acessado 2023 Mar].  
             Disponível em: https://cidades.ibge.gov.br/brasil/sp/embu-guacu/panorama
-            - SEADE População, Desc Ref. [acessado 2023 Mar].  
-            Disponível em: https://populacao.seade.gov.br/evolucao-populacional-esp/           
+            - SEADE, Dashboard dos dados dos Municípios. [acessado 2023 Mar].  
+            Disponível em: https://municipios.seade.gov.br/ 
+            - IMP, Informações dos Municípios Paulistas. [acessado 2023 Mar].  
+            Disponível em: http://www.imp.seade.gov.br/frontend/#/tabelas.          
             ''')

@@ -1437,12 +1437,14 @@ with tabs[4]: # TAB da Renda
     with cols_origem_renda[1]:        
         st.markdown('''<ul class="font-text-destaques">
                     <br><br><br><br>
-                        <li> Investigando a renda dos responsáveis pelo domicílio, encontramos uma <font color='red'><b>renda total dos domicílios cujo 
-                        responsável é um  homem, em média 11% acima do que a média dos domicílios chefiados por mulheres</b></font>.                
+                        <li> Investigando a origem da renda dos domicílios, foi possível perceber que <font color='red'><b>a renda advinda exclusivamente 
+                        do trabalho representa quase a metade dos domicílios</b></font> (<b>47,4% ou 310 domicílios</b>), seguida das rendas de trabalho 
+                        combinadas as rendas de programas sociais que representa quase um terço (<b>31,7% ou 207 domicílios</b>).            
                         </li>
                         <br>
-                        <li> A renda per capita evidenciou algo semelhante, com <font color='red'><b>8,8 pontos percentuais acima do caso dos domicílios 
-                        chefiados por homens em relação a mulher</b></font>.
+                        <li> Analisando os pesos de cada parcela da renda, a partir de sua origem, em relação à renda total dos domicílios notamos que
+                        <font color='red'><b>84,5% advém do trabalho, seguida por 12,4% da renda oriunda dos programas sociais</b></font> e a parcela 
+                        restante (3,1%) vem de outras rendas.
                         </li>
                     </ul>''', unsafe_allow_html=True)
 
@@ -1450,12 +1452,13 @@ with tabs[4]: # TAB da Renda
     with cols_renda_por_domicilio[0]:
         st.markdown('''<ul class="font-text-destaques">
                         <br><br><br><br>
-                        <li> Ao avaliarmos a renda dos responsáveis pelo domicílio em relação a cor ou raça, <font color='red'><b>não encontramos qualquer
-                        diferença significativa</b></font>. As dificuldades de acesso à renda dessa população é a mesma para brancos, pretos, pardos,
-                        amarelos e indígenas.                
+                        <li> Partindo para a <font color='red'><b>análise da renda média por domicílio pela origem da renda</b></font>, observamos que 
+                        as 4 primeiras posições evidenciam a força do trabalho na geração de renda das famílias no PSE 2020. <b>Todas as médias estão acima
+                        de 2 salários mínimos</b> para esta situação.                
                         </li>
                         <br>
-                        <li> Logo abaixo, vamos explorar a origem das rendas da população investigada na PSE 2020.
+                        <li> Excluindo as famílias que estavam, no momento da pesquisa, em total privação de acesso à renda, <font color='red'><b>aquelas com 
+                        renda exclusivamente advindas de programas sociais tinham o menor nível de renda domiciliar</b></font> observado.
                         </li>
                     </ul>''', unsafe_allow_html=True)
     with cols_renda_por_domicilio[1]:
@@ -1532,26 +1535,34 @@ with tabs[4]: # TAB da Renda
         st.plotly_chart(fig)
     with cols_renda_trabalho[1]:        
         st.markdown('''<ul class="font-text-destaques">
-                    <br><br><br><br>
-                        <li> Investigando a renda dos responsáveis pelo domicílio, encontramos uma <font color='red'><b>renda total dos domicílios cujo 
-                        responsável é um  homem, em média 11% acima do que a média dos domicílios chefiados por mulheres</b></font>.                
+                        <br><br>
+                        <li> Vamos tratar neste tópico sobre a renda do trabalho. Neste recorte, temos <font color='red'><b>310 domicílios (47% da população
+                        investigada) com renda exclusivamente do trabalho</b></font>, cujos domicílos são habitados por <b>1.220 com 358 alunos Passos Mágicos.
+                        </b> A <b>renda total média desses domicílios é de R$ 2.910,87</b> e a <b>renda per capita de R$ 739,65</b>.                
                         </li>
                         <br>
-                        <li> A renda per capita evidenciou algo semelhante, com <font color='red'><b>8,8 pontos percentuais acima do caso dos domicílios 
-                        chefiados por homens em relação a mulher</b></font>.
+                        <li> No recorte, <b>235 domicílios</b> possuem ao menos um trabalhador formal com <b>renda total média de R$ 3.171,27 e R$ 805,67 
+                        per capita</b>. Representando <font color='red'><b>um valor 8,9% acima dos domicílios com renda exclusiva do trabalho em 
+                        geral</b></font>. Temos também, <b>75 domicílios</b> com apenas trabalhadores informais com renda <b>34% inferior</b> àqueles dos
+                        domicílios com ao menos um trabalhador formal. 
                         </li>
                     </ul>''', unsafe_allow_html=True)
 
     cols_renda_trabalho_PS = st.columns(2)
     with cols_renda_trabalho_PS[0]:
         st.markdown('''<ul class="font-text-destaques">
-                        <br><br><br><br>
-                        <li> Ao avaliarmos a renda dos responsáveis pelo domicílio em relação a cor ou raça, <font color='red'><b>não encontramos qualquer
-                        diferença significativa</b></font>. As dificuldades de acesso à renda dessa população é a mesma para brancos, pretos, pardos,
-                        amarelos e indígenas.                
+                        <br><br>
+                        <li> Em <font color='red'><b>207 domicílios (32% do total de domicílios), a renda é composta pela combinação das rendos do trabalho
+                        e de programas sociais</b></font>. Nesses domicílios possuímos <b>263 alunos Passos Mágicos</b>, <font color='red'><b>mais de um terço
+                        dos alunos atendidos pela Associação</b></font>.           
                         </li>
                         <br>
-                        <li> Logo abaixo, vamos explorar a origem das rendas da população investigada na PSE 2020.
+                        <li> A renda média desses domicílios é de <b>R$ 2.626,86</b>, e a renda per capita de <b>R$ 600,18</b>. Podemos notar no gráfico ao
+                        lado que <font color='red'><b>75% da renda do domicílio é advindo do trabalho enquanto, quase 25%, vem dos programas sociais</b></font>.                    
+                        </li>
+                        <br>
+                        <li> Logo abaixo, vamos explorar a participação dos programas sociais tanto desses domicílios quanto dos domicílios em que os
+                        programas sociais são rendas exclusivas.
                         </li>
                     </ul>''', unsafe_allow_html=True)
     with cols_renda_trabalho_PS[1]:
@@ -1626,21 +1637,263 @@ with tabs[4]: # TAB da Renda
                         legend={'loc': 'lower left', 'bbox_to_anchor': (0, -0.5), 'ncol': 2, 'framealpha': 0},
                         starting_location='NW', block_arranging_style='snake', figsize=(8,8))
         st.pyplot(fig2)
-
     with cols_programas_sociais[1]:
         st.markdown('''<ul class="font-text-destaques">
-                        <br><br>
-                        <li> Na PSE 2020, <font color='red'><b>a População Total (PTo) é de 2.673 indivíduos</b></font>. O nº de indivíduos entre
-                        <b>15 e 65 anos</b> (a População em Idade de Trabalho - PIT) é de <b>1.674 indivíduos</b>, ou <b>62,6%</b> da PTo. 
-                        Consequentemente, a População Fora da Idade de Trabalho (PFIT), soma 999 indivíduos, ou seja 37,4% do total de 
-                        indivíduos pesquisados.
+                        <br>
+                        <li> Os programas sociais estão presentes <b>207 domicílios com 906 moradores</b> ao todo. Na PSE 2020, <font color='red'><b>a 
+                        Aposentadoria é o programa social mais importante com 36,1% de participação na renda</b></font>, seguido de outros programas
+                        (<b>22,5%></b>) e o Bolsa Família (<b>21,5%</b>)  
                         </li>
-                        <br><br><br>
-                        <li> Partindo agora para divisão da PIT, temos <font color='red'><b>a parcela de pessoas trabalhando ou em busca por trabalho 
-                        (Força de Trabalho - FT) correspondente à 1.018 indivíduos</b></font> e a parcela dos indivíduos Fora da Força de Trabalho 
-                        (FFT) de <b>656</b> indivíduos. Uma proporção próxima de 2/3 entre quem está na FFT em relação a FT.                    
+                        <br><br><br><br><br>
+                        <li> Nos domicílios com renda somente de programas sociais (<b>35 domicílios ou 5,4% do total</b>) com <b>42 alunos Passos Mágicos</b>,
+                        notamos novamente a <font color='red'><b>ampla participação da Aposentadoria como programa social mais importante (43%)</b></font>, 
+                        seguido do BPC/LOAS (Benefício Assistencial à Pessoa com Deficiência, com <b>29%</b>) e do Bolsa Família (<b>13%</b>).                   
                         </li>
                     </ul>''', unsafe_allow_html=True) 
+with tabs[5]: # TAB de Moradia
+    st.markdown("")
+    cols_destaque_demografia = st.columns(2)
+    with cols_destaque_demografia[0]:
+        st.markdown("<p class='font-text-destaques'><br>Principais destaques sobre Demografia</p>", unsafe_allow_html=True)
+    with cols_destaque_demografia[1]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <li> A <font color='red'><b>PSE 2020</b></font> trouxe dados de <b>784</b> alunos da <b>Associação Passos Mágicos</b>.
+                             Considerando a população de <b>68.053</b> habitantes em 2020 (SEADE, 2020), a pesquisa representa <b>4% da 
+                             população</b> do município.
+                        </li>
+                    <br>
+                        <li> <font color='red'><b>Na faixa entre 5 a 19 anos de idade</b></font> na pesquisa temos <b>1.137</b> crianças e
+                             jovens. Considerando os dados apenas nos domicílios entrevistados, <b>353</b> jovens ainda não foram atendidos
+                             pela APM. 
+                        </li>
+                    <br>
+                        <li> Extrapolando a população dessa faixa etária para <b>42,5%</b> e uma população de <b>68.053</b> habitantes,
+                             <b>28.923</b> seriam de crianças e jovens. <font color='red'><b>Aproximadamente 17.350 crianças e jovens</b></font>
+                             como público potencial da APM (<b>60%</b> da população socialmente vulnerável).
+                        </li>
+                    <br>
+                        <li> Foi possível observar uma <font color='red'><b>preponderância do gênero feminino</b></font> em diversas 
+                             categorias, bem como de Pardos e Pretos. Em domicílios monoparentais, mais de <b>90%</b> dos casos são de 
+                             mulheres responsáveis, com <b>60%</b> de Pretas ou Pardas e <b>71%</b> do total
+                             de domicílios monoparentais com 1 a 2 filhos e/ou enteados.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+
+    st.markdown("---")
+    st.markdown('#')
+
+    st.markdown('## Indivíduos')
+    
+    cols_pop_sexo = st.columns(2)
+    with cols_pop_sexo[0]:
+        mulheres = dados.D1702_sum.sum()
+        homens = dados.D1701_sum.sum()
+        total = mulheres + homens
+        pct_mulheres = (100 *mulheres/total)
+        pct_homens = (100 * homens/total)
+
+        data = {'Mulheres': pct_mulheres, 'Homens': pct_homens}
+        fig = plt.figure(FigureClass=Waffle, rows=5, values=data, colors=["#f58334", "#0367b0"],
+                        title={'label': 'População total por sexo', 'loc': 'left', 'size':10},
+                        labels=[f"{k} ({v:.1f}%)" for k, v in data.items()],
+                        legend={'loc': 'lower left', 'bbox_to_anchor': (0, -0.4), 'ncol': len(data), 'framealpha': 0},
+                        starting_location='NW', block_arranging_style='snake')
+        st.pyplot(fig)
+    with cols_pop_sexo[1]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <li> O recorte da pesquisa engloba <font color='red'><b>4% do total da população</b></font> de Embu-Guaçu, uma amostra considerável.
+                        </li>
+                    <br>
+                        <li> Da população pesquisada, <font color='red'><b>1.452 são mulheres</b></font>, representando aproximadamente <b>54.3%</b>
+                             do total, e <font color='red'><b>1.221 moradores são homens</b></font>, representando <b>45.7%</b> do total.
+                        </li>
+                    <br>
+                        <li> A <font color='red'><b>proporção entre homens e mulheres</b></font> em Embu-Guaçu em 2020 é de <b>50,5%</b> de mulheres
+                     e <b>49,5%</b> de homens. O ligeiro afastamento em relação a pesquisa pode ser explicado pelo recorte socioeconômico.  
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+
+    st.markdown('#')
+    st.markdown('#')    
+
+    cols_pop_cor_raca = st.columns(2)
+    with cols_pop_cor_raca[0]:
+        st.markdown('''<ul class="font-text-destaques">
+                    <br><br>
+                        <li> Com relação à <font color='red'><b>distribuição da população por raça e cor</b></font>, as proporções da 
+                             população total do Brasil se assemelham ao de Embu-Guaçu, que podemos observar na imagem ao lado
+                        </li>
+                    <br>
+                        <li> Os declarados <font color='red'><b>Pretos e Pardos</b></font> somam cerca de <b>54,8%</b>, próximo dos <b>54%</b> do Brasil e
+                             os declarados <font color='red'><b>Brancos, Amarelos e Indígenas</b></font> juntos somam <b>45,2%</b> próximo dos 
+                             <b>46%</b> do Brasil.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+    with cols_pop_cor_raca[1]:
+        pop_cor_raca = dados.copy()
+        pop_cor_raca["pop"] =  dados["D1701_sum"] + dados["D1702_sum"]
+        pop_cor_raca = pop_cor_raca.groupby("V109_first")[["pop"]].sum().reset_index()
+        pop_cor_raca.columns = ["cor_raca", "qtd"]
+
+        fig = px.bar(pop_cor_raca, x="qtd", y="cor_raca", color = "cor_raca", text_auto=True,
+                    color_discrete_sequence=["#fec52b","#00b050","#f58334", "#ed3237", "#0367b0"],
+                    category_orders={'cor_raca':["Parda", "Preta", "Branca", "Amarela","Indígena"]})
+
+        # Ajustando o layout do gráfico
+        fig.update_layout(width=700, height=350, font_family = 'Open Sans', font_color= "black", 
+                          title_font_color= "black", title_font_size=24, title_text='População por Cor ou Raça' + 
+                          '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', xaxis_title='', yaxis_title='',
+                          xaxis_tickfont_size=14, yaxis_tickfont_size=14, xaxis_range = [0,1350], 
+                          plot_bgcolor= "#f8f9fa", showlegend=False)
+
+        fig.update_traces(textfont_size=15, textposition="outside", texttemplate='<b>%{x}</b>', cliponaxis=False)
+ 
+        st.plotly_chart(fig)
+
+    st.markdown('## Domicílios')
+
+    cols_dom_sexo = st.columns(2)
+    with cols_dom_sexo[0]:
+        domicilio_sexo_resp = dados.V107_first.value_counts()
+        domicilio_sexo_resp.index = ["Mulheres", "Homens"]
+        total = domicilio_sexo_resp.sum()
+        pct_mulheres = (100 * domicilio_sexo_resp.loc["Mulheres"]/total)
+        pct_homens = (100 * domicilio_sexo_resp.loc["Homens"]/total)
+
+        data = {'Mulheres': pct_mulheres, 'Homens': pct_homens}
+        fig = plt.figure(FigureClass=Waffle, rows=5, values=data, colors=["#f58334", "#0367b0"],
+                title={'label': 'Total de domicílios por sexo do responsável', 'loc': 'left', 'size':10},
+                labels=[f"{k} ({v:.1f}%)" for k, v in data.items()],
+                legend={'loc': 'lower left', 'bbox_to_anchor': (0, -0.4), 'ncol': len(data), 'framealpha': 0},
+                starting_location='NW', block_arranging_style='snake')
+        
+        st.pyplot(fig)
+    with cols_dom_sexo[1]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <li> Embu-Guaçu tem um total projetado de <b>22.112</b> domicílios em 2020 (SEADE, 2020). Este recorte da pesquisa 
+                             engloba <font color='red'><b>3% do total de domicílios</b></font> do município.
+                        </li>
+                    <br>
+                        <li> Dos responsáveis pelo domicílio, <font color='red'><b>354 são mulheres</b></font>, representando aproximadamente <b>54.1%</b>
+                             do total, e <font color='red'><b>300 moradores são homens</b></font>, representando <b>45.9%</b> do total.
+                        </li>
+                    <br>
+                        <li> A <font color='red'><b>vantagem numérica dos domicílios chefiados por mulheres</b></font> foi destacado nos dados 
+                             demográficos dos domicílios entrevistados de Embu-Guaçu, principalmente pelos arranjos familiares.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+
+    st.markdown('#')
+    st.markdown('#')
+
+    cols_dom_cor_raca = st.columns(2)
+    with cols_dom_cor_raca[0]:
+        st.markdown('''<ul class="font-text-destaques">
+                    <br>
+                        <li> A <font color='red'><b>distribuição por cor e raça dos responsáveis dos domicílios</b></font>, tem relação
+                             direta com os dados da população da amostra e, consequentemente, com a proporção da população total do Brasil.
+                             Isso evidencia uma homogeneidade dos domicílios quanto a característica dos indivíduos, em que a frequência de
+                             domicílios heterogêneos são pouco significativos.
+                        </li>
+                    <br>
+                        <li> Os responsáveis declarados <font color='red'><b>Pretos e Pardos</b></font> somam cerca de <b>54,9%</b>, próximo dos <b>54%</b> do Brasil e
+                             os declarados <font color='red'><b>Brancos, Amarelos e Indígenas</b></font> juntos somam <b>45,1%</b> próximo dos 
+                             <b>46%</b> do Brasil.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+    with cols_dom_cor_raca[1]:
+        pop_cor_raca = dados.V109_first.value_counts().to_frame().reset_index()
+        pop_cor_raca.columns = ["cor_raca", "qtd"]
+
+        fig = px.bar(pop_cor_raca, x="qtd", y="cor_raca", color = "cor_raca", text_auto=True,
+                    color_discrete_sequence=["#fec52b","#00b050","#f58334", "#ed3237", "#0367b0"],
+                    category_orders={'cor_raca':["Parda", "Preta", "Branca", "Amarela","Indígena"]})
+
+        # Ajustando o layout do gráfico
+        fig.update_layout(width=700, height=350, font_family = 'Open Sans', font_size=15, font_color= "black", 
+                        title_font_color= "black", title_font_size=24, title_text='População por Cor ou Raça do responsável' + 
+                        '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', xaxis_title='', yaxis_title='',
+                        xaxis_tickfont_size=14, yaxis_tickfont_size=14, xaxis_range = [0,350], 
+                        plot_bgcolor= "#f8f9fa", showlegend=False)
+
+        fig.update_traces(textfont_size=15, textposition="outside", texttemplate='<b>%{x}</b>', cliponaxis=False)
+        st.plotly_chart(fig)
+
+    cols_dom_n_moradores = st.columns(2)
+    with cols_dom_n_moradores[0]:
+        domicilio_n_moradores = dados.V104_max.value_counts().to_frame()
+        domicilio_n_moradores.loc["1"], domicilio_n_moradores.loc["9"] = 0, 0
+        domicilio_n_moradores = domicilio_n_moradores.reset_index()
+        domicilio_n_moradores.columns = ["Nº de Moradores", "Nº de Domicílios"]
+
+        fig = px.histogram(domicilio_n_moradores, x="Nº de Moradores", y="Nº de Domicílios", 
+                        text_auto=True, color_discrete_sequence=["#68a4d0"], nbins= 10)
+
+        # Ajustando o layout do gráfico
+        fig.update_layout(width=700, height=500, font_family = 'Open Sans', font_color= "black", 
+                        title_font_color= "black", title_font_size=24, title_text='Distribuição dos domicílios por nº de moradores' + 
+                        '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', 
+                        xaxis_title='Nº de Moradores', yaxis_title='Nº de Domicílios',
+                        xaxis_tickfont_size=14, yaxis_tickfont_size=14, yaxis_range = [0,270], 
+                        plot_bgcolor= "#f8f9fa", showlegend=False, bargap=0.1)
+
+        fig.update_xaxes(tickmode='array', tickvals=np.arange(1,11))
+        fig.update_traces(textfont_size=15, textposition="outside", texttemplate='<b>%{y}</b>', cliponaxis=False)
+        st.plotly_chart(fig)
+    with cols_dom_n_moradores[1]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <li> Segundo as projeções da Fundação SEADE, no município em 2020, os <font color='red'><b>68.503 habitantes se dividem em 22.112
+                             domicílios</b></font>, o que resultaria numa média de pouco mais de <b>3</b> moradores por domicílio.
+                        </li>
+                    <br>
+                        <li> Observando o gráfico ao lado, com a distribuição dos domicílios na pesquisa, podemos notar <font color='red'><b>uma concentração
+                             maior dos domicílios entrevistados com 4 moradores</b></font> tanto na média, quanto na moda e mediana.
+                        </li>
+                    <br>
+                        <li> Extrapolando para a faixa <font color='red'><b>entre 3 e 5 moradores, são somados 538 domicílios,</b></font> ou seja, mais de <b>82%</b> do total
+                             de domicílios entrevistados. É importante focar em moradias com um número <b>acima de 5 filhos</b> verificando o impacto
+                             de acordo com a condição de moradia desses locais.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+
+    st.markdown('#')
+    st.markdown('#')
+
+    cols_dom_arranjo = st.columns(2)
+    with cols_dom_arranjo[0]:
+        st.markdown('''<ul class="font-text-destaques">
+                        <li> Podemos notar no gráfico ao lado, que o <font color='red'><b>arranjo familiar de união e casamento entre indivíduos de sexo diferente</b></font>,
+                             é amplamente representado com mais de <b>75%</b> dos arranjos familiares. Outro fator relevantes é de que mais de <b>23%</b> dos 
+                             arranjos familiares são <b>monoparentais</b> (apenas mulher ou homem), que é <b>muito</b> superior à média nacional de <b>13%</b>.
+                        </li>
+                    <br>
+                        <li> Dos <font color='red'><b>arranjos monoparentais, mais de 90% são de mulheres</b></font>, acima dos <b>83,3%</b> de Embu-Guaçu dada pelo Censo do IBGE em 2010.
+                             Dos <font color='red'><b>arranjos de união ou casamento, em 38,6% dos casos a mulher é a responsável pelo domicílio</b></font>.
+                        </li>
+                    <br>
+                        <li> Dos <font color='red'><b>138 domicílios monoparentais chefiados por mulheres, a proporção de Pardas e Pretas representam 61,6% do total</b></font>,
+                             e temos uma média de <b>41</b> anos de idade para a responsável.
+                        </li>
+                    </ul>''', unsafe_allow_html=True)
+    with cols_dom_arranjo[1]:
+        domicilio_arranjo_familiar = dados.D1606D.value_counts().to_frame().reset_index()
+        domicilio_arranjo_familiar.columns = ["arranjo", "qtd"]
+
+        fig = px.bar(domicilio_arranjo_familiar, x="qtd", y="arranjo", color = "arranjo", text_auto=True,
+                    color_discrete_sequence=["#fec52b","#00b050", "#ed3237", "#0367b0"])
+
+        # Ajustando o layout do gráfico
+        fig.update_layout(width=700, height=500, font_family = 'Open Sans', font_size=15, font_color= "black", 
+                        title_font_color= "black", title_font_size=24, title_text='Distribuição dos domicílios pelos arranjos familiares' + 
+                        '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', xaxis_title='', yaxis_title='',
+                        xaxis_tickfont_size=14, yaxis_tickfont_size=14, xaxis_range = [0,550], 
+                        plot_bgcolor= "#f8f9fa", showlegend=False)
+
+        fig.update_yaxes(tickmode='array', tickvals=np.arange(0,4), 
+                         ticktext = ["União ou casamento<br>(indivíduos de sexo<br>diferente)", "Monoparental", "Consanguíneo",
+                                     "União ou casamento<br>(indivíduos do<br>mesmo sexo)"])
+        fig.update_traces(textfont_size=15, textposition="outside", texttemplate='<b>%{x}</b>', cliponaxis=False)
+        st.plotly_chart(fig)
 
 
 
