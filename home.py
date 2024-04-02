@@ -326,7 +326,7 @@ with tabs_2[1]:
       
        st.markdown("""### Percentual de alunos por Faixa Etária""")
        st.markdown("     ")
-       st.markdown("""<ul class="font-text-destaques"> <li> A passos possui alunos na entre <b> 5 e 24 anos</b> a faixa etária com maior percentual de alunos é entre <b> 10 e 14 anos </b> com <font color='red'><b> 59.9 % </b></font> do total de alunos 
+       st.markdown("""<ul class="font-text-destaques"> <li> A passos possui alunos na entre <b> 5 e 24 anos</b> a faixa etária com maior percentual de alunos é entre <b> 10 e 14 anos </b> com <b> 59.9 % </b> do total de alunos 
        Em segundo lugar fica a faixa entre 15 e 19 anos com 23.8 %  """, unsafe_allow_html=True)
 
 
@@ -353,7 +353,13 @@ with tabs_2[1]:
 
     with colunas_6 [1]:
 
-      st.markdown("<b> 54 % dos alunos são do sexo feminino e 46 % do sexo masculino </b>", unsafe_allow_html=True)
+      st.markdown("")
+      st.markdown("")
+      st.markdown("")
+      st.markdown("")
+      
+
+      st.markdown("<li> <b> 54 % dos alunos são do sexo feminino e 46 % do sexo masculino </b>", unsafe_allow_html=True)
         
 with tabs_2[2]: 
     st.markdown("")
