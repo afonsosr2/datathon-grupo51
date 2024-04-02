@@ -192,9 +192,9 @@ with tabs_2[2]:
 
         st.markdown('''   <li> Os dados que serão mostrados abaixo tem a finalidade de demonstrar o impacto do sistema 
 educacional da Passos Mágicos nos jovens da região de Embu-Guaçu.''',unsafe_allow_html=True)
+        st.markdown("")
         st.markdown(
-                '''   
-                  
+                ''' 
                  <li> O gráfico abaixo demostra a quantidade de alunos e a evolução desse número no periodo de 2020 até 2022.    
   Podemos notar o crescimento expresivo entre o periodo de 2021 e 2022 que passou de <b> 727 <b> para <b> 939 <b> alunos.''',unsafe_allow_html=True)
 
@@ -210,7 +210,8 @@ educacional da Passos Mágicos nos jovens da região de Embu-Guaçu.''',unsafe_a
 
     st.markdown("""O INDE (ÍNdice de deenvolvimento educacional ),como medida do presente processo avaliativo,  é composto por uma dimenssão acadêmica, uma dimenssão psicossocial e uma dimenssão psicopedagógica.    
                   Essas dimensões são observadas por meio de resultado de 7 indicadores (IAN,IDA,IEG,IAA,IPS,IPP e IPV) que aglutinados por ponderação formam o índice sintetico INDE.""")
-    
+     st.markdown("")
+     st.markdown("O quaro abaixo explica o significado de cada indicador :")
     st.image("images/indicadores-INDE.png",caption="Fonte:PEDE 2022 Passos Mágicos")
 
 
