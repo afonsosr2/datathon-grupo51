@@ -30,12 +30,6 @@ st.header(":footprints: Análise dos dados da ONG Passos Mágicos")
 
 
 
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-import plotly.express as px 
-import plotly.graph_objects as go
-import numpy as np
 
 df = pd.read_csv("dados/PEDE_PASSOS_DATASET_FIAP-empilhados.csv", sep=",", encoding="utf-8",engine="python", decimal=".")
 df.fillna(0,inplace=True)
@@ -233,9 +227,8 @@ fig_9.update_layout(width=500, height=500, font_family = 'Open Sans', font_color
 fig_9.show()
 
 
-import streamlit as st
 
-st.set_page_config(layout= 'wide')
+
 tabs_titles_2= ["Como funciona a Passos","Alunos impactados pela Passos","Indicadores"]
 tabs_2 = st.tabs(tabs_titles_2)
 
