@@ -190,8 +190,8 @@ with tabs_2[2]:
     with colunas_3 [0]:
         st.markdown("### Indicadores Passos Mágicos")
 
-        st.markdown('''Os dados que serão mostrados abaixo tem a finalidade de demonstrar o impacto do sistema 
-educacional da Passos Mágicos nos jovens da região de Embu-Guaçu''')
+        st.markdown('''   <li> Os dados que serão mostrados abaixo tem a finalidade de demonstrar o impacto do sistema 
+educacional da Passos Mágicos nos jovens da região de Embu-Guaçu <li>''',unsafe_allow_html=True)
         st.markdown(
                 '''   
                   
