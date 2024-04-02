@@ -239,7 +239,7 @@ with tabs_2[0]:
 
         with st.container(border=True):
 
-            st.markdown("""A Passos Mágicos tem como objetivo acelerar a ascensão social de crianças e jovens do município de Embu Guaçu através da educação. 
+            st.markdown("""A Passos Mágicos tem como objetivo acelerar a ascensão social de crianças e jovens do município de Embu Guaçu através da educação.   
             Fornecendo aulas de português, matemática e inglês três vezes na semana, 
             atividades extracurriculares de finais de semana e bolsas de estudos no colégio particular, em cursos técnicos e de graduação.""")
 
@@ -247,7 +247,7 @@ with tabs_2[0]:
 
                 st.image("images/Ong-Passos-Magicos.jpeg",width=300)
                   
-    st.markdown("""A Passos Mágicos baseia-se na meritocracia, por isso engajamos nossas crianças para que acreditem que estudar é bom e pode transformar a vida delas.
+    st.markdown("""A Passos baseia-se na meritocracia, por isso engajamos nossas crianças para que acreditem que estudar é bom e pode transformar a vida delas.
             Avaliamos a participação, desempenho e presença para decidir quem participará das atividades de finais de semana e quem pode concorrer a bolsas de estudos na escola particular sendo apadrinhado por uma pessoa que se dispõe a financiar seu estudo. 
             As aulas são dadas fora do horário de aula escolar em locais fixos cedidos pela comunidade (em 4 núcleos diferentes), ou seja, 
             não temos uma sede construída, pois acreditamos que todo o valor de arrecadação do projeto deve ir para a melhora da qualidade de entrega e investimento em novas oportunidades para as crianças.""")
@@ -353,7 +353,7 @@ with tabs_2[1]:
 
     with colunas_6 [1]:
 
-      st.markdown("<p class='font-text-destaques'><br> 54 % dos alunos são do sexo feminino e 46 % do sexo masculino </p>", unsafe_allow_html=True)
+      st.markdown("<b> 54 % dos alunos são do sexo feminino e 46 % do sexo masculino </b>", unsafe_allow_html=True)
         
 with tabs_2[2]: 
     st.markdown("")
@@ -464,7 +464,7 @@ No Ano de 2022 13% dos alunos atingiram o ponto de Virada.""",unsafe_allow_html=
           st.markdown("")
           st.markdown("")
           st.markdown("")
-          st.markdown("""Podemos notar que houve um crescimento de quase 3.3 pontos percentuais nos total de alunos estudando em uma universidade.""")
+          st.markdown("""<b> Podemos notar que houve um crescimento de quase 3.3 pontos percentuais nos total de alunos estudando em uma universidade.</>""",unsafe_allow_html=True)
 
     with colunas_12[1] :
 
