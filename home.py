@@ -273,10 +273,10 @@ with tabs_2[0]:
              cursos e workshops, todas realizadas com a ajuda de voluntários que acompanham e participam com nossas crianças.""")
     
 
-    st.markdown( """Organograma abaixo demostra a estrutura hiherraquica da Passo Mágicos""")
+    st.markdown( """ ### Organograma abaixo demostra a estrutura hiherraquica da Passo Mágicos""")
     st.markdown("")
 
-    st.image("images/Estrutura passos.jpg", width=800)
+    st.image("images/Estrutura passos.jpg")
 
 
 
@@ -284,7 +284,7 @@ with tabs_2[0]:
 
 
 
-with tabs_2[1]: 
+    with tabs_2[1]: 
 
 
 
@@ -366,6 +366,7 @@ with tabs_2[2]:
         st.markdown('''   <li> Os dados que serão mostrados abaixo tem a finalidade de demonstrar o impacto do sistema 
 educacional da Passos Mágicos nos jovens da região de Embu-Guaçu.''',unsafe_allow_html=True)
         st.markdown("")
+        st.markdown("")
         st.markdown(
                 ''' 
                  <li> O gráfico abaixo demostra a quantidade de alunos e a evolução desse número no periodo de 2020 até 2022.    
@@ -379,21 +380,41 @@ educacional da Passos Mágicos nos jovens da região de Embu-Guaçu.''',unsafe_a
 
     st.markdown("### Dimenssão de indicadores INDE")
 
+    colunas_9 = st.columns(2)
 
-    st.markdown("""O INDE (ÍNdice de deenvolvimento educacional ),como medida do presente processo avaliativo,  é composto por uma dimenssão acadêmica, uma dimenssão psicossocial e uma dimenssão psicopedagógica.    
-                  Essas dimensões são observadas por meio de resultado de 7 indicadores (IAN,IDA,IEG,IAA,IPS,IPP e IPV) que aglutinados por ponderação formam o índice sintetico INDE.""")
+    with colunas_9 [1]:
+
+       st.markdown("")
+       st.markdown("")
+
+       st.markdown("""<li> O INDE (ÍNdice de deenvolvimento educacional ),como medida do presente processo avaliativo,  é composto por uma dimenssão acadêmica, uma dimenssão psicossocial e uma dimenssão psicopedagógica.   
+                  <li> Essas dimensões são observadas por meio de resultado de 7 indicadores (IAN,IDA,IEG,IAA,IPS,IPP e IPV) que aglutinados por ponderação formam o índice sintetico INDE.""",unsafe_allow_html=True)
+       
+       
+
+    with colunas_9 [0]:
+    
+        st.image("images/indicadores-INDE.png",caption="Fonte:PEDE 2022 Passos Mágicos")
+
+
+    
+    colunas_10 = st.columns(2)
+
+    with colunas_10[0]: 
+
+        st.markdown("<li> A tabela ao lado desmotra a evolução dos indicados de desenvolvimento educacional",unsafe_allow_html=True)
+        st.markdown(" <li> Podemos notar que o indicador IDA (Indicador de desempenho acadêmico) e IEG(Indicador de engajamento) teve uma queda em 2021 referente ao ano de 2020 possivelmente impactado pela pandemia.",unsafe_allow_html=True)
+    with colunas_10[1]: 
+
+        st.dataframe(df_medias_1)
+
+
     st.markdown("")
-    st.markdown("O quaro abaixo explica o significado de cada indicador :")
-    st.image("images/indicadores-INDE.png",caption="Fonte:PEDE 2022 Passos Mágicos")
-
-
-    
-    
-    st.dataframe(df_medias_1)
+    st.markdown("### Gráfico com a evolução dos Indicadores de Desempenho entre o período de 2020 até 2022")
 
 
           
-    st.plotly_chart(fig_2, use_container_width=False)
+    st.plotly_chart(fig_2, use_container_width=True)
 
 
     st.markdown("### Comparativo de Notas Português e Matemática ")
@@ -401,34 +422,115 @@ educacional da Passos Mágicos nos jovens da região de Embu-Guaçu.''',unsafe_a
 
     cols_perfil_4 = st.columns(2)
     with cols_perfil_4[0]:
-              st.markdown(""" O gráfico abaixo demostra a média de notas em Português e Matemática comparada com a média nacional que é de 4,41
-              contra 5,8 em matematica e 6,4 em português dos alunos da Passos.""")
-              st.markdown("""Segundo Ideb (https://qedu.org.br/brasil/ideb) 
+              st.markdown("")
+              st.markdown("""<li> O gráfico abaixo demostra a média de notas em Português e Matemática comparada com a média nacional que é de 4,41
+              contra 5,8 em matematica e 6,4 em português dos alunos da Passos.""",unsafe_allow_html=True)
+              st.markdown(""" <li> Segundo Ideb (https://qedu.org.br/brasil/ideb) 
 Nota padronizada em português e matemática de acordo com a Prova Saeb/2021
-é de 4,41  que é representada pela linha no gráfico .""")
+é de 4,41  que é representada pela linha no gráfico .""",unsafe_allow_html=True)
 
     with cols_perfil_4[1]:
             st.plotly_chart(fig_3, use_container_width=False)
 
+    
+    
     st.markdown("""### Ponto de Virada """)
 
-    st.markdown(""" É um  indicador é um indicador psicopedagógico, os resultados são obtidos por meio de avaliação de professores e psicopedagogos da associação.
+    colunas_11 = st.columns(2)
+
+    with colunas_11[1]:
+
+         st.markdown("")
+        
+
+         st.markdown(""" <li> É um  indicador é um indicador psicopedagógico, os resultados são obtidos por meio de avaliação de professores e psicopedagogos da associação.
 Ponto de virada é atingido quando o o estudante demostra de forma ativa por meio da trajetória dentro da associação, do valor de saber e a importancia de aprender.
-No Ano de 2022 13% dos alunos atingiram o ponto de Virada.""")
+No Ano de 2022 13% dos alunos atingiram o ponto de Virada.""",unsafe_allow_html=True)
 
-    st.markdown("")
+    with colunas_11[0]:
  
-    st.dataframe(df_virada)
+        st.dataframe(df_virada)
+        st.markdown("")
 
-  
-    st.plotly_chart(fig_4, use_container_width=False)
+        st.plotly_chart(fig_4, use_container_width=200)
 
 
     
     st.markdown("""### Percentual de Alunos na universidade na Ong Passos Mágicos""")
 
-    st.markdown("""Podemos notar que houve um crescimento de quase 3.3 pontos percentuais nos total de alunos estudando em uma universidade.""")
+    colunas_12 = st.columns(2)
 
-    st.plotly_chart(fig_5, use_container_width=False, sharing="streamlit", theme="streamlit")
+    with colunas_12[0] :
+          st.markdown("")
+          st.markdown("")
+          st.markdown("")
+          st.markdown("""Podemos notar que houve um crescimento de quase 3.3 pontos percentuais nos total de alunos estudando em uma universidade.""")
+
+    with colunas_12[1] :
+
+          st.plotly_chart(fig_5, use_container_width=False, sharing="streamlit", theme="streamlit")
+
+
+css_2 = '''
+<style>
+    /* Ajusta topicalização*/
+    [data-testid="stMarkdownContainer"] ul{
+    list-style-position: inside;
+    }
+    /*Container de pesquisa*/
+    [class="st-emotion-cache-r421ms e1f1d6gn0"]{
+    background-color: #0367b0;
+    border-radius: 30px;
+    }
+    /*Títulos do Container de pesquisa*/
+    [class="st-emotion-cache-r421ms e1f1d6gn0"] h3{
+    color: #ffffff;
+    font-weight:bold;    
+    }
+    /*Títulos do Container de pesquisa*/
+    [class="st-emotion-cache-r421ms e1f1d6gn0"] p{
+    color: #ffffff; 
+    }
+    /*Cards do container de pesquisa*/
+    [class="st-emotion-cache-r421ms e1f1d6gn0"] [data-testid="stHorizontalBlock"] [data-testid="stVerticalBlockBorderWrapper"]{
+    background-color: #68a4d0;    
+    border-radius: 30px;
+    }
+    /*Tabs da Pesquisa*/
+    div.stTabs [data-baseweb="tabs_titles_2"] button [data-testid="stMarkdownContainer"] p {
+    font-size:1.2rem;
+    font-weight:bold;
+    margin-left: 2rem;
+    }
+    /*Texto do principal destaque de cada aba*/
+    p.font-text-destaques {
+    font-size:40px;
+    font-weight:bold;
+    color:#0367b0;
+    padding: 150px 0 150px;
+    }
+    /*Texto dos destaques de cada aba*/
+    ul.font-text-destaques li{
+    font-size:20px;
+    }
+    /*Botão de retorno ao topo do relatório*/
+    .center {
+    position: absolute;
+    left: 50%;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    }
+    button.back-to-top{
+    background-color: #2c5381;
+    color:#ffffff;
+    border-radius: 8px;
+    }
+    button.back-to-top:hover{
+    background-color: #ffffff;
+    color:#000000;
+    }
+</style>
+'''
+st.markdown(css_2, unsafe_allow_html=True)
 
 
