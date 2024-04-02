@@ -1656,28 +1656,28 @@ with tabs[5]: # TAB de Moradia
     st.markdown("")
     cols_destaque_demografia = st.columns(2)
     with cols_destaque_demografia[0]:
-        st.markdown("<p class='font-text-destaques'><br>Principais destaques sobre Demografia</p>", unsafe_allow_html=True)
+        st.markdown("<p class='font-text-destaques'><br>Principais destaques sobre Moradia</p>", unsafe_allow_html=True)
     with cols_destaque_demografia[1]:
         st.markdown('''<ul class="font-text-destaques">
-                        <li> A <font color='red'><b>PSE 2020</b></font> trouxe dados de <b>784</b> alunos da <b>Associação Passos Mágicos</b>.
-                             Considerando a população de <b>68.053</b> habitantes em 2020 (SEADE, 2020), a pesquisa representa <b>4% da 
-                             população</b> do município.
+                        <li> A <font color='red'><b>pesquisa de moradia da PSE 2020 nos propicia acesso aos aspectos de vulnerabilidade social e precariedade
+                        nas condições de vida</b></font> da população. Mais de <b>89% dos domicílios são casas e 68 domicílios (10,4%)</b>
+                        de apartamentos de conjuntos habitacionais de programas de auxílio.
                         </li>
                     <br>
-                        <li> <font color='red'><b>Na faixa entre 5 a 19 anos de idade</b></font> na pesquisa temos <b>1.137</b> crianças e
-                             jovens. Considerando os dados apenas nos domicílios entrevistados, <b>353</b> jovens ainda não foram atendidos
-                             pela APM. 
+                        <li> Observamos apenas <font color='red'><b>41% das moradias como próprias e quitadas</b></font>, abaixo da média nacional (<b>66%</b>),
+                        as financiadas em andamento de <b>13%</b>, mais que o dobro da nacional (<b>6,1%</b>) e <b>45%</b>, acima da taxa
+                        nacional (<b>33,6%</b>).
                         </li>
                     <br>
-                        <li> Extrapolando a população dessa faixa etária para <b>42,5%</b> e uma população de <b>68.053</b> habitantes,
-                             <b>28.923</b> seriam de crianças e jovens. <font color='red'><b>Aproximadamente 17.350 crianças e jovens</b></font>
-                             como público potencial da APM (<b>60%</b> da população socialmente vulnerável).
+                        <li> Dentro das características das moradias não obtivemos grandes destaques, com a <font color='red'><b>disponibilidade de banheiro para
+                        uso exclusivo, energia elétrica e uso de combustível para a preparação de alimentos próximos da média nacional</b></font>. Exceto o fato
+                        de <b>14,2% dos domicílios não ter acesso à água encanada</b>, muito superior ao <b>2,4%</b> nacional, e apenas <b>59% das moradias</b>,
+                         contra <b>90,2%</b> da RMSP, ter uma rede geral de coleta de esgoto.
                         </li>
                     <br>
-                        <li> Foi possível observar uma <font color='red'><b>preponderância do gênero feminino</b></font> em diversas 
-                             categorias, bem como de Pardos e Pretos. Em domicílios monoparentais, mais de <b>90%</b> dos casos são de 
-                             mulheres responsáveis, com <b>60%</b> de Pretas ou Pardas e <b>71%</b> do total
-                             de domicílios monoparentais com 1 a 2 filhos e/ou enteados.
+                        <li> Como destaque, pela PSE 2020, <font color='red'><b>a presença de ao menos um telefone celular foi superior a média da região Sudeste
+                         (99,5% contra 94,5%), a posse quase universalizada de geladeira/freezer (99,8%) e a posse de 58,7% dos domicílios de ao menos um
+                         automóvel</b></font>. A média é bastante superior à nacional que em 2019 era de <b>49,2%</b>.
                         </li>
                     </ul>''', unsafe_allow_html=True)
 
@@ -1706,29 +1706,36 @@ with tabs[5]: # TAB de Moradia
         st.plotly_chart(fig)
     with cols_tipo_moradia[1]:
         st.markdown('''<ul class="font-text-destaques">
-                        <li> O recorte da pesquisa engloba <font color='red'><b>4% do total da população</b></font> de Embu-Guaçu, uma amostra considerável.
+                    <br><br>
+                        <li> O recorte da pesquisa aponta que <font color='red'><b>89,3% dos domicílio são de casas</b></font>, valor acima da média nacional
+                        (<b>85,6%</b>) e da Região Sudeste (<b>80,3%</b>). 
                         </li>
                     <br>
-                        <li> Da população pesquisada, <font color='red'><b>1.452 são mulheres</b></font>, representando aproximadamente <b>54.3%</b>
-                             do total, e <font color='red'><b>1.221 moradores são homens</b></font>, representando <b>45.7%</b> do total.
+                        <li> Da população pesquisada, <font color='red'><b>10,4% do total vive em apartamentos</b></font> próprios ou alugados. O restante, 
+                        <b>0,3%</b> dos casos, moram em habitações de cômodos ou cortiços como podemos observar no gráfico ao lado.
                         </li>
                     <br>
-                        <li> A <font color='red'><b>proporção entre homens e mulheres</b></font> em Embu-Guaçu em 2020 é de <b>50,5%</b> de mulheres
-                     e <b>49,5%</b> de homens. O ligeiro afastamento em relação a pesquisa pode ser explicado pelo recorte socioeconômico.  
+                        <li> Mais abaixo, vamos observar à condição e modalidade dessas ocupações para a população pesquisada na PSE 2020.  
                         </li>
                     </ul>''', unsafe_allow_html=True)
 
     cols_cond_moradia = st.columns(2)
     with cols_cond_moradia[0]:
         st.markdown('''<ul class="font-text-destaques">
-                    <br><br>
-                        <li> Com relação à <font color='red'><b>distribuição da população por raça e cor</b></font>, as proporções da 
-                             população total do Brasil se assemelham ao de Embu-Guaçu, que podemos observar na imagem ao lado
+                    <br><br><br>
+                        <li> A <font color='red'><b>moradia própria e quitada corresponde a 41% dos casos</b></font>, muito aquém da média nacional de <b>66,4%
+                        </b> e da Região Sudeste de <b>62,3%</b>. Essa  baixa quantidade de moradias quitadas é um forte indicador de <b>vulnerabilidade social</b>.
                         </li>
                     <br>
-                        <li> Os declarados <font color='red'><b>Pretos e Pardos</b></font> somam cerca de <b>54,8%</b>, próximo dos <b>54%</b> do Brasil e
-                             os declarados <font color='red'><b>Brancos, Amarelos e Indígenas</b></font> juntos somam <b>45,2%</b> próximo dos 
-                             <b>46%</b> do Brasil.
+                        <li> Da modalidade de <font color='red'><b>moradia própria com quitação em andamento temos 13,3% dos casos</b></font>, mais que o dobro
+                        da médial nacional de <b>6,1%</b>. As modalidades não proprietárias tem um peso de <b>47,5%</b> nos domicílios da PSE 2020, bastante 
+                        superior aos <b>33,6%</b> da média nacional e <b>37,4%</b> da média da Região Sudeste.
+                        </li>
+                    <br>
+                        <li> Segundo a pesquisa, <font color='red'><b>a formatação prevalente de moradia é de uma casa com 4 cômodos e 2 dormitórios, com 191 
+                        domicílios neste arranjo, quase 30% dos casos</b></font>. A configuração de 4 moradores pelos 4 cômodos é presente em <b>78 domicílios
+                        </b> dentro dos <b>220</b> que possuem 4 cômodos, ou seja <b>12%</b> de todos os casos observados. Apesar de algumas condições vulneráveis
+                        não foi possível perceber uma distribuição desproporcional entre o nº de moradores e o nº de moradias.
                         </li>
                     </ul>''', unsafe_allow_html=True)
     with cols_cond_moradia[1]:
@@ -1752,7 +1759,12 @@ with tabs[5]: # TAB de Moradia
         st.plotly_chart(fig)
 
     st.markdown('## Características das moradias')
-
+    st.markdown(''' <p style='font-size:20px;'>
+                        A descrição das condições físicas das moradias e do acesso de seus moradores a bens de consumo e serviços são elementos fundamentais
+                        na análise das suas condições de vida.
+                        </p> 
+                        ''', unsafe_allow_html=True)
+    
     cols_dom_agua = st.columns(2)
     with cols_dom_agua[0]:
         dom_agua_encanada = dados.V505_first.value_counts().to_frame().reset_index()
@@ -1762,7 +1774,7 @@ with tabs[5]: # TAB de Moradia
                     color_discrete_sequence=["#0367b0", "#f58334", "#ed3237"])
 
         # Ajustando o layout do gráfico
-        fig.update_layout(width=700, height=500, font_family = 'Open Sans', font_color= "black", 
+        fig.update_layout(width=700, height=400, font_family = 'Open Sans', font_color= "black", 
                         title_font_color= "black", title_font_size=24, title_text='Domicílios pela disponibilidade de água encanada' + 
                         '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', 
                         yaxis_title='', xaxis_title='', xaxis_tickfont_size=14, yaxis_tickfont_size=14, 
@@ -1781,36 +1793,34 @@ with tabs[5]: # TAB de Moradia
 
         fig.add_annotation(text='Fonte: <a href="https://www.flaticon.com/br/icones-gratis/torneira">Torneira ícones criados por Octopocto - Flaticon</a>'
                                 '<br>Fonte: <a href="https://www.flaticon.com/br/icones-gratis/chuveiro">Chuveiro ícones criados por Freepik - Flaticon</a>',
-                        align="left", xref="paper", yref = "paper", x=1, y=-0.2, showarrow=False, font_size=10)
+                        align="left", xref="paper", yref = "paper", x=1, y=-0.3, showarrow=False, font_size=10)
         st.plotly_chart(fig)
     with cols_dom_agua[1]:
         st.markdown('''<ul class="font-text-destaques">
-                        <li> Embu-Guaçu tem um total projetado de <b>22.112</b> domicílios em 2020 (SEADE, 2020). Este recorte da pesquisa 
-                             engloba <font color='red'><b>3% do total de domicílios</b></font> do município.
+                    <br>
+                        <li> Do ponto de vista <font color='red'><b>do material do piso dos domicílios, quase 92% possuem 
+                        cerâmica, lajota ou pedra</b></font>, sendo superior a média nacional (<b>78,3%</b>) e da região Sudeste (<b>86,6%</b>). 
                         </li>
                     <br>
-                        <li> Dos responsáveis pelo domicílio, <font color='red'><b>354 são mulheres</b></font>, representando aproximadamente <b>54.1%</b>
-                             do total, e <font color='red'><b>300 moradores são homens</b></font>, representando <b>45.9%</b> do total.
+                        <li> Sobre a água encanada, que podemos observar no gráfico ao lado, <font color='red'><b>561 domicílios, ou 85,8% do total, tem acesso
+                         à água encanada no interior do domicílio</b></font>. Abaixo da média nacional de <b>97,6%</b> e da RMSP de <b>99,9%</b> dos domicílios. 
                         </li>
                     <br>
-                        <li> A <font color='red'><b>vantagem numérica dos domicílios chefiados por mulheres</b></font> foi destacado nos dados 
-                             demográficos dos domicílios entrevistados de Embu-Guaçu, principalmente pelos arranjos familiares.
+                        <li> Outros <font color='red'><b>87 domicílios, ou 13,3%, só tem esse acesso nos limites do terreno</b></font>, enquanto 6 domicílios, 
+                        <b>0,9%</b>, do total não possui acesso algum.
                         </li>
                     </ul>''', unsafe_allow_html=True)
 
     cols_dom_banheiro = st.columns(2)
     with cols_dom_banheiro[0]:
         st.markdown('''<ul class="font-text-destaques">
-                    <br>
-                        <li> A <font color='red'><b>distribuição por cor e raça dos responsáveis dos domicílios</b></font>, tem relação
-                             direta com os dados da população da amostra e, consequentemente, com a proporção da população total do Brasil.
-                             Isso evidencia uma homogeneidade dos domicílios quanto a característica dos indivíduos, em que a frequência de
-                             domicílios heterogêneos são pouco significativos.
+                    <br><br><br>
+                        <li> A <font color='red'><b>proporção dos domicílios pesquisados na PSE 2020 com banheiro exclusivo para uso de moradores foi de 99,8%
+                        </b></font>, compatível com a média nacional de 97,8% e com a RMSP de 99,9%.
                         </li>
                     <br>
-                        <li> Os responsáveis declarados <font color='red'><b>Pretos e Pardos</b></font> somam cerca de <b>54,9%</b>, próximo dos <b>54%</b> do Brasil e
-                             os declarados <font color='red'><b>Brancos, Amarelos e Indígenas</b></font> juntos somam <b>45,1%</b> próximo dos 
-                             <b>46%</b> do Brasil.
+                        <li> <font color='red'><b>Apenas 1 domicílio dos 654 pesquisados não possui um banheiro exclusivo</b></font>, compartilhando com outro
+                        domicílio. 
                         </li>
                     </ul>''', unsafe_allow_html=True)
     with cols_dom_banheiro[1]:
@@ -1821,7 +1831,7 @@ with tabs[5]: # TAB de Moradia
                         color_discrete_sequence=["#68a4d0"], nbins=5)
 
         # Ajustando o layout do gráfico
-        fig.update_layout(width=700, height=500, font_family = 'Open Sans', font_color= "black", 
+        fig.update_layout(width=700, height=400, font_family = 'Open Sans', font_color= "black", 
                         title_font_color= "black", title_font_size=24, title_text='Domicílios pelo nº de banheiros de uso exclusivo' + 
                         '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', 
                         yaxis_title='Nº de Domicílios', xaxis_title='Nº de Banheiros Exclusivos', xaxis_tickfont_size=14, yaxis_tickfont_size=14, 
@@ -1835,7 +1845,7 @@ with tabs[5]: # TAB de Moradia
         fig.update_layout_images(dict(xref="paper", yref="paper", sizex=0.3, sizey=0.3, xanchor="right", yanchor="bottom"))
 
         fig.add_annotation(text='Fonte: <a href="https://www.flaticon.com/br/icones-gratis/banheiro">Banheiro ícones criados por Creaticca Creative Agency - Flaticon</a>',
-                        align="left", xref="paper", yref = "paper", x=1, y=-0.2, showarrow=False, font_size=10)
+                        align="left", xref="paper", yref = "paper", x=1, y=-0.3, showarrow=False, font_size=10)
         st.plotly_chart(fig)
 
     cols_dom_esgoto = st.columns(2)
@@ -1847,7 +1857,7 @@ with tabs[5]: # TAB de Moradia
                     color_discrete_sequence=["#f58334", "#fec52b", "#0367b0", "#ed3237", "#cccccc"])
 
         # Ajustando o layout do gráfico
-        fig.update_layout(width=700, height=500, font_family = 'Open Sans', font_color= "black", 
+        fig.update_layout(width=700, height=400, font_family = 'Open Sans', font_color= "black", 
                         title_font_color= "black", title_font_size=24, title_text='Domicílios pela forma de escoamento do esgoto' + 
                         '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', 
                         yaxis_title='', xaxis_title='', xaxis_tickfont_size=14, yaxis_tickfont_size=14, 
@@ -1862,38 +1872,32 @@ with tabs[5]: # TAB de Moradia
         fig.update_layout_images(dict(xref="paper", yref="paper", sizex=0.3, sizey=0.3, xanchor="right", yanchor="bottom"))
 
         fig.add_annotation(text='Fonte: <a href="https://www.flaticon.com/br/icones-gratis/esgoto">Esgoto ícones criados por Freepik - Flaticon</a>',
-                        align="left", xref="paper", yref = "paper", x=1, y=-0.2, showarrow=False, font_size=10)
+                        align="left", xref="paper", yref = "paper", x=1, y=-0.3, showarrow=False, font_size=10)
         st.plotly_chart(fig)
     with cols_dom_esgoto[1]:
         st.markdown('''<ul class="font-text-destaques">
-                        <li> Segundo as projeções da Fundação SEADE, no município em 2020, os <font color='red'><b>68.503 habitantes se dividem em 22.112
-                             domicílios</b></font>, o que resultaria numa média de pouco mais de <b>3</b> moradores por domicílio.
+                    <br>
+                        <li> Sobre as formas de escoamento do esgoto, <font color='red'><b>59% dos domicílios pesquisados possuem esgotamento pela rede geral
+                        </b></font>, menos que a média nacional de <b>62,7%</b> e de <b>90,2%</b> da RMSP. 
                         </li>
                     <br>
-                        <li> Observando o gráfico ao lado, com a distribuição dos domicílios na pesquisa, podemos notar <font color='red'><b>uma concentração
-                             maior dos domicílios entrevistados com 4 moradores</b></font> tanto na média, quanto na moda e mediana.
-                        </li>
-                    <br>
-                        <li> Extrapolando para a faixa <font color='red'><b>entre 3 e 5 moradores, são somados 538 domicílios,</b></font> ou seja, mais de <b>82%</b> do total
-                             de domicílios entrevistados. É importante focar em moradias com um número <b>acima de 5 filhos</b> verificando o impacto
-                             de acordo com a condição de moradia desses locais.
+                        <li> Observando o gráfico ao lado, com a distribuição dos domicílios na pesquisa sobre esgoto, podemos notar <font color='red'><b>
+                        uma concentração de 39,6% dos domicílios com fossa asséptica (não ligada à rede)</b></font>. Muito acima da taxa nacional de 
+                        <b>5,6%</b> e <b>2,5%</b> da RMSP. 
                         </li>
                     </ul>''', unsafe_allow_html=True)
 
     cols_dom_energia = st.columns(2)
     with cols_dom_energia[0]:
         st.markdown('''<ul class="font-text-destaques">
-                        <li> Podemos notar no gráfico ao lado, que o <font color='red'><b>arranjo familiar de união e casamento entre indivíduos de sexo diferente</b></font>,
-                             é amplamente representado com mais de <b>75%</b> dos arranjos familiares. Outro fator relevantes é de que mais de <b>23%</b> dos 
-                             arranjos familiares são <b>monoparentais</b> (apenas mulher ou homem), que é <b>muito</b> superior à média nacional de <b>13%</b>.
+                        <li> Como podemos notar no gráfico de pizza ao lado, <font color='red'><b> a disponibilidade de energia elétrica dos domicílios
+                        pesquisados é muito semelhante à nacional (99,5%)</b></font>. Apenas 4 domicílios entre os 654 pesquisados não tinha acesso à energia
+                         elétrica.
                         </li>
                     <br>
-                        <li> Dos <font color='red'><b>arranjos monoparentais, mais de 90% são de mulheres</b></font>, acima dos <b>83,3%</b> de Embu-Guaçu dada pelo Censo do IBGE em 2010.
-                             Dos <font color='red'><b>arranjos de união ou casamento, em 38,6% dos casos a mulher é a responsável pelo domicílio</b></font>.
-                        </li>
-                    <br>
-                        <li> Dos <font color='red'><b>138 domicílios monoparentais chefiados por mulheres, a proporção de Pardas e Pretas representam 61,6% do total</b></font>,
-                             e temos uma média de <b>41</b> anos de idade para a responsável.
+                        <li> Outro indicador interessante sobre a condição de vida das famílias é do <font color='red'><b>tipo de combustível utilizado para
+                        a preparação dos alimentos</b></font>. Na PSE 2020, <b>todos os domicílios</b> utilizam meios adequados para essa preparação, onde 
+                        <b>99,7%</b> utilizam gás de botijão e <b>0,3%</b> utilizam energia elétrica.
                         </li>
                     </ul>''', unsafe_allow_html=True)
     with cols_dom_energia[1]:
