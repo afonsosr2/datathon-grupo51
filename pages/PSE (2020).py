@@ -1762,8 +1762,9 @@ with tabs[5]: # TAB de Moradia
     st.markdown(''' <p style='font-size:20px;'>
                         A descrição das condições físicas das moradias e do acesso de seus moradores a bens de consumo e serviços são elementos fundamentais
                         na análise das suas condições de vida.
-                        </p> 
-                        ''', unsafe_allow_html=True)
+                    </p>
+                    <br>
+                    ''', unsafe_allow_html=True)
     
     cols_dom_agua = st.columns(2)
     with cols_dom_agua[0]:
@@ -1890,6 +1891,7 @@ with tabs[5]: # TAB de Moradia
     cols_dom_energia = st.columns(2)
     with cols_dom_energia[0]:
         st.markdown('''<ul class="font-text-destaques">
+                    <br><br>
                         <li> Como podemos notar no gráfico de pizza ao lado, <font color='red'><b> a disponibilidade de energia elétrica dos domicílios
                         pesquisados é muito semelhante à nacional (99,5%)</b></font>. Apenas 4 domicílios entre os 654 pesquisados não tinha acesso à energia
                          elétrica.
@@ -1911,7 +1913,7 @@ with tabs[5]: # TAB de Moradia
         fig = go.Figure( data=[ go.Pie(labels=labels, values = values, marker_colors=["#fec52b","#ffe8aa"], hole = 0.6) ] )
 
         # Ajustando o layout do gráfico
-        fig.update_layout(width=500, height=500, font_family = 'Open Sans', font_color= "black", title_font_color= "black",
+        fig.update_layout(width=500, height=400, font_family = 'Open Sans', font_color= "black", title_font_color= "black",
                         title_font_size=24, title_text='Domicílios pelo acesso à energia elétrica' + 
                         '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>',
                         showlegend=False, annotations=[dict(text=f'<b>{acesso_energia*100:.1f}%</b>', x=0.5, y=0.4, font_size=28, 
@@ -1928,6 +1930,13 @@ with tabs[5]: # TAB de Moradia
         st.plotly_chart(fig)
 
     st.markdown('## Acesso à bens e serviços')
+    st.markdown(''' <p style='font-size:20px;'>
+                    A descrição do acesso a bens de consumo e serviços é um aspecto relevante na análise das condições de vida das moradias e população.
+                    O acesso a consumo de bens duráveis, tem relação com a capacidade de operar funcionamentos importantes para a realização social de
+                    uma população ou grupo.
+                    </p>
+                    <br>
+                    ''', unsafe_allow_html=True)
 
     cols_dom_celular = st.columns(2)
     with cols_dom_celular[0]:
@@ -1938,7 +1947,7 @@ with tabs[5]: # TAB de Moradia
                         color_discrete_sequence=["#001932"], nbins=8)
 
         # Ajustando o layout do gráfico
-        fig.update_layout(width=700, height=500, font_family = 'Open Sans', font_color= "black", 
+        fig.update_layout(width=700, height=400, font_family = 'Open Sans', font_color= "black", 
                         title_font_color= "black", title_font_size=24, title_text='Domicílios pelo nº de moradores que possuem celular' + 
                         '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', 
                         yaxis_title='Nº de Domicílios', xaxis_title='Nº de Moradores que possuem celular', xaxis_tickfont_size=14, 
@@ -1953,36 +1962,32 @@ with tabs[5]: # TAB de Moradia
         fig.update_layout_images(dict(xref="paper", yref="paper", sizex=0.4, sizey=0.4, xanchor="right", yanchor="bottom"))
 
         fig.add_annotation(text='Fonte: <a href="https://www.flaticon.com/br/icones-gratis/telefone">Telefone ícones criados por prettycons - Flaticon</a>',
-                        align="left", xref="paper", yref = "paper", x=1, y=-0.2, showarrow=False, font_size=10)
+                        align="left", xref="paper", yref = "paper", x=1, y=-0.3, showarrow=False, font_size=10)
         st.plotly_chart(fig)
     with cols_dom_celular[1]:
         st.markdown('''<ul class="font-text-destaques">
-                        <li> Embu-Guaçu tem um total projetado de <b>22.112</b> domicílios em 2020 (SEADE, 2020). Este recorte da pesquisa 
-                             engloba <font color='red'><b>3% do total de domicílios</b></font> do município.
+                    <br><br>
+                        <li> Na PSE 2020, podemos notar que <font color='red'><b>apenas 3 domicílios não possuem sequer um morador com o porte de telefone 
+                        celular</b></font>, ou seja, em <b>99,5%</b> dos domicílios esse bem é presente, com maior concentração entre 2 ou 3 moradores por domicílio. 
                         </li>
                     <br>
-                        <li> Dos responsáveis pelo domicílio, <font color='red'><b>354 são mulheres</b></font>, representando aproximadamente <b>54.1%</b>
-                             do total, e <font color='red'><b>300 moradores são homens</b></font>, representando <b>45.9%</b> do total.
-                        </li>
-                    <br>
-                        <li> A <font color='red'><b>vantagem numérica dos domicílios chefiados por mulheres</b></font> foi destacado nos dados 
-                             demográficos dos domicílios entrevistados de Embu-Guaçu, principalmente pelos arranjos familiares.
+                        <li> Já, <font color='red'><b>a telefonia fixa convencional está em apenas 29,7% dos domicílios</b></font>. A presença desse serviço é de 
+                        <b>26,8%</b> nacionalmente e <b>38,9%</b> na região Sudeste. 
                         </li>
                     </ul>''', unsafe_allow_html=True)
 
     cols_dom_tv = st.columns(2)
     with cols_dom_tv[0]:
         st.markdown('''<ul class="font-text-destaques">
-                    <br>
-                        <li> A <font color='red'><b>distribuição por cor e raça dos responsáveis dos domicílios</b></font>, tem relação
-                             direta com os dados da população da amostra e, consequentemente, com a proporção da população total do Brasil.
-                             Isso evidencia uma homogeneidade dos domicílios quanto a característica dos indivíduos, em que a frequência de
-                             domicílios heterogêneos são pouco significativos.
+                    <br><br>
+                        <li> Segundo a pesquisa, em <font color='red'><b>639 dos 654 domicílios existe ao menos um aparelho de televisão</b></font>, ou seja, 
+                        apenas 15 não declaram a existência desse bem. A prevalência da existência desse bem é praticamente a mesma da observada na região
+                        Sudeste (<b>97,7% contra 97,8%</b>) e um pouco acima da nacional com <b>96,4%</b>.
                         </li>
                     <br>
-                        <li> Os responsáveis declarados <font color='red'><b>Pretos e Pardos</b></font> somam cerca de <b>54,9%</b>, próximo dos <b>54%</b> do Brasil e
-                             os declarados <font color='red'><b>Brancos, Amarelos e Indígenas</b></font> juntos somam <b>45,1%</b> próximo dos 
-                             <b>46%</b> do Brasil.
+                        <li> Outro bem praticamente universal nas casas é a <font color='red'><b>presença de geladeira ou freezer, em 99,8% dos domicílios 
+                        pesquisados</b></font>. Outro ponto curioso é que os 4 domicílios sem energia elétrica possuíam esse bem, provavelmente acionados por gás
+                        de cozinha, ou seja, o único domicílio sem esse bem possui acesso à energia elétrica.
                         </li>
                     </ul>''', unsafe_allow_html=True)
     with cols_dom_tv[1]:
@@ -1993,7 +1998,7 @@ with tabs[5]: # TAB de Moradia
                     color_discrete_sequence=["#f58334", "#fec52b", "#0367b0", "#ed3237"])
 
         # Ajustando o layout do gráfico
-        fig.update_layout(width=700, height=500, font_family = 'Open Sans', font_color= "black", 
+        fig.update_layout(width=700, height=400, font_family = 'Open Sans', font_color= "black", 
                         title_font_color= "black", title_font_size=24, title_text='Domicílios com aparelhos de TV' + 
                         '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>', 
                         yaxis_title='', xaxis_title='', xaxis_tickfont_size=14, yaxis_tickfont_size=14, 
@@ -2012,7 +2017,7 @@ with tabs[5]: # TAB de Moradia
 
         fig.add_annotation(text='Fonte: <a href="https://www.flaticon.com/br/icones-gratis/televisao">Televisão ícones criados por Freepik - Flaticon</a>'
                         '<br>Fonte: <a href="https://www.flaticon.com/br/icones-gratis/televisao">Televisão ícones criados por Vignesh Oviyan - Flaticon</a>',
-                        align="left", xref="paper", yref = "paper", x=1, y=-0.25, showarrow=False, font_size=10)
+                        align="left", xref="paper", yref = "paper", x=1, y=-0.35, showarrow=False, font_size=10)
         st.plotly_chart(fig)
 
     cols_dom_pc_net = st.columns(2)
@@ -2039,8 +2044,9 @@ with tabs[5]: # TAB de Moradia
         fig.add_trace(go.Pie(labels=labels, values=values_3, marker_colors=["#001932","#b3bac2"], hole = 0.6, rotation = 0), 1, 3)
 
         #Ajustando o layout do gráfico
-        fig.update_layout(width=700, height=500, font_family = 'Open Sans', font_color= "black", title_font_color= "black",
-                        title_font_size=24, title_text='Taxa de Desemprego geral e por gênero' + '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>',
+        fig.update_layout(width=700, height=400, font_family = 'Open Sans', font_color= "black", title_font_color= "black",
+                        title_font_size=24, title_text='Domicílios com computador e acesso à internet' + 
+                        '<br><sup size=1 style="color:#555655">Segundo o PSE 2020</sup>',
                         showlegend=False, 
                         annotations=[dict(text=f'<b>{tem_pc/total*100:.1f}%</b>', x=0.11, y=0.4, font_size=18, showarrow=False),
                                     dict(text=f'<b>{tem_internet/total*100:.1f}%</b>', x=0.5, y=0.4, font_size=18, showarrow=False),
@@ -2060,21 +2066,20 @@ with tabs[5]: # TAB de Moradia
         fig.add_annotation(text='Fonte: <a href="https://www.flaticon.com/br/icones-gratis/computador">Computador ícones criados por Freepik - Flaticon</a>'
                         '<br>Fonte: <a href="https://www.flaticon.com/br/icones-gratis/modem">Modem ícones criados por Uniconlabs - Flaticon</a>'
                         '<br>Fonte: <a href="https://www.flaticon.com/br/icones-gratis/wifi-gratis">Wifi grátis ícones criados por Kalashnyk - Flaticon</a>',
-                        align="left", xref="paper", yref = "paper", x=1, y=-0.2, showarrow=False, font_size=10)
+                        align="left", xref="paper", yref = "paper", x=1, y=-0.3, showarrow=False, font_size=10)
         st.plotly_chart(fig)
     with cols_dom_pc_net[1]:
         st.markdown('''<ul class="font-text-destaques">
-                        <li> Segundo as projeções da Fundação SEADE, no município em 2020, os <font color='red'><b>68.503 habitantes se dividem em 22.112
-                             domicílios</b></font>, o que resultaria numa média de pouco mais de <b>3</b> moradores por domicílio.
+                    <br><br>
+                        <li> O <font color='red'><b>computador e/ou notebook</b></font>, bens que facilitam a operação de funcionamentos para a realização social
+                        dos indivíduos, <font color='red'><b>estão presentes em 46,3% dos domicílios</b></font> (por volta de 303 domicílios). Esse número é 
+                        superior à média nacional de <b>44,1%</b>, mas bem inferior a média do estado que tem <b>52,3%</b>.
                         </li>
                     <br>
-                        <li> Observando o gráfico ao lado, com a distribuição dos domicílios na pesquisa, podemos notar <font color='red'><b>uma concentração
-                             maior dos domicílios entrevistados com 4 moradores</b></font> tanto na média, quanto na moda e mediana.
-                        </li>
-                    <br>
-                        <li> Extrapolando para a faixa <font color='red'><b>entre 3 e 5 moradores, são somados 538 domicílios,</b></font> ou seja, mais de <b>82%</b> do total
-                             de domicílios entrevistados. É importante focar em moradias com um número <b>acima de 5 filhos</b> verificando o impacto
-                             de acordo com a condição de moradia desses locais.
+                        <li> Observando o gráfico ao lado, podemos notar o <font color='red'><b> acesso à internet de banda larga fixa presente em 72% das moradias
+                        </b></font>, ou seja, 471 domicílios pesquisados, a média nacional é de <b>75,9%</b>. Em relação ao <font color='red'><b> acesso à internet 
+                        móvel, 71,7% dos domicílios declaram possuir</b></font>. Esse número é bem abaixo da média nacional e da região Sudeste (<b>80,2%</b> e 
+                        <b>84,8%</b>).
                         </li>
                     </ul>''', unsafe_allow_html=True)
 
