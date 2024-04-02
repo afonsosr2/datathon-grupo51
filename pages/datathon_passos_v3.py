@@ -191,12 +191,12 @@ with tabs_2[2]:
         st.markdown("### Indicadores Passos Mágicos")
 
         st.markdown('''   <li> Os dados que serão mostrados abaixo tem a finalidade de demonstrar o impacto do sistema 
-educacional da Passos Mágicos nos jovens da região de Embu-Guaçu <li>''',unsafe_allow_html=True)
+educacional da Passos Mágicos nos jovens da região de Embu-Guaçu.''',unsafe_allow_html=True)
         st.markdown(
                 '''   
                   
-                  O gráfico abaixo demostra a quantidade de alunos e a evolução desse número no periodo de 2020 até 2022.    
-  Podemos notar o crescimento expresivo entre o periodo de 2021 e 2022 que passou de 727 para 939 alunos.''')
+                 <li> O gráfico abaixo demostra a quantidade de alunos e a evolução desse número no periodo de 2020 até 2022.    
+  Podemos notar o crescimento expresivo entre o periodo de 2021 e 2022 que passou de <b> 727 <b> para <b> 939 <b> alunos.''',unsafe_allow_html=True)
 
     with colunas_3 [1]:
 
