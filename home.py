@@ -273,7 +273,7 @@ with tabs_2[0]:
              cursos e workshops, todas realizadas com a ajuda de voluntários que acompanham e participam com nossas crianças.""")
     
 
-    st.markdown( """ ### Organograma abaixo demostra a estrutura hiherraquica da Passo Mágicos""")
+    st.markdown( """ ### Organograma abaixo demostra a estrutura hierárquica da Passo Mágicos""")
     st.markdown("")
 
     st.image("images/Estrutura passos.jpg")
