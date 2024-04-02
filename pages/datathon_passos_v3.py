@@ -210,8 +210,8 @@ educacional da Passos Mágicos nos jovens da região de Embu-Guaçu.''',unsafe_a
 
     st.markdown("""O INDE (ÍNdice de deenvolvimento educacional ),como medida do presente processo avaliativo,  é composto por uma dimenssão acadêmica, uma dimenssão psicossocial e uma dimenssão psicopedagógica.    
                   Essas dimensões são observadas por meio de resultado de 7 indicadores (IAN,IDA,IEG,IAA,IPS,IPP e IPV) que aglutinados por ponderação formam o índice sintetico INDE.""")
-     st.markdown("")
-     st.markdown("O quaro abaixo explica o significado de cada indicador :")
+    st.markdown("")
+    st.markdown("O quaro abaixo explica o significado de cada indicador :")
     st.image("images/indicadores-INDE.png",caption="Fonte:PEDE 2022 Passos Mágicos")
 
 
