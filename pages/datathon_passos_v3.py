@@ -142,6 +142,52 @@ fig_5.update_layout(
         color="RebeccaPurple"))
 fig_5.show()
 
+df_pac  = pd.DataFrame({"Ano":["2016","2017","2018","2019","2020","2021","2022"],"Alunos":[70,300,550,812,841,824,1000]})
+
+fig_6 = px.line(df_pac, x='Ano', y='Alunos',color=pd.Series('Alunos', index=range(len(df_pac))),
+             labels={'Alunos':'Evolução do número de alunos no Pac por ano'},markers= True, width=700)
+
+fig_6.update_layout(
+    title=" Quantidade de alunos no PAC por ano ",
+    xaxis_title="Ano",
+    yaxis_title="Alunos",
+    font=dict(
+        family="Courier New, monospace",
+        size=12,
+        color="RebeccaPurple"))
+fig_6.show()
+
+df_idade = pd.DataFrame({"Faixa etaria":["25 a 9 anos","10 a 14 anos","15 a 19 anos ","20 a 24 anos"],"%alunos":[15.8,59.9,23.8,0.4]})
+
+fig_7 = px.bar(df_idade, x='Faixa etaria', y='%alunos',
+             hover_data=["%alunos"],color=pd.Series('%alunos', index=range(len(df_idade))),
+             labels={'%alunos':'Percentual de Alunos '}, height=500,width=700)
+
+fig_7.update_layout(
+    title="Percentual por faixa etária de alunos na Passos ",
+    xaxis_title="Faixa Etária",
+    yaxis_title="% Alunos ",
+    font=dict(
+        family="Courier New, monospace",
+        size=12,
+        color="RebeccaPurple"))
+fig_7.show()
+
+df_etnia = pd.DataFrame({"Etnia":["Amarelos","Brancos ","Pardos","Pretos"],"Percentual%":[1,47,43,9]})
+
+fig_8 = px.bar(df_etnia, x='Etnia', y='Percentual%',
+             hover_data=["Percentual%"],color=pd.Series('Percentual%', index=range(len(df_etnia))),
+             labels={'Percentual%':'Percentual de Alunos '}, height=500,width=700)
+
+fig_8.update_layout(
+    title="Percentual de alunos da Passos por Etnia ",
+    xaxis_title="Etnia",
+    yaxis_title="Percentual % ",
+    font=dict(
+        family="Courier New, monospace",
+        size=12,
+        color="RebeccaPurple"))
+fig_8.show()
 
 import streamlit as st
 
@@ -159,7 +205,7 @@ with tabs_2[0]:
             atividades extracurriculares de finais de semana e bolsas de estudos no colégio particular, em cursos técnicos e de graduação..""")
 
     with colunas_1 [1]:
-            st.image("images/Ong-Passos-Magicos.jpeg",width= 250)
+            st.image("images/Ong-Passos-Magicos.jpeg")
             
     st.markdown("""A Passos Mágicos baseia-se na meritocracia, por isso engajamos nossas crianças para que acreditem que estudar é bom e pode transformar a vida delas.
             Avaliamos a participação, desempenho e presença para decidir quem participará das atividades de finais de semana e quem pode concorrer a bolsas de estudos na escola particular sendo apadrinhado por uma pessoa que se dispõe a financiar seu estudo. 
@@ -178,7 +224,7 @@ with tabs_2[0]:
             o número de alunos impactados pelo sistema de aceleração de aprendizado 
             da Passos Mágicos""")
 
-    st.image("images/pac-passos.png",caption="Fonte:Relatório de atividades Passos Mágicos 2022")
+    st.plotly_chart(fig_6, use_container_width=True)
 
 
         
