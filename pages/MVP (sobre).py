@@ -25,30 +25,42 @@ st.header("", divider="gray")
 ###### Página Sobre o Streamlit ######
 st.header(":bar_chart: Sobre o MVP")
 
-st.markdown('''<style>
-[data-testid="stMarkdownContainer"] ul{
-    list-style-position: inside;
-}</style>''', 
-unsafe_allow_html=True)
-
-st.markdown('''
-            Desenvolvemos este aplicativo no Streamlit para ilustrar e quantificar o impacto que a ONG Passos Mágicos
+st.markdown('''<ul class="font-text">
+            <p style='font-size:20px;'> Desenvolvemos este aplicativo no Streamlit para ilustrar e quantificar o impacto que a ONG Passos Mágicos
             vem causando na comunidade de Embu-Guaçu na Região Metropolitana de São Paulo.
-
+            <br><br>
             Criamos com todo carinho e cuidado um dashboard que:
-            - **Analisa os dados históricos e atuais** da ONG, buscando entender sua influência na educação de jovens e
+            </p>
+            <li> <b>Analisa os dados históricos e atuais</b> da ONG, buscando entender sua influência na educação de jovens e
             crianças da comunidade
-            - **Identifica fatores-chave de sucesso** para determinar o impacto positivo para os resultados de quem se 
+            </li>
+            <li> <b>Identifica fatores-chave de sucesso</b> para determinar o impacto positivo para os resultados de quem se 
             beneficia dos projetos da ONG.
-            - **Representa uma solução sustentável** que pode ser integrado e atualizado pela ONG, seja como ferramenta de pesquisa,
+            </li>
+            <li> <b>Representa uma solução sustentável</b> que pode ser integrado e atualizado pela ONG, seja como ferramenta de pesquisa,
             como um relatório dinâmico para apresentação resumida da Passos Mágicos para possíveis voluntários e apoiadores
-            - **Visualiza e conta a história** da Passos Mágicos, destacando seus impactos de forma visual e instigante.
-            
-            Espero que gostem deste dashboard do Streamlit e que o mesmo possa gerar insights relevantes para a compreensão da grandeza 
+            </li>
+            <li> <b>Visualiza e conta a história</b> da Passos Mágicos, destacando seus impactos de forma visual e instigante.
+            </li>
+            <p style='font-size:20px;'> Espero que gostem deste dashboard do Streamlit e que o mesmo possa gerar insights relevantes para a compreensão da grandeza 
             da Passos Mágicos para com a comunidade de Embu-Guaçu.
-            
-            Sinta-se livre para explorar este ambiente! :computer:
-            ''')
+            <br><br>
+            Sinta-se livre para explorar este ambiente! &#128187;
+            </p>
+            </ul>
+            ''', unsafe_allow_html=True )
 
 
+css = '''
+<style>
+    /* Ajusta topicalização*/
+    [data-testid="stMarkdownContainer"] ul{
+    list-style-position: inside;
+    }
+    /*Texto dos destaques de cada aba*/
+    ul.font-text li{
+    font-size:20px;
+    }
+</style>'''
 
+st.markdown(css, unsafe_allow_html=True)
